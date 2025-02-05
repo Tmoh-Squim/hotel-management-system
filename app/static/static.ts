@@ -1,0 +1,22 @@
+export const appBarLinks = [
+{
+    title:"Home",
+    path:"/"
+},
+{
+    title:"Rooms",
+    path:"/Rooms"
+},
+{
+    title:"Home",
+    path:"/"
+},
+{
+    title:"Home",
+    path:"/"
+},
+{
+    title:"Home",
+    path:"/"
+},
+]
