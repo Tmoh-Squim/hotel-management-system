@@ -112,6 +112,22 @@ const AppBar = () => {
             </Link>
           ))}
         </div>
+        <div className="flex flex-col gap-3 p-3 font-semibold mt-4">
+        {authRoutes.map((item, index) => (
+              <Link
+                href={item.route}
+                key={index}
+                className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
+                  item.title === "Register"
+                    ? "bg-foreground text-background hover:bg-background hover:text-foreground"
+                    : "bg-background text-foreground hover:bg-foreground hover:text-background"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                <h1>{item.title}</h1>
+              </Link>
+            ))}
+        </div>
       </div>
     </>
   );
