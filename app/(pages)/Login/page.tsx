@@ -1,9 +1,13 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
-import React from "react";
+import React, { useState } from "react";
 
 const Page = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   return (
     <div className="w-full h-screen flex justify-center items-center ">
       <form className="mx-auto 800px:px-6 px-2 py-8 bg-neutral-200 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
@@ -15,12 +19,16 @@ const Page = () => {
           <CustomTextField
             type="email"
             placeholder="Enter your email"
-            onchange={(e) => {}}
+            onchange={(e) => {
+              setFormData({ ...formData, email: e.target.value });
+            }}
           />
           <CustomTextField
             type="password"
             placeholder="Enter your password"
-            onchange={(e) => {}}
+            onchange={(e) => {
+              setFormData({ ...formData, password: e.target.value });
+            }}
           />
         </div>
 
@@ -35,7 +43,7 @@ const Page = () => {
         </div>
 
         <div className="mt-10">
-          <CustomButton/>
+          <CustomButton />
         </div>
       </form>
     </div>

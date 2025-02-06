@@ -32,12 +32,12 @@ const page = () => {
         backgroundImage: `url(bg.jpg)`,
       }}
     >
-      <div className="text-center max-w-[38%] text-background">
-        <h1 className="title text-4xl font-bold">
+      <div className="text-center 800px:max-w-[38%] text-background">
+        <h1 className="title 800px:text-4xl text-2xl font-bold">
           EXPERIENCE HOSPITALITY AT IT'S FINEST
         </h1>
         <div className="my-4 btn w-max mx-auto">
-          <Link href={"/home"}>
+          <Link href={"/restaurant"}>
             <CustomButton />
           </Link>
         </div>
