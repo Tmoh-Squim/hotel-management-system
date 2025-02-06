@@ -1,8 +1,25 @@
+"use client"
 import { listData } from "@/app/static/static";
-import React from "react";
+import React, { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Page = () => {
+  const [filters, setFilters] = useState({
+    location: "",
+    minPrice: 0,
+    maxPrice: 10000,
+    bedrooms: 0,
+  });
+
+  const filteredRooms = listData.filter((room) => {
+    const matchesLocation =
+      !filters.location || room.address.toLowerCase().includes(filters.location.toLowerCase());
+    const matchesPrice = room.price >= filters.minPrice && room.price <= filters.maxPrice;
+    const matchesBedrooms = filters.bedrooms === 0 || room.bedroom === filters.bedrooms;
+    
+    return matchesLocation && matchesPrice && matchesBedrooms;
+  });
+
   return (
     <div className="w-full bg-background px-4 sm:px-10 py-8">
       {/* Title */}
@@ -10,38 +27,90 @@ const Page = () => {
         Our Rooms
       </h1>
 
+      {/* Filters */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8 justify-center">
+        <input
+          type="text"
+          placeholder="Search by location"
+          className="px-4 py-2 border border-gray-300 rounded-md w-full sm:w-1/4"
+          value={filters.location}
+          onChange={(e) => setFilters({ ...filters, location: e.target.value })}
+        />
+
+        <div className="flex gap-4 w-full sm:w-1/4">
+          <input
+            type="number"
+            placeholder="Min Price"
+            className="px-4 py-2 border border-gray-300 rounded-md w-full"
+            value={filters.minPrice}
+            onChange={(e) =>
+              setFilters({ ...filters, minPrice: Number(e.target.value) })
+            }
+          />
+          <input
+            type="number"
+            placeholder="Max Price"
+            className="px-4 py-2 border border-gray-300 rounded-md w-full"
+            value={filters.maxPrice}
+            onChange={(e) =>
+              setFilters({ ...filters, maxPrice: Number(e.target.value) })
+            }
+          />
+        </div>
+
+        <select
+          className="px-4 py-2 border border-gray-300 rounded-md w-full sm:w-1/4"
+          value={filters.bedrooms}
+          onChange={(e) =>
+            setFilters({ ...filters, bedrooms: Number(e.target.value) })
+          }
+        >
+          <option value={0}>All Bedrooms</option>
+          <option value={1}>1 Bedroom</option>
+          <option value={2}>2 Bedrooms</option>
+          <option value={3}>3 Bedrooms</option>
+        </select>
+      </div>
+
       {/* Room Listings */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {listData.map((item, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-lg cursor-pointer rounded-lg overflow-hidden transform transition-all hover:scale-105"
-          >
-            {/* Image */}
-            <img
-              src={item.img}
-              alt={item.title}
-              className="w-full h-56 object-cover"
-            />
-            <div className="flex justify-between items-center">
-              <p className="text-gray-600 mt-2 px-4">
-                {item.bedroom} bedrooms
-              </p>
-            </div>
+        {filteredRooms.length === 0 ? (
+          <p className="text-center text-xl font-semibold text-gray-600 w-full">
+            No rooms found with the selected filters.
+          </p>
+        ) : (
+          filteredRooms.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-lg cursor-pointer rounded-lg overflow-hidden transform transition-all hover:scale-105"
+            >
+              {/* Image */}
+              <img
+                src={item.img}
+                alt={item.title}
+                className="w-full h-56 object-cover"
+              />
+              <div className="flex justify-between items-center">
+                <p className="text-gray-600 mt-2 px-4">
+                  {item.bedroom} bedrooms
+                </p>
+              </div>
 
-            {/* Room Details */}
-            <div className="p-2">
-              <h2 className="text-xl font-semibold text-gray-800">{item?.title.length > 35 ? item.title.slice(0,35) + "..." : item.title}</h2>
-              <p className="text-gray-600 mt-2">Ksh {item.price} / night</p>
+              {/* Room Details */}
+              <div className="p-2">
+                <h2 className="text-xl font-semibold text-gray-800">
+                  {item?.title.length > 35
+                    ? item.title.slice(0, 35) + "..."
+                    : item.title}
+                </h2>
+                <p className="text-gray-600 mt-2">Ksh {item.price} / night</p>
+              </div>
+              <div className="p-2 flex items-center gap-2">
+                <FaMapMarkerAlt /> <span className="text-gray-500">{item.address}</span>
+              </div>
             </div>
-            <div className="p-2 flex items-center gap-2">
-              <FaMapMarkerAlt /> <span className="text-gray-500">{item.address}</span>
-            </div>
-            <div>
-              
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

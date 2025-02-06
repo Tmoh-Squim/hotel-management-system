@@ -5,7 +5,7 @@ import { AiOutlineUser } from "react-icons/ai";
 
 const AppBar = () => {
   return (
-    <div className="h-[60px] flex px-6 justify-between text-background items-center bg-blue-400 w-full">
+    <div className=" py-2 flex px-6 justify-between text-background items-center bg-blue-300 w-full">
       <div>
         <Link
           href={"/"}
