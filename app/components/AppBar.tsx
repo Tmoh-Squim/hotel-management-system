@@ -1,53 +1,119 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { appBarLinks, authRoutes } from "../static/static";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 
 const AppBar = () => {
+  const [open, setOpen] = useState(false);
+  const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      gsap.fromTo(
+        sidebarRef.current,
+        { x: "-100%", opacity: 0 },
+        { x: "0%", opacity: 1, duration: 0.5, ease: "power3.out" }
+      );
+    } else {
+      gsap.to(sidebarRef.current, {
+        x: "-100%",
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.in",
+      });
+    }
+  }, [open]);
+
   return (
-    <div className=" py-2 flex px-6 justify-between text-background items-center bg-blue-300 w-full">
-      <div>
-        <Link
-          href={"/"}
-          className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300 "
-        >
-          Squim's Hotel
-        </Link>
-      </div>
+    <>
+      {/* Desktop Navbar */}
+      <div className="hidden py-3 800px:flex px-6 justify-between text-background items-center bg-blue-300 w-full">
+        <div>
+          <Link
+            href={"/"}
+            className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
+          >
+            Squim's Hotel
+          </Link>
+        </div>
 
-      <div className="flex gap-10 items-center font-semibold">
-        {appBarLinks.map((item, index) => (
-          <div key={index}>
-            <Link
-              href={item.path}
-              className="text-sm relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[3px] after:bg-foreground after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {item.title.toUpperCase()}
-            </Link>
-          </div>
-        ))}
-      </div>
-
-      <div className="w-min flex items-center gap-10">
-        <div className="gap-4 flex">
-          {authRoutes.map((item, index) => (
-            <Link
-              href={item.route}
-              key={index}
-              className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
-                item.title === "Register"
-                  ? "bg-foreground text-background hover:bg-background hover:text-foreground"
-                  : "bg-background text-foreground hover:bg-foreground hover:text-background"
-              }`}
-            >
-              <h1>{item.title}</h1>
-            </Link>
+        <div className="flex gap-8 items-center font-semibold">
+          {appBarLinks.map((item, index) => (
+            <div key={index}>
+              <Link
+                href={item.path}
+                className="text-sm relative after:content-[''] after:absolute after:left-0 after:bottom-[-4px] after:w-0 after:h-[3px] after:bg-foreground after:transition-all after:duration-300 hover:after:w-full"
+              >
+                {item.title.toUpperCase()}
+              </Link>
+            </div>
           ))}
         </div>
 
-        <AiOutlineUser size={50} className="cursor-pointer" />
+        <div className="w-min flex items-center gap-10">
+          <div className="gap-10 flex">
+            {authRoutes.map((item, index) => (
+              <Link
+                href={item.route}
+                key={index}
+                className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
+                  item.title === "Register"
+                    ? "bg-foreground text-background hover:bg-background hover:text-foreground"
+                    : "bg-background text-foreground hover:bg-foreground hover:text-background"
+                }`}
+              >
+                <h1>{item.title}</h1>
+              </Link>
+            ))}
+          </div>
+
+          <AiOutlineUser size={50} className="cursor-pointer hidden" />
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Navbar */}
+      <div
+        className="800px:hidden cursor-pointer p-2 flex justify-between items-center"
+        onClick={() => setOpen(true)}
+      >
+        <AiOutlineMenu size={30} />
+        <div>
+          <Link
+            href={"/"}
+            className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
+          >
+            Squim's Hotel
+          </Link>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar */}
+      <div
+        ref={sidebarRef}
+        className={`fixed top-0 left-0 h-max py-4 w-[12rem] rounded-br-lg bg-white shadow-lg z-50 transform ${
+          open ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex justify-end items-center p-2 cursor-pointer" onClick={() => setOpen(false)}>
+          <AiOutlineClose size={28} />
+        </div>
+
+        <div className="flex flex-col gap-6 p-3 font-semibold">
+          {appBarLinks.map((item, index) => (
+            <Link
+              key={index}
+              href={item.path}
+              className="text-md hover:text-blue-500 transition-all duration-300"
+              onClick={() => setOpen(false)}
+            >
+              {item.title.toUpperCase()}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 

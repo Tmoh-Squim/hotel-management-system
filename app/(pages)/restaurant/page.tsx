@@ -23,7 +23,7 @@ const Page = () => {
   return (
     <div className="w-full bg-background px-4 sm:px-10 py-8">
       {/* Title */}
-      <h1 className="text-center text-2xl sm:text-4xl font-bold text-foreground mb-6">
+      <h1 className="text-center text-2xl sm:text-4xl font-semibold text-foreground mb-6">
         Our Rooms
       </h1>
 
@@ -73,7 +73,7 @@ const Page = () => {
       </div>
 
       {/* Room Listings */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
         {filteredRooms.length === 0 ? (
           <p className="text-center text-xl font-semibold text-gray-600 w-full">
             No rooms found with the selected filters.

@@ -22,7 +22,7 @@ export const appBarLinks = [
     path:"/about"
 },
 {
-    title:"Contact",
+    title:"Contact us",
     path:"/contact"
 },
 ]

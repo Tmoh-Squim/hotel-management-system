@@ -9,8 +9,8 @@ const Page = () => {
     password: "",
   });
   return (
-    <div className="w-full h-screen flex justify-center items-center ">
-      <form className="mx-auto 800px:px-6 px-2 py-8 bg-neutral-200 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
+    <div className="w-full h-screen flex bg-background justify-center items-center ">
+      <form className="mx-auto 800px:px-6 px-2 py-8 bg-white w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
         <h1 className="text-3xl text-center font-bold mb-6 text-blue-400">
           Welcome Back!
         </h1>
@@ -33,12 +33,11 @@ const Page = () => {
         </div>
 
         <div className="mt-4 flex justify-between text-sm">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" className="accent-blue-500" />
-            <span>Remember me</span>
+          <label className="flex items-center text-blue-400 space-x-2">
+            <a href="/Register" className="hover:underline">Don't have an account?</a>
           </label>
-          <a href="#" className="text-blue-400 hover:underline">
-            Forgot Password?
+          <a href="/" className="text-blue-400 hover:underline">
+            Forgot Password
           </a>
         </div>
 

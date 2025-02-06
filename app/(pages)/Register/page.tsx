@@ -11,8 +11,8 @@ const Page = () => {
     password: "",
   });
   return (
-    <div className="w-full h-screen flex justify-center items-center ">
-      <form className="mx-auto 800px:px-6 px-2 py-8 bg-neutral-200 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
+    <div className="w-full h-screen flex justify-center bg-background items-center ">
+      <form className="mx-auto 800px:px-6 px-2 py-8 bg-white w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
         <h1 className="text-3xl text-center font-bold mb-6 text-blue-400">
           Create Account
         </h1>
@@ -49,12 +49,9 @@ const Page = () => {
         </div>
 
         <div className="mt-4 flex justify-between text-sm">
-          <label className="flex items-center space-x-2">
-            <input type="checkbox" className="accent-blue-500" />
-            <span>Remember me</span>
-          </label>
-          <a href="#" className="text-blue-400 hover:underline">
-            Forgot Password?
+
+          <a href="/Login" className="text-blue-400 hover:underline">
+            Already have an account?
           </a>
         </div>
 

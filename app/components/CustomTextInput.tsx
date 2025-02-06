@@ -10,7 +10,7 @@ const CustomTextField = ({
       type={type}
       placeholder={placeholder}
       onChange={onchange}
-      className="w-full h-[45px] my-1 px-2 text-foreground focus:outline-none border-gray-400 rounded-xl focus:border-blue-500 border-[2px]"
+      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
     />
   );
 };
