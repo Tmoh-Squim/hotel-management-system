@@ -1,22 +1,33 @@
 export const appBarLinks = [
 {
     title:"Home",
-    path:"/"
+    path:"/home"
 },
 {
-    title:"Rooms",
-    path:"/Rooms"
+    title:"Restaurant",
+    path:"/restaurant"
 },
 {
-    title:"Home",
-    path:"/"
+    title:"Pool",
+    path:"/Pool"
 },
 {
-    title:"Home",
-    path:"/"
+    title:"Best deals",
+    path:"/deals"
 },
 {
-    title:"Home",
-    path:"/"
+    title:"Contact",
+    path:"/contact"
 },
+]
+
+export const authRoutes = [
+    {
+        title:"Register",
+        route:"/Register"
+    },
+    {
+        title:"Login",
+        route:"/Login"
+    }
 ]

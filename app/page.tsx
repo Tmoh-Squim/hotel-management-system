@@ -37,7 +37,7 @@ const page = () => {
           EXPERIENCE HOSPITALITY AT IT'S FINEST
         </h1>
         <div className="my-4 btn w-max mx-auto">
-          <Link href={"/Home"}>
+          <Link href={"/home"}>
             <CustomButton />
           </Link>
         </div>

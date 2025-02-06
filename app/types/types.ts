@@ -6,3 +6,15 @@ interface TextInputProps {
 interface ButtonProps {
     color:string,
 }
+
+interface Product {
+    image: string;
+    title: string;
+    amount: number;
+    rating: number;
+    capacity: number;
+    details: string;
+  }
+interface ProductProps {
+    product:Product
+}
