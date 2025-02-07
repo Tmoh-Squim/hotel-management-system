@@ -45,15 +45,15 @@ const Page = () => {
     );
 
   return (
-    <div className="mx-auto px-6 bg-background overflow-y-scroll py-4 w-full h-screen">
+    <div className="mx-auto 800px:px-6 px-2 bg-background overflow-y-scroll py-4 w-full h-screen">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
         <div className="block lg:w-[40%] w-full">
           <img
             src={imageUrl}
             alt={product.title}
-            className="object-cover h-[280px] w-full rounded-md shadow-md"
+            className="object-cover h-[260px] lg:h-[350px] w-full rounded-md shadow-md"
           />
-          <div className="flex gap-4 my-4">
+          <div className="flex gap-4 my-2">
             {product.images?.map((item, index) => (
               <div
                 key={index}
@@ -71,19 +71,19 @@ const Page = () => {
         </div>
 
         <div className="w-full lg:w-1/2 space-y-4">
-          <h1 className="text-3xl font-bold text-foreground">
+          <h1 className="800pxtext-3xl text-xl font-bold text-foreground">
             {product.title}
           </h1>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center text-gray-400 gap-2">
             <FaMapMarkerAlt />{" "}
-            <span className="text-gray-500">{product.address}</span>
+            <span className="text-foreground">{product.address}</span>
           </div>
           <p className="text-foreground text-lg leading-relaxed">
             {product.description}
           </p>
           <div className="space-y-2">
             <p className="text-xl font-semibold text-green-600">
-              Ksh Price: Ksh{product.price}
+              Price: Ksh{product.price}
             </p>
             <p className="text-md text-yellow-500">
               ⭐ Rating: {product.rating}/5
