@@ -37,7 +37,7 @@ const Page = () => {
         </h1>
         <div className="my-4 btn w-max mx-auto">
           <Link href={"/restaurant"}>
-            <CustomButton />
+            <CustomButton title={"Get started"} onClick={undefined} />
           </Link>
         </div>
       </div>

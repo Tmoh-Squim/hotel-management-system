@@ -1,5 +1,6 @@
 "use client"
 import { listData } from "@/app/static/static";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
@@ -10,6 +11,7 @@ const Page = () => {
     maxPrice: 10000,
     bedrooms: 0,
   });
+  const router = useRouter();
 
   const filteredRooms = listData.filter((room) => {
     const matchesLocation =
@@ -82,11 +84,15 @@ const Page = () => {
           filteredRooms.map((item, index) => (
             <div
               key={index}
+              onClick={() => {
+                localStorage.setItem("selectedItem", JSON.stringify(item));
+                router.push("/restaurantDetails");
+              }}
               className="bg-background shadow-lg text-foreground cursor-pointer rounded-lg overflow-hidden transform transition-all hover:scale-105"
             >
               {/* Image */}
               <img
-                src={item.img}
+                src={item.img || item.images?.[3]}
                 alt={item.title}
                 className="w-full h-56 object-cover"
               />

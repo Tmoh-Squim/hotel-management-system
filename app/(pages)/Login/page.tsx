@@ -42,7 +42,7 @@ const Page = () => {
         </div>
 
         <div className="mt-10">
-          <CustomButton />
+          <CustomButton title={"Login"} onClick={()=>{}} />
         </div>
       </form>
     </div>

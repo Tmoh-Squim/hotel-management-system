@@ -4,16 +4,19 @@ export interface TextInputProps {
     onchange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 export interface ButtonProps {
-    color:string,
+    title:string,
+    onClick:React.MouseEventHandler<HTMLDivElement> | undefined
 }
 
-interface Product {
-    image: string;
+export interface Product {
+    img: string | undefined;
     title: string;
-    amount: number;
+    price: number;
+    bedroom: number;
+    images:Array<string>;
     rating: number;
     capacity: number;
-    details: string;
+    description: string;
   }
 export interface ProductProps {
     product:Product
