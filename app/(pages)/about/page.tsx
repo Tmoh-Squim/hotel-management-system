@@ -53,7 +53,7 @@ const Page = () => {
       </section>
 
       {/* Meet The Team */}
-      <section className="bg-gray-100 py-12">
+      <section className="bg-background py-12">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="team-heading text-3xl font-semibold text-center mb-6">
             Meet Our Team
@@ -62,7 +62,7 @@ const Page = () => {
             {[1, 2, 3].map((member, index) => (
               <div
                 key={index}
-                className="team-member bg-white shadow-md rounded-lg p-6 flex flex-col items-center"
+                className="team-member bg-background shadow-md rounded-lg p-6 flex flex-col items-center"
               >
                 <img
                   src={`https://source.unsplash.com/150x150/?portrait,person${index}`}

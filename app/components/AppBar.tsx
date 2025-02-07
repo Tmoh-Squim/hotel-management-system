@@ -3,11 +3,20 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { appBarLinks, authRoutes } from "../static/static";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineMoon, AiOutlineSun, AiOutlineUser } from "react-icons/ai";
 
 const AppBar = () => {
   const [open, setOpen] = useState(false);
+  const [theme,setTheme] = useState("light");
   const sidebarRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+      document.documentElement.classList.add(savedTheme);
+    }
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -29,7 +38,7 @@ const AppBar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <div className="hidden py-3 800px:flex px-6 justify-between text-background items-center bg-blue-300 w-full">
+      <div className="hidden h-[70px] 800px:flex px-6 justify-between text-background items-center bg-blue-300 w-full">
         <div>
           <Link
             href={"/"}
@@ -70,12 +79,20 @@ const AppBar = () => {
           </div>
 
           <AiOutlineUser size={50} className="cursor-pointer hidden" />
+          <div className="p-3 flex gap-2 items-center text-foreground cursor-pointer" onClick={()=>{
+          const newTheme = theme === "light" ? "dark" : "light";
+          setTheme(newTheme);
+          localStorage.setItem("theme", newTheme);
+          document.documentElement.classList.replace(theme, newTheme);
+        }}>
+          {theme == "light" ? <AiOutlineMoon size={35} /> : <AiOutlineSun size={35} />}
+        </div>
         </div>
       </div>
 
       {/* Mobile Navbar */}
       <div
-        className="800px:hidden cursor-pointer p-2 flex justify-between items-center"
+        className="800px:hidden cursor-pointer bg-background text-foreground p-2 flex justify-between items-center"
         onClick={() => setOpen(true)}
       >
         <AiOutlineMenu size={30} />
@@ -92,7 +109,7 @@ const AppBar = () => {
       {/* Mobile Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-max py-4 w-[12rem] rounded-br-lg bg-white shadow-lg z-50 transform ${
+        className={`fixed top-0 left-0 h-max py-4 w-[12rem] rounded-br-lg bg-background text-foreground shadow-lg z-50 transform ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -127,6 +144,14 @@ const AppBar = () => {
                 <h1>{item.title}</h1>
               </Link>
             ))}
+        </div>
+        <div className="p-3 flex gap-2 items-center text-foreground cursor-pointer" onClick={()=>{
+          const newTheme = theme === "light" ? "dark" : "light";
+          setTheme(newTheme);
+          localStorage.setItem("theme", newTheme);
+          document.documentElement.classList.replace(theme, newTheme);
+        }}>
+          {theme == "light" ? <AiOutlineMoon size={30} /> : <AiOutlineSun size={30} />} <span className="text-md">Change theme</span>
         </div>
       </div>
     </>

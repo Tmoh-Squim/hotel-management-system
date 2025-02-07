@@ -82,7 +82,7 @@ const Page = () => {
           filteredRooms.map((item, index) => (
             <div
               key={index}
-              className="bg-white shadow-lg cursor-pointer rounded-lg overflow-hidden transform transition-all hover:scale-105"
+              className="bg-background shadow-lg text-foreground cursor-pointer rounded-lg overflow-hidden transform transition-all hover:scale-105"
             >
               {/* Image */}
               <img
@@ -98,12 +98,12 @@ const Page = () => {
 
               {/* Room Details */}
               <div className="p-2">
-                <h2 className="text-xl font-semibold text-gray-800">
+                <h2 className="text-xl font-semibold text-foreground">
                   {item?.title.length > 35
                     ? item.title.slice(0, 35) + "..."
                     : item.title}
                 </h2>
-                <p className="text-gray-600 mt-2">Ksh {item.price} / night</p>
+                <p className="text-foreground mt-2">Ksh {item.price} / night</p>
               </div>
               <div className="p-2 flex items-center gap-2">
                 <FaMapMarkerAlt /> <span className="text-gray-500">{item.address}</span>

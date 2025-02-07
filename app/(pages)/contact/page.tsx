@@ -36,7 +36,7 @@ const ContactPage = () => {
           Get In Touch
         </h2>
 
-        <div className="contact-form w-full bg-white 800px:p-6 p-2 rounded-lg shadow-lg">
+        <div className="contact-form w-full bg-gray-100 800px:p-6 p-2 rounded-lg shadow-lg">
           <form>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               <div>

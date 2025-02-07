@@ -10,7 +10,7 @@ const Page = () => {
   });
   return (
     <div className="w-full h-screen flex bg-background justify-center items-center ">
-      <form className="mx-auto 800px:px-6 px-2 py-8 bg-white w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
+      <form className="mx-auto 800px:px-6 px-2 py-8 bg-gray-100 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
         <h1 className="text-3xl text-center font-bold mb-6 text-blue-400">
           Welcome Back!
         </h1>
