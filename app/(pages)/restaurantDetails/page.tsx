@@ -3,10 +3,17 @@
 import CustomButton from "@/app/components/CustomButton";
 import { Product } from "@/app/types/types";
 import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Page = () => {
   const [product, setProduct] = useState<Product | null>(null);
   const [imageUrl, setImageUrl] = useState<string | undefined>(undefined);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
+  const [days, setDays] = useState<number | null>(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedItem = localStorage.getItem("selectedItem");
@@ -18,6 +25,18 @@ const Page = () => {
     }
   }, []);
 
+  const handleDateChange = (update: [Date | null, Date | null]) => {
+    setDateRange(update);
+    const [start, end] = update;
+
+    if (start && end) {
+      const diffTime = end.getTime() - start.getTime();
+      setDays(Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+    } else {
+      setDays(null);
+    }
+  };
+
   if (!product)
     return (
       <p className="text-center text-lg font-semibold mt-10 text-gray-700">
@@ -26,22 +45,20 @@ const Page = () => {
     );
 
   return (
-    <div className=" mx-auto 800px:px-6 px-2 bg-background overflow-y-scroll  py-4 w-full h-screen ">
+    <div className="mx-auto px-6 bg-background overflow-y-scroll py-4 w-full h-screen">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-        <div className="block lg:w-[40%] w-full ">
+        <div className="block lg:w-[40%] w-full">
           <img
             src={imageUrl}
             alt={product.title}
-            className="  object-cover 800px:h-[350px] h-[280px] w-full rounded-md shadow-md"
+            className="object-cover h-[280px] w-full rounded-md shadow-md"
           />
           <div className="flex gap-4 my-4">
-            {product.images.map((item, index) => (
+            {product.images?.map((item, index) => (
               <div
                 key={index}
                 className="cursor-pointer"
-                onClick={() => {
-                  setImageUrl(item);
-                }}
+                onClick={() => setImageUrl(item)}
               >
                 <img
                   src={item}
@@ -57,6 +74,10 @@ const Page = () => {
           <h1 className="text-3xl font-bold text-foreground">
             {product.title}
           </h1>
+          <div className="flex items-center gap-2">
+            <FaMapMarkerAlt />{" "}
+            <span className="text-gray-500">{product.address}</span>
+          </div>
           <p className="text-foreground text-lg leading-relaxed">
             {product.description}
           </p>
@@ -68,12 +89,53 @@ const Page = () => {
               ⭐ Rating: {product.rating}/5
             </p>
             <p className="text-md text-blue-500">
-              🏠 Capacity: {product.bedroom} Bedroom(s)
+              🏠 Capacity: {product.bedRooms} Bedroom(s)
             </p>
           </div>
+
+          {/* Book Reservation Button */}
           <div className="my-4 w-full lg:w-[80%]">
-            <CustomButton title={"Book reservation"} onClick={undefined} />
+            <CustomButton
+              title="Book reservation"
+              onClick={() => setShowCalendar(true)}
+            />
           </div>
+
+          {/* Calendar Modal */}
+          {showCalendar && (
+            <div className="bg-background   w-full ">
+              <h2 className="text-xl text-foreground font-semibold mb-4 text-center">
+                Select Reservation Dates
+              </h2>
+
+              {/* Single DatePicker for Range Selection */}
+              <DatePicker
+                selected={dateRange[0]}
+                onChange={handleDateChange}
+                startDate={dateRange[0]}
+                endDate={dateRange[1]}
+                selectsRange
+                minDate={new Date()} // Disable past dates
+                className="border border-gray-300 rounded-md p-2 w-full"
+                placeholderText="Select date range"
+              />
+
+              {/* Show Days Calculated */}
+              {days !== null && (
+                <p className="text-md font-semibold text-foreground mt-4">
+                  Total Days: {days} day(s)
+                </p>
+              )}
+
+              {/* Close Button */}
+            <div className="my-2 w-max">
+            <CustomButton
+                onClick={() => setShowCalendar(false)}
+                title="Proceed"
+              />
+            </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

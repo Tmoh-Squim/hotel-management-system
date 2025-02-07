@@ -9,6 +9,8 @@ export interface ButtonProps {
 }
 
 export interface Product {
+    address: string;
+    bedRooms: number;
     img: string | undefined;
     title: string;
     price: number;
