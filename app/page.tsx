@@ -4,8 +4,8 @@ import CustomButton from "./components/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
 
-const page = () => {
-  
+const Page = () => {
+
   useEffect(() => {
     const tl = gsap.timeline();
 
@@ -45,4 +45,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

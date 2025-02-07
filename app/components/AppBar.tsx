@@ -101,7 +101,7 @@ const AppBar = () => {
             href={"/"}
             className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
           >
-            Squim's Hotel
+            Squim&apos;s Hotel
           </Link>
         </div>
       </div>
