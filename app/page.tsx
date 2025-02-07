@@ -33,7 +33,7 @@ const Page = () => {
     >
       <div className="text-center 800px:max-w-[38%] text-background">
         <h1 className="title 800px:text-4xl text-2xl font-bold">
-          EXPERIENCE HOSPITALITY AT IT'S FINEST
+          EXPERIENCE HOSPITALITY AT IT&apos;S FINEST
         </h1>
         <div className="my-4 btn w-max mx-auto">
           <Link href={"/restaurant"}>
