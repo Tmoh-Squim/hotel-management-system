@@ -76,7 +76,7 @@ const Page = () => {
           </h1>
           <div className="flex items-center text-gray-400 gap-2">
             <FaMapMarkerAlt />{" "}
-            <span className="text-foreground">{product.address}</span>
+            <span>{product.address}</span>
           </div>
           <p className="text-foreground text-lg leading-relaxed">
             {product.description}
@@ -103,7 +103,7 @@ const Page = () => {
 
           {/* Calendar Modal */}
           {showCalendar && (
-            <div className="bg-background   w-full ">
+            <div className="bg-background w-full ">
               <h2 className="text-xl text-foreground font-semibold mb-4 text-center">
                 Select Reservation Dates
               </h2>
@@ -118,6 +118,7 @@ const Page = () => {
                 minDate={new Date()} // Disable past dates
                 className="border border-gray-300 rounded-md p-2 w-full"
                 placeholderText="Select date range"
+                onFocus={(e) => e.target.blur()}
               />
 
               {/* Show Days Calculated */}
