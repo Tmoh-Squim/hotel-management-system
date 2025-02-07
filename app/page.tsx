@@ -5,8 +5,7 @@ import Link from "next/link";
 import gsap from "gsap";
 
 const page = () => {
-  const tl = gsap.timeline();
-
+  
   useEffect(() => {
     const tl = gsap.timeline();
 

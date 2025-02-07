@@ -1,9 +1,9 @@
-interface TextInputProps {
+export interface TextInputProps {
     type:string,
     placeholder:string,
     onchange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
-interface ButtonProps {
+export interface ButtonProps {
     color:string,
 }
 
@@ -15,6 +15,6 @@ interface Product {
     capacity: number;
     details: string;
   }
-interface ProductProps {
+export interface ProductProps {
     product:Product
 }

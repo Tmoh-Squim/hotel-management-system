@@ -34,7 +34,7 @@ const Page = () => {
 
         <div className="mt-4 flex justify-between text-sm">
           <label className="flex items-center text-blue-400 space-x-2">
-            <a href="/Register" className="hover:underline">Don't have an account?</a>
+            <a href="/Register" className="hover:underline">Don&apos;t have an account?</a>
           </label>
           <a href="/" className="text-blue-400 hover:underline">
             Forgot Password

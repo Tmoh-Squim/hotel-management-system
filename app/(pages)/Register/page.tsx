@@ -1,7 +1,7 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Page = () => {
   const [formData, setFormData] = useState({

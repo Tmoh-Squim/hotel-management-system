@@ -1,4 +1,5 @@
 import React from "react";
+import { TextInputProps } from "../types/types";
 
 const CustomTextField = ({
   type,

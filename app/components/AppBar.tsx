@@ -44,7 +44,7 @@ const AppBar = () => {
             href={"/"}
             className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
           >
-            Squim's Hotel
+            Squim&apos;s Hotel
           </Link>
         </div>
 
@@ -109,7 +109,7 @@ const AppBar = () => {
       {/* Mobile Sidebar */}
       <div
         ref={sidebarRef}
-        className={`fixed top-0 left-0 h-max py-4 w-[12rem] rounded-br-lg bg-background text-foreground shadow-lg z-50 transform ${
+        className={`fixed top-0 left-0 h-max py-4 w-[12rem] rounded-r-lg bg-background text-foreground shadow-lg z-50 transform ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
