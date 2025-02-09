@@ -8,6 +8,23 @@ const Page = () => {
     email: "",
     password: "",
   });
+  const handleLogin = async ()=>{
+    try {
+      const email = formData.email;
+      const password = formData.password;
+      if(!email || !password){
+        alert("all fields are required")
+      }else if(!email.match(validRegex)){
+        alert("invalid email address")
+      }
+    //  const response = await axios.post("",{email,password})
+    } catch (error) {
+      alert("something went wrong! try again later")
+    }
+  }
+  const validRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
   return (
     <div className="w-full h-screen flex bg-background justify-center items-center ">
       <form className="mx-auto 800px:px-6 px-2 py-8 bg-gray-100 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">
