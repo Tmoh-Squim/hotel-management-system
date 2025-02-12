@@ -79,15 +79,15 @@ const ContactPage = () => {
         <div className="flex flex-wrap justify-center gap-12">
           <div className="contact-info">
             <h3 className="text-xl font-semibold">Address</h3>
-            <p className="text-gray-600">123 Hotel Street, City, Country</p>
+            <p className="text-gray-600">123 Hotel Street, Kutus, Kirinyaga</p>
           </div>
           <div className="contact-info">
             <h3 className="text-xl font-semibold">Phone</h3>
-            <p className="text-gray-600">+1 234 567 890</p>
+            <p className="text-gray-600">+254 748143442</p>
           </div>
           <div className="contact-info">
             <h3 className="text-xl font-semibold">Email</h3>
-            <p className="text-gray-600">contact@hotelsquam.com</p>
+            <p className="text-gray-600">squimstech@gmail.com</p>
           </div>
         </div>
       </section>

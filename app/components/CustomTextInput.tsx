@@ -4,15 +4,19 @@ import { TextInputProps } from "../types/types";
 const CustomTextField = ({
   type,
   placeholder,
-  onchange
-}:TextInputProps) => {
+  onchange,
+  icon
+}: TextInputProps) => {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      onChange={onchange}
-      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-    />
+    <div className="relative w-full">
+      {icon && <span className="absolute inset-y-0 right-3 cursor-pointer flex items-center text-gray-500">{icon}</span>}
+      <input
+        type={type}
+        placeholder={placeholder}
+        onChange={onchange}
+        className={`w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400`}
+      />
+    </div>
   );
 };
 

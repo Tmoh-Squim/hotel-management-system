@@ -1,29 +1,37 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
+import { validRegex } from "@/app/types/types";
 import React, { useState } from "react";
+import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineMail } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const handleLogin = async ()=>{
+  const [visible, setVisible] = useState(false);
+  const handleLogin = async () => {
     try {
       const email = formData.email;
       const password = formData.password;
-      if(!email || !password){
-        alert("all fields are required")
-      }else if(!email.match(validRegex)){
-        alert("invalid email address")
+      if (!email || !password) {
+        Swal.fire({
+          title: "All fields are required",
+          icon: "info",
+        });
+      } else if (!email.match(validRegex)) {
+        Swal.fire({
+          title: "invalid email address",
+          icon: "info",
+        });
       }
-    //  const response = await axios.post("",{email,password})
+      //  const response = await axios.post("",{email,password})
     } catch (error) {
-      alert("something went wrong! try again later")
+      alert("something went wrong! try again later");
     }
-  }
-  const validRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  };
 
   return (
     <div className="w-full h-screen flex bg-background justify-center items-center ">
@@ -39,10 +47,23 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, email: e.target.value });
             }}
+            icon={
+              <AiOutlineMail size={23} />
+            }
           />
           <CustomTextField
-            type="password"
+            type={visible == true ? "text" : "password"}
             placeholder="Enter your password"
+            icon={
+              visible !== true ? (
+                <AiOutlineEye size={25} onClick={() => setVisible(true)} />
+              ) : (
+                <AiOutlineEyeInvisible
+                  size={25}
+                  onClick={() => setVisible(false)}
+                />
+              )
+            }
             onchange={(e) => {
               setFormData({ ...formData, password: e.target.value });
             }}
@@ -51,7 +72,9 @@ const Page = () => {
 
         <div className="mt-4 flex justify-between text-sm">
           <label className="flex items-center text-blue-400 space-x-2">
-            <a href="/Register" className="hover:underline">Don&apos;t have an account?</a>
+            <a href="/Register" className="hover:underline">
+              Don&apos;t have an account?
+            </a>
           </label>
           <a href="/" className="text-blue-400 hover:underline">
             Forgot Password
@@ -59,7 +82,12 @@ const Page = () => {
         </div>
 
         <div className="mt-10">
-          <CustomButton title={"Login"} onClick={()=>{}} />
+          <CustomButton
+            title={"Login"}
+            onClick={() => {
+              handleLogin();
+            }}
+          />
         </div>
       </form>
     </div>

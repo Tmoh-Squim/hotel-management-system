@@ -38,7 +38,7 @@ const AppBar = () => {
   return (
     <>
       {/* Desktop Navbar */}
-      <div className="hidden h-[70px] 800px:flex px-6 justify-between text-background items-center bg-blue-300 w-full">
+      <div className="hidden h-[70px] 800px:flex px-6 justify-between text-background items-center relative z-10 bg-blue-300 shadow-lg w-full">
         <div>
           <Link
             href={"/"}

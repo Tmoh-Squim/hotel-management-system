@@ -92,7 +92,7 @@ const Page = () => {
             >
               {/* Image */}
               <img
-                src={item.img || item.images?.[3]}
+                src={item.img || item.images?.[1]}
                 alt={item.title}
                 className="w-full h-56 object-cover"
               />
