@@ -2,6 +2,7 @@
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
 import { validRegex } from "@/app/types/types";
+import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import Swal from "sweetalert2";
@@ -12,8 +13,10 @@ const Page = () => {
     password: "",
   });
   const [visible, setVisible] = useState(false);
+  const [loading,setLoading] = useState(false);
   const handleLogin = async () => {
     try {
+      setLoading(true);
       const email = formData.email;
       const password = formData.password;
       if (!email || !password) {
@@ -27,9 +30,26 @@ const Page = () => {
           icon: "info",
         });
       }
-      //  const response = await axios.post("",{email,password})
+      const user = {
+        email:email,
+        password:password
+      }
+      const response = await axios.post('/api/auth/Login',user);
+      if(response.data.success){
+            return Swal.fire({
+               title:response.data.message,
+               icon:'success'
+             })
+           }else{
+             return Swal.fire({
+               title:response.data.message,
+               icon:'error'
+             })
+           }
     } catch (error) {
       alert("something went wrong! try again later");
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -87,6 +107,7 @@ const Page = () => {
             onClick={() => {
               handleLogin();
             }}
+            loading = {loading}
           />
         </div>
       </form>

@@ -16,45 +16,52 @@ export async function POST(req: Request) {
             avatar,
         }: SignUpRequestBody = await req.json();
         await ConnectDB();
-        if(!email || !fullName || ! phoneNumber || !password){
+        if (!email || !fullName || !phoneNumber || !password) {
             return NextResponse.json({
                 success: false,
-                message:"All fields are required!",
+                message: "All fields are required!",
             });
         }
         if (!email.match(validRegex)) {
             return NextResponse.json({
                 success: false,
-                message:"invalid email address!",
-            });  
+                message: "invalid email address!",
+            });
         }
-        if(phoneNumber.length < 10 || phoneNumber.length > 12 || isNaN(Number(phoneNumber))){
+        if (phoneNumber.length < 10 || phoneNumber.length > 12 || isNaN(Number(phoneNumber))) {
             return NextResponse.json({
                 success: false,
-                message:"invalid phone number!",
-            }); 
+                message: "invalid phone number!",
+            });
         }
-        if(password.length < 6){
+        if (password.length < 6) {
             return NextResponse.json({
                 success: false,
-                message:"password must be at least 6 char!",
-            }); 
+                message: "password must be at least 6 char!",
+            });
+        }
+        const existingUser = await Users.findOne({email:email});
+        if(existingUser){
+            return NextResponse.json({
+                success: false,
+                message: "user already exists!",
+            });
         }
         let hash = "";
         hash = await HashPassword(password);
 
         const newUser = {
-            email:email,
-            fullName:fullName,
-            phoneNumber:phoneNumber,
-            avatar:avatar,
-            password:hash
+            email: email,
+            fullName: fullName,
+            phoneNumber: phoneNumber,
+            avatar: avatar,
+            password: hash
         }
         const user = await Users.create(newUser);
 
         return NextResponse.json({
             success: true,
-            message:"Account created successfully",
+            message: "Account created successfully",
             user: user,
         });
     } catch (error) {

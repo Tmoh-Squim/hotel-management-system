@@ -2,6 +2,7 @@
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
 import { validRegex } from "@/app/types/types";
+import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import Swal from "sweetalert2";
@@ -14,9 +15,11 @@ const Page = () => {
     password: "",
   });
   const [visible, setVisible] = useState(false);
-
+  const [loading,setLoading] = useState(false);
+  
   const handleRegister = async () => {
     try {
+      setLoading(true);
       const email = formData.email;
       const password = formData.password;
       const phone = formData.phone;
@@ -41,11 +44,31 @@ const Page = () => {
           title:"Password must be at least 6 char!"
         })
       }
+      const newUser = {
+        email:email,
+        password:password,
+        phoneNumber:phone,
+        fullName:name
+      }
+      const response = await axios.post('/api/auth/Signup',newUser);
+      if(response.data.success){
+       return Swal.fire({
+          title:response.data.message,
+          icon:'success'
+        })
+      }else{
+        return Swal.fire({
+          title:response.data.message,
+          icon:'error'
+        })
+      }
     } catch (error) {
       Swal.fire({
         title: "Something went wrong! please try again later",
         icon: "error",
       });
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -109,6 +132,7 @@ const Page = () => {
             onClick={() => {
               handleRegister();
             }}
+            loading={loading}
           />
         </div>
       </form>

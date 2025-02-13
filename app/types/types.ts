@@ -8,7 +8,8 @@ export interface TextInputProps {
 }
 export interface ButtonProps {
     title:string,
-    onClick:React.MouseEventHandler<HTMLDivElement> | undefined
+    onClick:React.MouseEventHandler<HTMLDivElement> | undefined,
+    loading?: boolean
 }
 
 export interface Product {
@@ -38,6 +39,12 @@ export interface SignUpRequestBody {
     phoneNumber: string;
     password?: string;
     avatar?: string; 
+}
+
+export interface MailProps {
+    email:string,
+    subject:string,
+    message:string
 }
 
 

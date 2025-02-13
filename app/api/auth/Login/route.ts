@@ -34,7 +34,7 @@ export async function POST(req: Request) {
         if (!match) {
             return NextResponse.json({
                 success: false,
-                message: "Invalid email"
+                message: "Invalid credentials"
             });
         }
 
