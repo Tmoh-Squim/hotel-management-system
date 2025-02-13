@@ -27,5 +27,19 @@ export interface ProductProps {
     product:Product
 }
 
+export interface LoginRequestBody {
+    email: string;
+    password: string;
+}
+
+export interface SignUpRequestBody {
+    email: string;
+    fullName: string;
+    phoneNumber: string;
+    password?: string;
+    avatar?: string; 
+}
+
+
 export const validRegex =
 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
