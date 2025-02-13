@@ -21,6 +21,10 @@ const UserSchema = new mongoose.Schema({
     avatar:{
         type:String
     },
+    role:{
+        type:String,
+        default:"user"
+    }
 },{timestamps:true})
 
 const Users = models.Users || mongoose.model("Users",UserSchema)

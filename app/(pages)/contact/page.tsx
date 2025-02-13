@@ -1,8 +1,16 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-
+import Swal from "sweetalert2";
+import emailjs from "@emailjs/browser";
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    message: "",
+    subject: "Hotel management system message",
+  });
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     // Contact Form Section Animation
     gsap.fromTo(
@@ -17,13 +25,51 @@ const ContactPage = () => {
       { opacity: 1, y: 0, duration: 1, delay: 0.5 }
     );
   }, []);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true); // Ensure loading is set before the async operation starts
+  
+    emailjs
+      .send("service_qzxl6jp", "template_w9kvgrw", formData, "KWleLqdJwS4tz9FRZ")
+      .then((response) => {
+        Swal.fire({
+          title: "Message sent successfully",
+          icon: "success",
+        });
+  
+        setFormData({
+          user_name: "",
+          user_email: "",
+          message: "",
+          subject: "Portfolio message",
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          title: "Failed to send message. Please try again.",
+          icon: "error",
+        });
+      })
+      .finally(() => {
+        setLoading(false); // Now it will run only after success or failure
+      });
+  };
+  
 
   return (
     <div className="w-full bg-background text-foreground ">
       {/* Hero Section */}
-      <section className="w-full h-[60vh] flex items-center justify-center text-center bg-cover bg-center relative" style={{
+      <section
+        className="w-full h-[60vh] flex items-center justify-center text-center bg-cover bg-center relative"
+        style={{
           backgroundImage: `url(bg.jpg)`,
-        }}>
+        }}
+      >
         <div className="absolute inset-0 bg-black/40"></div>
         <h1 className="contact-title relative text-4xl font-bold text-white z-10">
           Contact Us
@@ -37,18 +83,28 @@ const ContactPage = () => {
         </h2>
 
         <div className="contact-form w-full bg-gray-100 800px:p-6 p-2 rounded-lg shadow-lg">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
               <div>
                 <input
                   type="text"
                   placeholder="Your Name"
+                  name="user_name"
+                  id="name"
+                  value={formData.user_name}
+                  required
+                  onChange={handleChange}
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
               <div>
                 <input
                   type="email"
+                  name="user_email"
+                  id="email"
+                  value={formData.user_email}
+                  onChange={handleChange}
+                  required
                   placeholder="Your Email"
                   className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
@@ -57,15 +113,24 @@ const ContactPage = () => {
             <div className="mb-4">
               <textarea
                 placeholder="Your Message"
+                name="message"
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                rows={6}
+                rows={5}
+                required
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition duration-300"
+              className="w-full py-3 flex justify-center items-center bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition duration-300"
             >
-              Send Message
+              {loading ? (
+                <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full"></div>
+              ) : (
+                <h1 className="font-semibold text-center">Send Message</h1>
+              )}
             </button>
           </form>
         </div>
