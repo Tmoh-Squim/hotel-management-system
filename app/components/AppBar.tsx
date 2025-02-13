@@ -3,12 +3,21 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { appBarLinks, authRoutes } from "../static/static";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineMoon, AiOutlineSun, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineMoon,
+  AiOutlineSun,
+  AiOutlineUser,
+} from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const AppBar = () => {
   const [open, setOpen] = useState(false);
-  const [theme,setTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
   const sidebarRef = useRef(null);
+  const { user } = useSelector((state: RootState) => state.user);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -63,30 +72,48 @@ const AppBar = () => {
 
         <div className="w-min flex items-center gap-10">
           <div className="gap-10 flex">
-            {authRoutes.map((item, index) => (
-              <Link
-                href={item.route}
-                key={index}
-                className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
-                  item.title === "Register"
-                    ? "bg-foreground text-background hover:bg-background hover:text-foreground"
-                    : "bg-background text-foreground hover:bg-foreground hover:text-background"
-                }`}
-              >
-                <h1>{item.title}</h1>
-              </Link>
-            ))}
+            {user == null ? (
+              authRoutes.map((item, index) => (
+                <Link
+                  href={item.route}
+                  key={index}
+                  className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
+                    item.title === "Register"
+                      ? "bg-foreground text-background hover:bg-background hover:text-foreground"
+                      : "bg-background text-foreground hover:bg-foreground hover:text-background"
+                  }`}
+                >
+                  <h1>{item.title}</h1>
+                </Link>
+              ))
+            ) : (
+              <div>
+                <Link
+                  href={"/"}
+                  className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 bg-background text-foreground hover:bg-foreground hover:text-background`}
+                >
+                  Dashboard
+                </Link>
+              </div>
+            )}
           </div>
 
           <AiOutlineUser size={50} className="cursor-pointer hidden" />
-          <div className="p-3 flex gap-2 items-center text-foreground cursor-pointer" onClick={()=>{
-          const newTheme = theme === "light" ? "dark" : "light";
-          setTheme(newTheme);
-          localStorage.setItem("theme", newTheme);
-          document.documentElement.classList.replace(theme, newTheme);
-        }}>
-          {theme == "light" ? <AiOutlineMoon size={35} /> : <AiOutlineSun size={35} />}
-        </div>
+          <div
+            className="p-3 flex gap-2 items-center text-foreground cursor-pointer"
+            onClick={() => {
+              const newTheme = theme === "light" ? "dark" : "light";
+              setTheme(newTheme);
+              localStorage.setItem("theme", newTheme);
+              document.documentElement.classList.replace(theme, newTheme);
+            }}
+          >
+            {theme == "light" ? (
+              <AiOutlineMoon size={35} />
+            ) : (
+              <AiOutlineSun size={35} />
+            )}
+          </div>
         </div>
       </div>
 
@@ -113,7 +140,10 @@ const AppBar = () => {
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex justify-end items-center p-2 cursor-pointer" onClick={() => setOpen(false)}>
+        <div
+          className="flex justify-end items-center p-2 cursor-pointer"
+          onClick={() => setOpen(false)}
+        >
           <AiOutlineClose size={28} />
         </div>
 
@@ -130,28 +160,36 @@ const AppBar = () => {
           ))}
         </div>
         <div className="flex flex-col gap-3 p-3 font-semibold mt-4">
-        {authRoutes.map((item, index) => (
-              <Link
-                href={item.route}
-                key={index}
-                className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
-                  item.title === "Register"
-                    ? "bg-foreground text-background hover:bg-background hover:text-foreground"
-                    : "bg-background text-foreground hover:bg-foreground hover:text-background"
-                }`}
-                onClick={() => setOpen(false)}
-              >
-                <h1>{item.title}</h1>
-              </Link>
-            ))}
+          {authRoutes.map((item, index) => (
+            <Link
+              href={item.route}
+              key={index}
+              className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
+                item.title === "Register"
+                  ? "bg-foreground text-background hover:bg-background hover:text-foreground"
+                  : "bg-background text-foreground hover:bg-foreground hover:text-background"
+              }`}
+              onClick={() => setOpen(false)}
+            >
+              <h1>{item.title}</h1>
+            </Link>
+          ))}
         </div>
-        <div className="p-3 flex gap-2 items-center text-foreground cursor-pointer" onClick={()=>{
-          const newTheme = theme === "light" ? "dark" : "light";
-          setTheme(newTheme);
-          localStorage.setItem("theme", newTheme);
-          document.documentElement.classList.replace(theme, newTheme);
-        }}>
-          {theme == "light" ? <AiOutlineMoon size={30} /> : <AiOutlineSun size={30} />} <span className="text-md">Change theme</span>
+        <div
+          className="p-3 flex gap-2 items-center text-foreground cursor-pointer"
+          onClick={() => {
+            const newTheme = theme === "light" ? "dark" : "light";
+            setTheme(newTheme);
+            localStorage.setItem("theme", newTheme);
+            document.documentElement.classList.replace(theme, newTheme);
+          }}
+        >
+          {theme == "light" ? (
+            <AiOutlineMoon size={30} />
+          ) : (
+            <AiOutlineSun size={30} />
+          )}{" "}
+          <span className="text-md">Change theme</span>
         </div>
       </div>
     </>

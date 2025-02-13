@@ -47,6 +47,16 @@ export interface MailProps {
     message:string
 }
 
+export interface User {
+    _id: string;
+    email: string;
+    fullName: string;
+    phoneNumber: string;
+    password: string;
+    role:string;
+    createdAt: Date;
+    updatedAt: Date;
+  }
 
 export const validRegex =
 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

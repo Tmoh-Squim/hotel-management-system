@@ -1,10 +1,18 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
+import { AppDispatch } from "@/app/redux/store";
+import { getUser } from "@/app/redux/user/userReducer";
 import { validRegex } from "@/app/types/types";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineMail } from "react-icons/ai";
+import {
+  AiOutlineEye,
+  AiOutlineEyeInvisible,
+  AiOutlineMail,
+} from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 
 const Page = () => {
@@ -13,7 +21,10 @@ const Page = () => {
     password: "",
   });
   const [visible, setVisible] = useState(false);
-  const [loading,setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+
+  const router = useRouter();
   const handleLogin = async () => {
     try {
       setLoading(true);
@@ -31,24 +42,27 @@ const Page = () => {
         });
       }
       const user = {
-        email:email,
-        password:password
+        email: email,
+        password: password,
+      };
+      const response = await axios.post("/api/auth/Login", user);
+      if (response.data.success) {
+        dispatch(getUser(response.data.token));
+        Swal.fire({
+          title: response.data.message,
+          icon: "success",
+        });
+        router.push("/");
+     
+      } else {
+        return Swal.fire({
+          title: response.data.message,
+          icon: "error",
+        });
       }
-      const response = await axios.post('/api/auth/Login',user);
-      if(response.data.success){
-            return Swal.fire({
-               title:response.data.message,
-               icon:'success'
-             })
-           }else{
-             return Swal.fire({
-               title:response.data.message,
-               icon:'error'
-             })
-           }
     } catch (error) {
       alert("something went wrong! try again later");
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -67,9 +81,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, email: e.target.value });
             }}
-            icon={
-              <AiOutlineMail size={23} />
-            }
+            icon={<AiOutlineMail size={23} />}
           />
           <CustomTextField
             type={visible == true ? "text" : "password"}
@@ -107,7 +119,7 @@ const Page = () => {
             onClick={() => {
               handleLogin();
             }}
-            loading = {loading}
+            loading={loading}
           />
         </div>
       </form>

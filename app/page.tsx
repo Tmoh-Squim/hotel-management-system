@@ -1,10 +1,17 @@
-"use client"
+  "use client"
 import React, { useEffect } from "react";
 import CustomButton from "./components/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
+import { store } from "./redux/store";
+import { getUser } from "./redux/user/userReducer";
 
 const Page = () => {
+
+  useEffect(()=>{
+    const token = localStorage.getItem('authorization_token');
+    store.dispatch(getUser(token))
+  },[store])
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -15,7 +22,6 @@ const Page = () => {
       { opacity: 0, y: 100 },
       { opacity: 1, y: 0, duration: 2, ease: "power3.out" }
     );
-
     // Button animation - bounce effect
     tl.fromTo(
       ".btn",
