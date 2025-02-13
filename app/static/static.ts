@@ -36,6 +36,24 @@ export const authRoutes = [
     }
 ]
 
+export const teamMembers = [
+  {
+    name:"Timothy kibunja",
+    occupation:"Co-founder",
+    avatar:"/Profile.jpeg"
+  },
+  {
+    name:"Magdaline Mbaluka",
+    occupation:"Events organinzing Manager",
+      avatar:"/Profile1.jpeg"
+  },
+  {
+    name:"Dennis Pkor",
+    occupation:"General Manager",
+      avatar:"/Profile2.png"
+  },
+]
+
 export const listData = [
     {
       id: 1,

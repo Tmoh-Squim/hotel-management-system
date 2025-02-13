@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import gsap from "gsap";
+import { teamMembers } from "@/app/static/static";
 
 const Page = () => {
   useEffect(() => {
@@ -59,18 +60,18 @@ const Page = () => {
             Meet Our Team
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((member, index) => (
+            {teamMembers.map((member, index) => (
               <div
                 key={index}
                 className="team-member bg-background shadow-md rounded-lg p-6 flex flex-col items-center"
               >
                 <img
-                  src={`https://source.unsplash.com/150x150/?portrait,person${index}`}
+                  src={member.avatar}
                   alt="Team Member"
                   className="w-24 h-24 rounded-full object-cover mb-4"
                 />
-                <h3 className="text-lg font-semibold">John Doe</h3>
-                <p className="text-gray-500 text-sm">General Manager</p>
+                <h3 className="text-lg font-semibold">{member.name}</h3>
+                <p className="text-gray-500 text-sm">{member.occupation}</p>
               </div>
             ))}
           </div>
