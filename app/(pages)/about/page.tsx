@@ -31,7 +31,7 @@ const Page = () => {
     <div className="w-full bg-background text-foreground">
       {/* Hero Section */}
       <section
-        className="relative w-full h-[60vh] flex items-center justify-center text-center bg-cover bg-center"
+        className="relative w-full 800px:h-[60vh] h-[40vh] flex items-center justify-center text-center bg-cover bg-center"
         style={{
           backgroundImage: `url(bg.jpg)`,
         }}

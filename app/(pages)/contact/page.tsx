@@ -65,7 +65,7 @@ const ContactPage = () => {
     <div className="w-full bg-background text-foreground ">
       {/* Hero Section */}
       <section
-        className="w-full h-[60vh] flex items-center justify-center text-center bg-cover bg-center relative"
+        className="w-full 800px:h-[60vh] h-[40vh] flex items-center justify-center text-center bg-cover bg-center relative"
         style={{
           backgroundImage: `url(bg.jpg)`,
         }}
