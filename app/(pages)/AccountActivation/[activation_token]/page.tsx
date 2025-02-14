@@ -45,8 +45,8 @@ const SellerActivationPage = () => {
         <p className="text-red-400 text-xl">{message}</p>
       ) : (
        <div>
-         <p className="text-xl text-blue- my-2">{message}</p>
-         <p>Proceed to <Link href="/Login" className="text-blue-500 mx-1">Login</Link></p>
+         <p className="text-xl text-blue-400 my-2 ">{message}</p>
+         <p className="text-center text-xl">Proceed to <Link href="/Login" className="text-blue-500 mx-1">Login</Link></p>
        </div>
       )}
     </div>
