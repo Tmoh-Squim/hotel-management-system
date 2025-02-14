@@ -81,6 +81,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, email: e.target.value });
             }}
+            required = {true}
             icon={<AiOutlineMail size={23} />}
           />
           <CustomTextField

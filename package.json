@@ -27,6 +27,7 @@
     "react-redux": "^9.2.0",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
+    "request": "^2.88.2",
     "sweetalert2": "^11.16.0"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/request": "^2.48.12",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "postcss": "^8",

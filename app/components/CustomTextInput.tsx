@@ -5,7 +5,8 @@ const CustomTextField = ({
   type,
   placeholder,
   onchange,
-  icon
+  icon,
+  required
 }: TextInputProps) => {
   return (
     <div className="relative w-full">
@@ -14,6 +15,7 @@ const CustomTextField = ({
         type={type}
         placeholder={placeholder}
         onChange={onchange}
+        required={required}
         className={`w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400`}
       />
     </div>
