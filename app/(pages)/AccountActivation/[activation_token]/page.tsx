@@ -29,7 +29,7 @@ const SellerActivationPage = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      {error ? <p className="text-red-400">{message}</p> : <p>{message} </p>}
+      {error ? <p className="text-red-400 text-xl">{message}</p> : <p className="text-xl text-blue-500">{message} </p>}
     </div>
   );
 };
