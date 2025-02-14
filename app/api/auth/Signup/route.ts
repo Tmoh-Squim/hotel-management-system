@@ -61,8 +61,8 @@ export async function POST(req: Request) {
         }
 
         const activationToken = createActivationToken(newUser);
-
-        const activationUrl = `http://localhost:3000/AccountActivation/${activationToken}`;
+        
+        const activationUrl = `https://squimhotel.vercel.app/AccountActivation/${activationToken}`;
 
     try {
         await sendMail({
