@@ -1,5 +1,6 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -43,7 +44,10 @@ const SellerActivationPage = () => {
       ) : error ? (
         <p className="text-red-400 text-xl">{message}</p>
       ) : (
-        <p className="text-xl text-blue-500">{message}</p>
+       <div>
+         <p className="text-xl text-blue- my-2">{message}</p>
+         <p>Proceed to <Link href="/Login" className="text-blue-500 mx-1">Login</Link></p>
+       </div>
       )}
     </div>
   );
