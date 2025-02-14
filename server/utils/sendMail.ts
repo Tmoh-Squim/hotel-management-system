@@ -1,13 +1,12 @@
 import { MailProps } from "@/app/types/types";
+import nodemailer from "nodemailer";
 
-const nodemailer = require("nodemailer");
-
-const sendMail = async (options: MailProps) => {
+export const sendMail = async (options: MailProps) => {
     const transporter = nodemailer.createTransport({
         host: process.env.SMPT_HOST,
-        port: process.env.SMPT_PORT,
-        service: process.env.SMPT_SERVICE,
-        auth:{
+        port: Number(process.env.SMPT_PORT), 
+        secure: process.env.SMPT_PORT === "465",
+        auth: {
             user: process.env.SMPT_MAIL,
             pass: process.env.SMPT_PASSWORD,
         },
@@ -23,4 +22,4 @@ const sendMail = async (options: MailProps) => {
     await transporter.sendMail(mailOptions);
 };
 
-module.exports = sendMail;
+export default sendMail;

@@ -2,6 +2,8 @@ import { SignUpRequestBody, validRegex } from "@/app/types/types";
 import { ConnectDB } from "@/server/config/Db";
 import { HashPassword } from "@/server/helpers/PasswordEncryption";
 import Users from "@/server/models/studentModel";
+import { createActivationToken } from "@/server/utils/activationToken";
+import { sendMail } from "@/server/utils/sendMail";
 import { NextResponse } from "next/server";
 
 
@@ -57,13 +59,35 @@ export async function POST(req: Request) {
             avatar: avatar,
             password: hash
         }
-        const user = await Users.create(newUser);
+
+        const activationToken = createActivationToken(newUser);
+
+        const activationUrl = `http://localhost:3000/AccountActivation/${activationToken}`;
+
+    try {
+        await sendMail({
+          email: newUser.email,
+          subject: "Activate your account",
+          message: `Hello ${newUser.fullName}, please click on the link to activate your account: ${activationUrl}`,
+        });
+        return NextResponse.json({
+            success: true,
+            message: `please check your email:- ${newUser.email} to activate your account!`,
+        });
+      } catch (error) {
+        return NextResponse.json({
+            success: false,
+            message: `please check your internet connection and try again!`,
+        });
+      }
+
+       /*  const user = await Users.create(newUser);
 
         return NextResponse.json({
             success: true,
             message: "Account created successfully",
             user: user,
-        });
+        }); */
     } catch (error) {
         console.error("Error:", error);
         return NextResponse.json({

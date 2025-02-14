@@ -59,5 +59,12 @@ export interface User {
     updatedAt: Date;
   }
 
+export interface seller {
+    email: string,
+    password: string,
+    avatar?: string,
+    fullName: string,
+    phoneNumber: string,
+  };
 export const validRegex =
 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
