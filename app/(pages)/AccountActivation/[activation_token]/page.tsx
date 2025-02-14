@@ -10,43 +10,40 @@ const SellerActivationPage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      if (activation_token) {
-        const sendRequest = async () => {
-          try {
-            const response = await axios.post(`/api/auth/activation`, {
-              activation_token,
-            });
-            if (response.data.success === false) {
-              setError(true);
-              setMessage(response.data.message);
-            } else {
-              setMessage(response.data.message);
-            }
-          } catch {
-            setError(true);
-          }
-        };
-        sendRequest();
+    const sendRequest = async () => {
+      if (!activation_token) return;
+
+      setLoading(true); // Set loading to true before making the request
+      try {
+        const response = await axios.post(`/api/auth/activation`, {
+          activation_token,
+        });
+
+        if (response.data.success === false) {
+          setError(true);
+          setMessage(response.data.message);
+        } else {
+          setMessage(response.data.message);
+        }
+      } catch (error) {
+        setError(true);
+        setMessage("Something went wrong");
+      } finally {
+        setLoading(false); // Set loading to false after request is completed
       }
-    } catch (error) {
-      alert("something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  }, [activation_token]); // Add activation_token as a dependency
+    };
+
+    sendRequest(); // Call the async function inside useEffect
+  }, [activation_token]);
 
   return (
     <div className="flex items-center justify-center h-screen">
-      {!loading ? (
-        error ? (
-          <p className="text-red-400 text-xl">{message}</p>
-        ) : (
-          <p className="text-xl text-blue-500">{message} </p>
-        )
-      ) : (
+      {loading ? (
         <div className="animate-spin h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+      ) : error ? (
+        <p className="text-red-400 text-xl">{message}</p>
+      ) : (
+        <p className="text-xl text-blue-500">{message}</p>
       )}
     </div>
   );
