@@ -15,15 +15,24 @@ interface UserResponse {
 
 export const getUser = createAsyncThunk<UserResponse, string | null>(
   "/user",
-  async (token:string) => {
-    const response = await axios.get<UserResponse>(`/api/auth/user`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
+  async (token, { rejectWithValue }) => {
+    if (!token) {
+      return rejectWithValue("Token is required");
+    }
+
+    try {
+      const response = await axios.get<UserResponse>(`/api/auth/user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data || "An error occurred");
+    }
   }
 );
+
 
 const initialState: UserState = { 
   user: typeof window !== "undefined" && localStorage.getItem("user")
