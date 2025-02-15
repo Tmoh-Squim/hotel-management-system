@@ -10,16 +10,14 @@ import {
   AiOutlineSun,
   AiOutlineUser,
 } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store";
-import { logout } from "../redux/user/userReducer";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 const AppBar = () => {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState("light");
   const sidebarRef = useRef(null);
   const { user } = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -29,9 +27,6 @@ const AppBar = () => {
     }
   }, []);
 
-  const handleLogout=()=>{
-    dispatch(logout());
-  }
 
   useEffect(() => {
     if (open) {
@@ -93,14 +88,13 @@ const AppBar = () => {
                 </Link>
               ))
             ) : (
-              <div>
+              <Link href={user?.role === "Administrater" ? '/admin/dashboard' : '/dashboard'}>
                 <div
-                onClick={handleLogout}
                   className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 bg-background text-foreground hover:bg-foreground hover:text-background`}
                 >
                   Dashboard
                 </div>
-              </div>
+              </Link>
             )}
           </div>
 

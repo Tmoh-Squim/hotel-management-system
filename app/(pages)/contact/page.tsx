@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+import Loader from "@/app/components/Loader";
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     user_name: "",
@@ -37,10 +38,7 @@ const ContactPage = () => {
     emailjs
       .send("service_qzxl6jp", "template_w9kvgrw", formData, "KWleLqdJwS4tz9FRZ")
       .then((response) => {
-        Swal.fire({
-          title: "Message sent successfully",
-          icon: "success",
-        });
+        toast.success("Message sent successfully")
   
         setFormData({
           user_name: "",
@@ -50,10 +48,7 @@ const ContactPage = () => {
         });
       })
       .catch((err) => {
-        Swal.fire({
-          title: "Failed to send message. Please try again.",
-          icon: "error",
-        });
+        toast.error("Something went wrong. Please try again later")
       })
       .finally(() => {
         setLoading(false); // Now it will run only after success or failure
@@ -94,7 +89,7 @@ const ContactPage = () => {
                   value={formData.user_name}
                   required
                   onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
               <div>
@@ -106,7 +101,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                   placeholder="Your Email"
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
               </div>
             </div>
@@ -117,17 +112,17 @@ const ContactPage = () => {
                 id="message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
                 rows={5}
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 flex justify-center items-center bg-blue-600 text-white rounded-md font-semibold hover:bg-blue-700 transition duration-300"
+              className="w-full py-3 flex justify-center items-center bg-blue-300 text-white rounded-md font-semibold hover:bg-blue-500 transition duration-300"
             >
               {loading ? (
-                <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full"></div>
+               <Loader h="h-8" w="w-8" />
               ) : (
                 <h1 className="font-semibold text-center">Send Message</h1>
               )}

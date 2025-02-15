@@ -5,7 +5,6 @@ import AppBar from "./components/AppBar";
 import ThemeProvider from "./themeProvider";
 import ClientProvider from "./ClientProvider";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
