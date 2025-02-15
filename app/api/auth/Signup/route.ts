@@ -72,12 +72,12 @@ export async function POST(req: Request) {
         });
         return NextResponse.json({
             success: true,
-            message: `please check your email:- ${newUser.email} to activate your account!`,
+            message: `Check your email to activate your account!`,
         });
       } catch (error) {
         return NextResponse.json({
             success: false,
-            message: `please check your internet connection and try again!`,
+            message: `Please check your internet connection and try again!`,
         });
       }
 

@@ -1,6 +1,7 @@
 import { User } from "@/app/types/types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 interface UserState {
   user: User | null;
@@ -50,6 +51,7 @@ const userSlice = createSlice({
       state.user = null;
       localStorage.removeItem("user");
       localStorage.removeItem("authorization_token");
+      toast.success("logged out successfully")
     },
   },
   extraReducers: (builder:any) => {

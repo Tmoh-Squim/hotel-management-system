@@ -31,7 +31,6 @@ const AppBar = () => {
 
   const handleLogout=()=>{
     dispatch(logout());
-    window.location.reload();
   }
 
   useEffect(() => {

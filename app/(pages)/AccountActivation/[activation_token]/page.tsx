@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@/app/components/Loader";
 import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -40,7 +41,7 @@ const SellerActivationPage = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       {loading ? (
-        <div className="animate-spin h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+        <Loader h="h-10" w="w-10" />
       ) : error ? (
         <p className="text-red-400 text-xl">{message}</p>
       ) : (

@@ -13,7 +13,7 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -31,15 +31,9 @@ const Page = () => {
       const email = formData.email;
       const password = formData.password;
       if (!email || !password) {
-        Swal.fire({
-          title: "All fields are required",
-          icon: "info",
-        });
+        toast.info("All fields are required")
       } else if (!email.match(validRegex)) {
-        Swal.fire({
-          title: "invalid email address",
-          icon: "info",
-        });
+        toast.info("invalid email address")
       }
       const user = {
         email: email,
@@ -48,20 +42,14 @@ const Page = () => {
       const response = await axios.post("/api/auth/Login", user);
       if (response.data.success) {
         dispatch(getUser(response.data.token));
-        Swal.fire({
-          title: response.data.message,
-          icon: "success",
-        });
+        toast.success(response.data.message)
         router.push("/");
      
       } else {
-        return Swal.fire({
-          title: response.data.message,
-          icon: "error",
-        });
+        return  toast.error(response.data.message)
       }
     } catch (error) {
-      alert("something went wrong! try again later");
+      toast.error("something went wrong! try again later")
     } finally {
       setLoading(false);
     }

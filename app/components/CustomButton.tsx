@@ -1,5 +1,6 @@
 import React from 'react'
 import { ButtonProps } from '../types/types'
+import Loader from './Loader'
 
 const CustomButton = ({ title, onClick, loading }: ButtonProps) => {
   return (
@@ -8,7 +9,7 @@ const CustomButton = ({ title, onClick, loading }: ButtonProps) => {
       onClick={!loading ? onClick : undefined}
     >
       {loading ? (
-        <div className="animate-spin h-8 w-8 border-4 border-white border-t-transparent rounded-full"></div>
+        <Loader h="h-8" w="w-8" />
       ) : (
         <h1 className='font-semibold text-center'>{title}</h1>
       )}

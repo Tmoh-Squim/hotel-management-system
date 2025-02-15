@@ -5,6 +5,7 @@ import { validRegex } from "@/app/types/types";
 import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
 const Page = () => {
@@ -25,24 +26,13 @@ const Page = () => {
       const phone = formData.phone;
       const name = formData.name;
       if (!email || !password || !phone || !name) {
-        Swal.fire({
-          title: "All fields are required",
-          icon: "info",
-        });
+        toast.info("All fields are required")
       } else if (!email.match(validRegex)) {
-        Swal.fire({
-          title: "invalid email address",
-          icon: "info",
-        });
+        toast.info("invalid email address")
       }else if(phone.length < 10 || phone.length > 12 || isNaN(Number(phone))){
-        Swal.fire({
-          title:"invalid phone number",
-          icon:'error'
-        })
+        toast.info("invalid phone number")
       }else if(password.length < 6){
-        Swal.fire({
-          title:"Password must be at least 6 char!"
-        })
+        toast.info("password must be at least 6 char!")
       }
       const newUser = {
         email:email,
@@ -52,21 +42,12 @@ const Page = () => {
       }
       const response = await axios.post('/api/auth/Signup',newUser);
       if(response.data.success){
-       return Swal.fire({
-          title:response.data.message,
-          icon:'success'
-        })
+       return toast.success(response.data.message)
       }else{
-        return Swal.fire({
-          title:response.data.message,
-          icon:'error'
-        })
+        return toast.error(response.data.message)
       }
     } catch (error) {
-      Swal.fire({
-        title: "Something went wrong! please try again later",
-        icon: "error",
-      });
+      toast.error("Something went wrong! please try again later")
     }finally{
       setLoading(false);
     }
