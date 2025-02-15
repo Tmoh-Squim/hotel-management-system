@@ -29,8 +29,7 @@
     "react-toastify": "^11.0.3",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0",
-    "request": "^2.88.2",
-    "sweetalert2": "^11.16.0"
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
