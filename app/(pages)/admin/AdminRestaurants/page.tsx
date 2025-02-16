@@ -1,3 +1,4 @@
+"use client"
 import { Button, Modal, Table } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import React, { useEffect, useState } from 'react'

@@ -1,3 +1,4 @@
+"use client"
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
 import axios from "axios";
