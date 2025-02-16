@@ -40,9 +40,7 @@ const AdminDashboard = () => {
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("authorization_token");
       setToken(storedToken);
-      if (storedToken) {
-        dispatch(getUsers(token));
-      }
+      dispatch(getUsers(token));
     }
   }, []);
 

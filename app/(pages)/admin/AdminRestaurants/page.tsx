@@ -26,7 +26,8 @@ useEffect(() => {
       const storedToken = localStorage.getItem("authorization_token");
       setToken(storedToken);
     }
-  }, []);  const handleDeleteUser = async(id:string) =>{
+  }, []);  
+  const handleDeleteUser = async(id:string) =>{
     try {
       const response = await axios.delete(`/api/auth/delete-user/${id}`,{
         headers:{
