@@ -10,6 +10,7 @@ import { RootState } from '@/app/redux/store'
 const AdminUsers = () => {
   const { users } = useSelector((state: RootState) => state.users);
   const [data,setData] = useState<any[]>([]);
+  const [token, setToken] = useState<string | null>(null);
   const [open,setOpen] = useState(false);
   const [id,setDeleteUser] = useState('');
   const getData = (): any[] => {
@@ -20,8 +21,13 @@ useEffect(() => {
   setData(getData()); 
 }, [users]);
 
-  const token = localStorage.getItem('authorization_token');
-  const handleDeleteUser = async(id:string) =>{
+useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("authorization_token");
+      setToken(storedToken);
+    }
+  }, []);
+    const handleDeleteUser = async(id:string) =>{
     try {
       const response = await axios.delete(`/api/auth/delete-user/${id}`,{
         headers:{

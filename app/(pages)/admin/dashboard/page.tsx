@@ -29,16 +29,22 @@ import AdminRestaurants from "../AdminRestaurants/page";
 const AdminDashboard = () => {
   const [active, setActive] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
+  const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
 
   const handleLogout = () => {
     dispatch(logout());
     router.push("/")
   };
-  useEffect(()=>{
-    const token = localStorage.getItem('authorization_token');
-    dispatch(getUsers(token))
-  },[])
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("authorization_token");
+      setToken(storedToken);
+      if (storedToken) {
+        dispatch(getUsers(token));
+      }
+    }
+  }, []);
 
   const menuItems = [
     { label: "Dashboard", key: "Dashboard", icon: <AiOutlineDashboard size={20} />, component: <AdminDashboardComponent /> },
