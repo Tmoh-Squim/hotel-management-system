@@ -9,7 +9,7 @@ const BuildingSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    addres:{
+    address:{
         type:String,
         required:true
     },
@@ -18,6 +18,7 @@ const BuildingSchema = new mongoose.Schema({
         required:true
     },
     images:[],
+    public_ids:[],
     bedrooms:{
         type:String,
     },

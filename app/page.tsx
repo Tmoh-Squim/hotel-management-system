@@ -3,14 +3,18 @@ import React, { useEffect } from "react";
 import CustomButton from "./components/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
-import { store } from "./redux/store";
+import { AppDispatch, store } from "./redux/store";
 import { getUser } from "./redux/user/userReducer";
+import { useDispatch } from "react-redux";
+import { getRestaurants } from "./redux/admin/AdminRestaurantReducer";
 
 const Page = () => {
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(()=>{
     const token = localStorage.getItem('authorization_token');
     store.dispatch(getUser(token))
+    dispatch(getRestaurants(token))
   },[store])
 
   useEffect(() => {

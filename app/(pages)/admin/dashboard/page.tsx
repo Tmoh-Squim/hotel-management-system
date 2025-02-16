@@ -24,6 +24,7 @@ import { AppDispatch } from "@/app/redux/store";
 import AdminUsers from "../users/page";
 import AdminCreateRoom from "../CreateRestaurant/page";
 import AdminDashboardComponent from "../AdminDashboard/page";
+import AdminRestaurants from "../AdminRestaurants/page";
 
 const AdminDashboard = () => {
   const [active, setActive] = useState(0);
@@ -51,7 +52,7 @@ const AdminDashboard = () => {
         { label: "Refunded Orders", key: "Refunded Orders", component: <Page /> },
       ],
     },
-    { label: "Rooms", key: "Rooms", icon: <AiOutlineProduct size={20} />, component: <Page /> },
+    { label: "Rooms", key: "Rooms", icon: <AiOutlineProduct size={20} />, component: <AdminRestaurants /> },
     { label: "Add Room", key: "Add Room", icon: <AiOutlineHome size={20} />, component: <AdminCreateRoom /> },
     { label: "Categories", key: "Categories", icon: <AiOutlineProduct size={20} />, component: <Page /> },
     { label: "Add Category", key: "Add Category", icon: <AiOutlineFileAdd size={20} />, component: <Page /> },

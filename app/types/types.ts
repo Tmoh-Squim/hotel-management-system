@@ -5,7 +5,8 @@ export interface TextInputProps {
     placeholder:string,
     onchange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
     icon?:ReactNode,
-    required?:boolean
+    required?:boolean,
+    name?:string
 }
 export interface ButtonProps {
     title:string,

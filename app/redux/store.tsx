@@ -1,11 +1,13 @@
 "use client"
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./user/userReducer";
-import adminUserReducer from "./admin/AdminUserReducer"
+import adminUserReducer from "./admin/AdminUserReducer";
+import adminRestaurantReducer from "./admin/AdminRestaurantReducer";
 export const store = configureStore({
   reducer: {
     user:userReducer,
-    users:adminUserReducer
+    users:adminUserReducer,
+    restaurants:adminRestaurantReducer
   },
 });
 

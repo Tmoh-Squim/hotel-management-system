@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "unique-well-451013-m0",
+  "private_key_id": "e473c2b661fcc9f67846ee5b8eea03c3cb0343a8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDia/7fbIUrYSlh\nVb+xWX2bDzEGV3cBcGyW6hYeqqSz41cq0fhe7+zTTt+Wk3RtJt1L4/9+poQ4VTHj\n397FJeC5/Wt/ytJlflYNrBnK7uaJM+WSds/DxT9/McUt1yDVTPSnM1BHb1wwDTJk\nPh3eabqIOEhiLjoVn/Hs7wOwC+Xdiu9YuoXtQURiCJjkMYw+2PozyQbprTeIVaaI\nA0VwlQdFfwsBpOpYmM0L3KFuZ3+Ush4nQSHLybL5hjodoEuUmgUZO1GYuplmc8Qd\nj4z5LmfqaTu8Jc4WC9+IgQmROCH6L/ko+sSE7lMFzr9xUod5PhVK9C69pBs2pNLO\nxkRAnvU9AgMBAAECggEAUIHS1ZFqBmMdSgkpyD8ILMapiVY3L9FQIxbnt464UmgO\n2eBfvi30GKxOTuVuO9NaUz4l3dwKXldYjmxO8u2FasxjWUR+K+1QXrsnTqNEYFuO\nENZjCHqNmcXSFPsNpxoeUYcqz8OWVVWT6dW2XBte4kmU3ygNqhu9cyAHQSTx3iP5\nj5IB1qd3wqfsEh4XSdYOyuoQDbZ2uqjIr+ei5ByUvegI3oURZB4GgmdqUEV1iPaT\nHeucUcCSBcf1Wp2FOWJV6JGZjxPqf520gYOAEBiZqm5vHOtP2hicfpX7mre62pw6\nhCFvi/ShYccva9rifcuzck77mO8yvXbJyT1nh6JMpwKBgQD8inHnZdt/g+rC8rya\nRTkLU8LwlTM8M5CKaHL9GjieGUTz1QgsnTd8vnCgGFVzh/4RSxbUaajelsimm/Qs\nlu0iYbw1E7dbjc+F4Ak7Pw9Ibz3Tx2/A42z1EHd6nDiIQc0ZfcS3vjbIiTUXceLI\n1XJ5Hmq6glwmagr9C9/mU7bpAwKBgQDlhfZijKJsYUaXUT86/93PXiIOy8zWoZgz\ndJMlislFrWQhdkYS8UGRgqIWLhQi81+/qtX6HemHYwgohksW5pwUUyrTaWIe8UOr\negebRBH/VJX4Ia7Ur+IHLbIY44yQ2zosxQuMgAJsRsB6d1KgzM3EITd48gjXDvjh\n9f5QNBu0vwKBgBjesXTuTP1zykzEhtpSctmwuAPlTZRiJ5vZyWkvid/X8ThqBFIQ\ncYRxZLn/a3rjK5wcXvUwKpcxFjWCKjux6Ux3f4dil64Geydd9srE3QZvHhGbFGBU\nhUhlBL8oX1Db2gzmm9bUfqSlDntulbzdeFaBLlWLvPNzgf2Fi9ks6VhtAoGASVYA\nX4Sn8REzyO2A0o0mhjeBklCz5nBDfU1mJrytisHYGIj94teLJ78howyeCnzQvyEK\ntZwRHd0aojgmje6pOCVKrboiS9iy0ntvKsEZLwgL0viQMAzyn3COUz2BkFc7w0pC\nYmYUYBxLK9YsZIyLwnsKim5rPKvgAfLjiyTbJWkCgYEA04Y/dnXL5SEORmqVAMmp\n5fqmXjHvb48kVz9kBG7iWJc4qWkoYXrKWVxEYOZ5HpTVZ/doWh3bEKd8YkM3eS6q\nsgxLfOm2kbUO9V6/huaXZAyLeM181/pdCPBpRksi50sAoy66ciGU84vNv9O9RzJO\nZXZxxbhzoyoK1aqC5dEhaJM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "hotel-sysystem-image-storage@unique-well-451013-m0.iam.gserviceaccount.com",
+  "client_id": "105454407782965035775",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/hotel-sysystem-image-storage%40unique-well-451013-m0.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
