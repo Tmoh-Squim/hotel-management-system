@@ -6,7 +6,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
-import Swal from "sweetalert2";
 
 const Page = () => {
   const [formData, setFormData] = useState({
