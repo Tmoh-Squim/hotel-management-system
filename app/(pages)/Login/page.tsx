@@ -28,33 +28,38 @@ const Page = () => {
   const handleLogin = async () => {
     try {
       setLoading(true);
-      const email = formData.email;
-      const password = formData.password;
+      
+      const email = formData.email.trim();
+      const password = formData.password.trim();
+  
       if (!email || !password) {
-        toast.info("All fields are required")
-      } else if (!email.match(validRegex)) {
-        toast.info("invalid email address")
+        return toast.info("All fields are required");
       }
-      const user = {
-        email: email,
-        password: password,
-      };
+      
+      if (!email.match(validRegex)) {
+        return toast.info("Invalid email address");
+      }
+  
+      const user = { email, password };
+      
       const response = await axios.post("/api/auth/Login", user);
-      if (response.data.success) {
+  
+      if (response.data.success && response.data.token) {
+        localStorage.setItem("authorization_token", response.data.token);
         dispatch(getUser(response.data.token));
-        toast.success(response.data.message)
-        router.push("/");
-     
+        toast.success(response.data.message);
+  
+          router.push("/");
       } else {
-        return  toast.error(response.data.message)
+        toast.error(response.data.message || "Login failed");
       }
     } catch (error) {
-      toast.error("something went wrong! try again later")
+      toast.error("Something went wrong! Try again later");
     } finally {
       setLoading(false);
     }
   };
-
+  
   return (
     <div className="w-full h-screen flex bg-background justify-center items-center ">
       <form className="mx-auto 800px:px-6 px-2 py-8 bg-gray-100 w-full 800px:w-[40%] rounded-lg shadow-lg text-white">

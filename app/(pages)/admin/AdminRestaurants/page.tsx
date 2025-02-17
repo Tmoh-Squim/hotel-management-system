@@ -64,7 +64,7 @@ useEffect(() => {
         dataIndex: "images",
         render: (images) => (
           images && images.length > 0 ? (
-            <img src={images[0]} alt="Restaurant" style={{ width: 50, height: 50, objectFit: "cover", borderRadius: "5px" }} />
+            <img src={images[0]} alt="Restaurant" className='object-cover rounded-md' style={{ width: 50, height: 50 }} />
           ) : "No Image"
         )
       },
@@ -73,7 +73,7 @@ useEffect(() => {
         title:"Name",
         key:"title",
         dataIndex:"title",
-        render: (text) => text.slice(0, 20)+ '...'
+        render: (text) => text.slice(0, 15)+ '...'
       },
       {
         title:"Address",
@@ -106,7 +106,7 @@ useEffect(() => {
             }}>
               Update
             </Button>
-             <Button type='primary' danger 
+             <Button type='primary' className='w-full 800px:w-max mt-1 800px:mt-0' danger 
              onClick={()=>{
                setOpen(true);
                setDeleteUser(id)

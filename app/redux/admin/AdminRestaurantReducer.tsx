@@ -1,19 +1,16 @@
+import { Product } from "@/app/types/types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { toast } from "react-toastify";
 
 interface RestaurantState {
-  restaurants: [] | null;
+  restaurants: Product[] | null;
   isLoading: boolean;
   error: string | null;
 }
 
-interface UserResponse {
-  token: string;
-  restaurants: []; 
-}
 
-export const getRestaurants = createAsyncThunk<UserResponse, string | null>(
+
+export const getRestaurants = createAsyncThunk<RestaurantState, string | null>(
   "/restaurants",
   async (token, { rejectWithValue }) => {
     if (!token) {
@@ -21,7 +18,7 @@ export const getRestaurants = createAsyncThunk<UserResponse, string | null>(
     }
 
     try {
-      const response = await axios.get<UserResponse>(`/api/restaurant/restaurants`, {
+      const response = await axios.get<RestaurantState>(`/api/restaurant/restaurants`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -53,12 +50,11 @@ const adminRestaurant = createSlice({
       .addCase(getRestaurants.pending, (state:any) => {
         state.isLoading = true;
       })
-      .addCase(getRestaurants.fulfilled, (state:any, action: PayloadAction<UserResponse>) => {
+      .addCase(getRestaurants.fulfilled, (state:any, action: PayloadAction<RestaurantState>) => {
         state.restaurants = action.payload.restaurants;
         state.isLoading = false;
         state.error = null;
 
-        localStorage.setItem("authorization_token", action.payload.token);
       })
       .addCase(getRestaurants.rejected, (state:any, action:any) => {
         state.isLoading = false;

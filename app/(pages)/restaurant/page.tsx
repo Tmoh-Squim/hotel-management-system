@@ -1,24 +1,32 @@
 "use client"
-import { listData } from "@/app/static/static";
+import { RootState } from "@/app/redux/store";
+import { Product } from "@/app/types/types";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Page = () => {
+  const { restaurants } = useSelector((state: RootState) => state.restaurants);
+
   const [filters, setFilters] = useState({
     location: "",
     minPrice: 0,
-    maxPrice: 10000,
+    maxPrice: 100000,
     bedrooms: 0,
   });
+
   const router = useRouter();
 
-  const filteredRooms = listData.filter((room) => {
+  // Filter rooms based on selected filters
+  const filteredRooms = restaurants?.filter((room: Product) => {
     const matchesLocation =
       !filters.location || room.address.toLowerCase().includes(filters.location.toLowerCase());
-    const matchesPrice = room.price >= filters.minPrice && room.price <= filters.maxPrice;
-    const matchesBedrooms = filters.bedrooms === 0 || room.bedroom === filters.bedrooms;
-    
+    const matchesPrice =
+      parseInt(room.pricePerMonth) >= filters.minPrice && parseInt(room.pricePerMonth) <= filters.maxPrice; // Convert string price to number
+    const matchesBedrooms =
+      filters.bedrooms === 0 || Number(room.bedrooms) === filters.bedrooms; // Convert string bedrooms to number for comparison
+
     return matchesLocation && matchesPrice && matchesBedrooms;
   });
 
@@ -76,12 +84,12 @@ const Page = () => {
 
       {/* Room Listings */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
-        {filteredRooms.length === 0 ? (
+        {filteredRooms?.length === 0 ? (
           <p className="text-center text-xl font-semibold text-gray-600 w-full">
             No rooms found with the selected filters.
           </p>
         ) : (
-          filteredRooms.map((item, index) => (
+          filteredRooms?.map((item: Product, index: number) => (
             <div
               key={index}
               onClick={() => {
@@ -92,13 +100,13 @@ const Page = () => {
             >
               {/* Image */}
               <img
-                src={item.img || item.images?.[1]}
+                src={item.img || item.images?.[0]} // Use first image if `img` is undefined
                 alt={item.title}
                 className="w-full h-56 object-cover"
               />
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 mt-2 px-4">
-                  {item.bedroom} bedrooms
+                  {item.bedrooms} bedrooms
                 </p>
               </div>
 
@@ -109,7 +117,7 @@ const Page = () => {
                     ? item.title.slice(0, 35) + "..."
                     : item.title}
                 </h2>
-                <p className="text-foreground mt-2">Ksh {item.price} / night</p>
+                <p className="text-foreground mt-2">Ksh {item.pricePerMonth} / month</p>
               </div>
               <div className="p-2 flex items-center gap-2">
                 <FaMapMarkerAlt /> <span className="text-gray-500">{item.address}</span>

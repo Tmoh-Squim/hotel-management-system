@@ -63,7 +63,6 @@ const adminUserSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        localStorage.setItem("authorization_token", action.payload.token);
       })
       .addCase(getUsers.rejected, (state:any, action:any) => {
         state.isLoading = false;

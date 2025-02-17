@@ -40,9 +40,13 @@ const AdminDashboard = () => {
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("authorization_token");
       setToken(storedToken);
-      dispatch(getUsers(token));
+  
+      if (storedToken) {
+        dispatch(getUsers(storedToken));
+      }
     }
   }, []);
+  
 
   const menuItems = [
     { label: "Dashboard", key: "Dashboard", icon: <AiOutlineDashboard size={20} />, component: <AdminDashboardComponent /> },
