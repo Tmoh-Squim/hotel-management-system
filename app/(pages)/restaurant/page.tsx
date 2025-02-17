@@ -100,7 +100,7 @@ const Page = () => {
             >
               {/* Image */}
               <img
-                src={item.img || item.images?.[0]} // Use first image if `img` is undefined
+                src={item.images?.[0]} // Use first image if `img` is undefined
                 alt={item.title}
                 className="w-full h-56 object-cover"
               />

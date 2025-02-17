@@ -52,12 +52,12 @@ useEffect(() => {
     dataSource={data}
     scroll={{ x: true }}
     columns={[
-      {
+      /* {
         title:"Id",
         key:"_id",
         dataIndex:"_id",
         render: (text) => text.slice(0, 10)+ '...'
-      },
+      }, */
 
       {
         title:"Email",
