@@ -27,7 +27,6 @@ const AppBar = () => {
     }
   }, []);
 
-
   useEffect(() => {
     if (open) {
       gsap.fromTo(
@@ -88,7 +87,13 @@ const AppBar = () => {
                 </Link>
               ))
             ) : (
-              <Link href={user?.role === "Administrater" ? '/admin/dashboard' : '/dashboard'}>
+              <Link
+                href={
+                  user?.role === "Administrater"
+                    ? "/admin/dashboard"
+                    : "/dashboard"
+                }
+              >
                 <div
                   className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 bg-background text-foreground hover:bg-foreground hover:text-background`}
                 >
@@ -160,21 +165,36 @@ const AppBar = () => {
           ))}
         </div>
         <div className="flex flex-col gap-3 p-3 font-semibold mt-4">
-          {authRoutes.map((item, index) => (
+          {user == null ? (
+            authRoutes.map((item, index) => (
+              <Link
+                href={item.route}
+                key={index}
+                className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
+                  item.title === "Register"
+                    ? "bg-foreground text-background hover:bg-background hover:text-foreground"
+                    : "bg-background text-foreground hover:bg-foreground hover:text-background"
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                <h1>{item.title}</h1>
+              </Link>
+            ))
+          ) : (
             <Link
-              href={item.route}
-              key={index}
-              className={`px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 ${
-                item.title === "Register"
-                  ? "bg-foreground text-background hover:bg-background hover:text-foreground"
-                  : "bg-background text-foreground hover:bg-foreground hover:text-background"
-              }`}
-              onClick={() => setOpen(false)}
+              href={
+                user?.role === "Administrator"
+                  ? "/admin/dashboard"
+                  : "/dashboard"
+              }
             >
-              <h1>{item.title}</h1>
+              <div className="px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 bg-background text-foreground hover:bg-foreground hover:text-background">
+                Dashboard
+              </div>
             </Link>
-          ))}
+          )}
         </div>
+
         <div
           className="p-3 flex gap-2 items-center text-foreground cursor-pointer"
           onClick={() => {
