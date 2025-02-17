@@ -72,12 +72,14 @@ useEffect(() => {
       {
         title:"Name",
         key:"title",
-        dataIndex:"title"
+        dataIndex:"title",
+        render: (text) => text.slice(0, 20)+ '...'
       },
       {
         title:"Address",
         key:"address",
-        dataIndex:'address'
+        dataIndex:'address',
+        render: (text) => text.slice(0, 10)+ '...'
       },
       {
         title:"Total rooms",
@@ -96,7 +98,7 @@ useEffect(() => {
         dataIndex:"_id",
       
         render:(id)=>(
-            <div className='flex items-center gap-4'>
+            <div className='800px:flex items-center 800px:gap-4 gap:2'>
                 <Button type='primary' className='bg-blue-400'
             onClick={()=>{
               setOpen(true);
