@@ -1,18 +1,18 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
-import { AppDispatch } from "@/app/redux/store";
+import { AppDispatch, RootState } from "@/app/redux/store";
 import { getUser } from "@/app/redux/user/userReducer";
 import { validRegex } from "@/app/types/types";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiOutlineEye,
   AiOutlineEyeInvisible,
   AiOutlineMail,
 } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Page = () => {
@@ -22,9 +22,16 @@ const Page = () => {
   });
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch<AppDispatch>();
 
   const router = useRouter();
+
+  useEffect(()=>{
+    if(user !== null){
+      router.replace("/")
+    }
+  },[user])
   const handleLogin = async () => {
     try {
       setLoading(true);

@@ -37,12 +37,15 @@ const SellerActivationPage = () => {
 
     sendRequest(); // Call the async function inside useEffect
   }, [activation_token]);
+  useEffect(()=>{
+    console.log('first',loading)
+  },[loading])
 
   return (
     <div className="flex items-center justify-center h-screen">
       {loading ? (
-        <Loader h="h-10" w="w-10" />
-      ) : error ? (
+    <div className={`animate-spin  h-15 w-15 border-4 border-blue-500 border-t-transparent rounded-full`}></div>
+  ) : error ? (
         <p className="text-red-400 text-xl">{message}</p>
       ) : (
        <div>

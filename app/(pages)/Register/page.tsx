@@ -1,10 +1,13 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
+import { RootState } from "@/app/redux/store";
 import { validRegex } from "@/app/types/types";
 import axios from "axios";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const Page = () => {
@@ -16,6 +19,15 @@ const Page = () => {
   });
   const [visible, setVisible] = useState(false);
   const [loading,setLoading] = useState(false);
+  const { user } = useSelector((state: RootState) => state.user);
+
+  const router = useRouter();
+
+  useEffect(()=>{
+    if(user !== null){
+      router.replace("/")
+    }
+  },[user])
   
   const handleRegister = async () => {
     try {
@@ -25,13 +37,13 @@ const Page = () => {
       const phone = formData.phone;
       const name = formData.name;
       if (!email || !password || !phone || !name) {
-        toast.info("All fields are required")
+       return toast.info("All fields are required")
       } else if (!email.match(validRegex)) {
-        toast.info("invalid email address")
+       return toast.info("invalid email address")
       }else if(phone.length < 10 || phone.length > 12 || isNaN(Number(phone))){
-        toast.info("invalid phone number")
+       return toast.info("invalid phone number")
       }else if(password.length < 6){
-        toast.info("password must be at least 6 char!")
+       return toast.info("password must be at least 6 char!")
       }
       const newUser = {
         email:email,
@@ -41,12 +53,18 @@ const Page = () => {
       }
       const response = await axios.post('/api/auth/Signup',newUser);
       if(response.data.success){
+        setFormData({
+          name: "",
+          email:"",
+          password:"",
+          phone:""
+        })
        return toast.success(response.data.message)
       }else{
         return toast.error(response.data.message)
       }
     } catch (error) {
-      toast.error("Something went wrong! please try again later")
+     return toast.error("Something went wrong! please try again later")
     }finally{
       setLoading(false);
     }
