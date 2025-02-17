@@ -89,10 +89,28 @@ useEffect(() => {
         render: (text) => `Ksh ${text}`
       },
       {
-        title:"Status",
-        key:"paymentStatus",
-        dataIndex:`paymentStatus`,
-      },
+        title: "Status",
+        key: "paymentStatus",
+        dataIndex: "paymentStatus",
+        render: (status) => {
+          let color = "";
+          switch (status) {
+            case "paid":
+              color = "text-green-500";
+              break;
+            case "pending":
+              color = "text-black";
+              break;
+            case "failed":
+              color = "text-red-500";
+              break;
+            default:
+              color = "text-gray-500";
+          }
+      
+          return <span className={` ${color}`}>{status}</span>;
+        }
+      },      
       {
         title:"Action",
         key:"Action",
