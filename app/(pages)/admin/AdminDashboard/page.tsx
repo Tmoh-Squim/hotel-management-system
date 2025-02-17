@@ -1,6 +1,12 @@
+"use client"
+import { RootState } from "@/app/redux/store";
 import React from "react";
+import { useSelector } from "react-redux";
+import AdminBookings from "../AdminBookings/page";
 
 const AdminDashboardComponent = () => {
+  const { bookings } = useSelector((state: RootState) => state.bookings);
+
   return (
     <div className=" p-1 space-y-6">
       <h2 className="text-md text-gray-400 font-semibold">dashboard /</h2>
@@ -24,30 +30,7 @@ const AdminDashboardComponent = () => {
       {/* Recent Bookings Table */}
       <div className="bg-white p-4 shadow-sm rounded-lg">
         <h3 className="text-lg font-medium mb-4">Recent Bookings</h3>
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className="border-b">
-              <th className="text-left p-2">Guest</th>
-              <th className="text-left p-2">Room</th>
-              <th className="text-left p-2">Date</th>
-              <th className="text-left p-2">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b">
-              <td className="p-2">John Doe</td>
-              <td className="p-2">Suite A</td>
-              <td className="p-2">Feb 12, 2025</td>
-              <td className="p-2 text-green-600">Confirmed</td>
-            </tr>
-            <tr className="border-b">
-              <td className="p-2">Jane Smith</td>
-              <td className="p-2">Deluxe Room</td>
-              <td className="p-2">Feb 10, 2025</td>
-              <td className="p-2 text-red-600">Cancelled</td>
-            </tr>
-          </tbody>
-        </table>
+        <AdminBookings />
       </div>
     </div>
   );

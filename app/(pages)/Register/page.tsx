@@ -84,6 +84,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, name: e.target.value });
             }}
+            value={formData.name}
           />
           <CustomTextField
             type="email"
@@ -91,6 +92,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, email: e.target.value });
             }}
+            value={formData.email}
           />
           <CustomTextField
             type="number"
@@ -98,6 +100,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, phone: e.target.value });
             }}
+            value={formData.phone}
           />
           <CustomTextField
             type={visible == true ? "text" : "password"}
@@ -115,6 +118,7 @@ const Page = () => {
             onchange={(e) => {
               setFormData({ ...formData, password: e.target.value });
             }}
+            value={formData.password}
           />
         </div>
 

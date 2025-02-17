@@ -3,32 +3,10 @@ import mongoose, { models } from "mongoose";
 const BookingSchema = new mongoose.Schema(
   {
     guest: {
-      email: {
-        type: String,
-        required: true,
-      },
-      fullName: {
-        type: String,
-        required: true,
-      },
-      phoneNumber: {
-        type: String,
-        required: true,
-      },
-      avatar: {
-        type: String,
-      },
+      type:Object
     },
-    room: {
-      roomNumber: {
-        type: String,
-        required: true,
-      },
-      roomType: {
-        type: String,
-        enum: ["single", "double", "suite", "deluxe"],
-        required: true,
-      },
+    building: {
+      type:Object
     },
     checkInDate: {
       type: Date,
@@ -44,13 +22,10 @@ const BookingSchema = new mongoose.Schema(
     },
     paymentStatus: {
       type: String,
-      enum: ["pending", "paid", "failed"],
       default: "pending",
     },
     status: {
       type: String,
-      enum: ["booked", "checked-in", "checked-out", "canceled"],
-      default: "booked",
     },
   },
   { timestamps: true }

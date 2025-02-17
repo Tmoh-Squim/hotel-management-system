@@ -2,10 +2,12 @@
 
 import CustomButton from "@/app/components/CustomButton";
 import { Product } from "@/app/types/types";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const [product, setProduct] = useState<Product | null>(null);
@@ -13,6 +15,10 @@ const Page = () => {
   const [showCalendar, setShowCalendar] = useState(false);
   const [dateRange, setDateRange] = useState<[Date | null, Date | null]>([null, null]);
   const [days, setDays] = useState<number | null>(null);
+  const [checkInDate,setCheckInDate] = useState<Date | null>(null)
+  const [checkOutDate,setCheckOutDate] = useState<Date | null>(null)
+  const [loading,setLoading] = useState(false);
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -28,7 +34,8 @@ const Page = () => {
   const handleDateChange = (update: [Date | null, Date | null]) => {
     setDateRange(update);
     const [start, end] = update;
-
+    setCheckInDate(start || null);
+    setCheckOutDate(end || null);
     if (start && end) {
       const diffTime = end.getTime() - start.getTime();
       setDays(Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
@@ -36,6 +43,39 @@ const Page = () => {
       setDays(null);
     }
   };
+
+  const handleBooking = async()=>{
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("authorization_token");
+      const buildingId = product?._id;
+      const newBooking={
+        buildingId:buildingId,
+        checkInDate:checkInDate,
+        checkOutDate:checkOutDate
+      }
+      if(checkInDate == null || checkOutDate == null){
+      return  toast.info("Check in and check out dates are required!")
+      }
+      const response = await axios.post('/api/restaurant/book',newBooking,{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
+      if(response.data.success){
+        setShowCalendar(false);
+        setCheckInDate(null);
+        setCheckOutDate(null);
+        return toast.success(response.data.message);
+      }
+      return toast.error(response.data.message)
+
+    } catch (error) {
+     toast.error("Something went wrong!")
+    }finally{
+      setLoading(false);
+    }
+  }
 
   if (!product)
     return (
@@ -94,7 +134,7 @@ const Page = () => {
           </div>
 
           {/* Book Reservation Button */}
-          <div className="my-4 w-full lg:w-[80%]">
+          <div className="my-4 max-w-sm lg:w-[80%]">
             <CustomButton
               title="Book reservation"
               onClick={() => setShowCalendar(true)}
@@ -129,10 +169,11 @@ const Page = () => {
               )}
 
               {/* Close Button */}
-            <div className="my-2 w-max">
+            <div className="my-2 max-w-sm">
             <CustomButton
-                onClick={() => setShowCalendar(false)}
+                onClick={handleBooking}
                 title="Proceed"
+                loading={loading}
               />
             </div>
             </div>

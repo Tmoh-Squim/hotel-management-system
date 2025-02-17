@@ -25,6 +25,9 @@ import AdminUsers from "../users/page";
 import AdminCreateRoom from "../CreateRestaurant/page";
 import AdminDashboardComponent from "../AdminDashboard/page";
 import AdminRestaurants from "../AdminRestaurants/page";
+import ChangePassword from "@/app/components/ChangePassword";
+import { getBookings } from "@/app/redux/admin/AdminBookings";
+import AdminBookings from "../AdminBookings/page";
 
 const AdminDashboard = () => {
   const [active, setActive] = useState(0);
@@ -43,6 +46,7 @@ const AdminDashboard = () => {
   
       if (storedToken) {
         dispatch(getUsers(storedToken));
+        dispatch(getBookings(storedToken));
       }
     }
   }, []);
@@ -55,7 +59,7 @@ const AdminDashboard = () => {
       key: "Bookings",
       icon: <AiOutlineOrderedList size={20} />, 
       children: [
-        { label: "Pending Orders", key: "Pending Orders", component: <Page /> },
+        { label: "Pending Orders", key: "Pending Orders", component: <AdminBookings /> },
         { label: "Completed Orders", key: "Completed Orders", component: <Page /> },
         { label: "Refunded Orders", key: "Refunded Orders", component: <Page /> },
       ],
@@ -66,7 +70,7 @@ const AdminDashboard = () => {
     { label: "Add Category", key: "Add Category", icon: <AiOutlineFileAdd size={20} />, component: <Page /> },
     { label: "Users", key: "Users", icon: <AiOutlineUsergroupAdd size={20} />, component: <AdminUsers /> },
     { label: "Profile", key: "Profile", icon: <AiOutlineUser size={20} />, component: <Page /> },
-    { label: "Change password", key: "Change password", icon: <AiOutlineLock size={20} />, component: <Page /> },
+    { label: "Change password", key: "Change password", icon: <AiOutlineLock size={20} />, component: <ChangePassword /> },
     { label: "Switch theme", key: "Switch theme", icon: <AiOutlineSun size={20} /> },
     { label: "Logout", key: "Logout", icon: <AiOutlineLogout size={20} />, onClick: handleLogout },
   ];

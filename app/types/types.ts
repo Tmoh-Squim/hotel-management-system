@@ -6,7 +6,8 @@ export interface TextInputProps {
     onchange: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>,
     icon?:ReactNode,
     required?:boolean,
-    name?:string
+    name?:string,
+    value?:string
 }
 export interface ButtonProps {
     title:string,
@@ -15,6 +16,7 @@ export interface ButtonProps {
 }
 
 export interface Product {
+    _id:string;
     bedrooms: string;
     pricePerMonth: string;
     address: string;
@@ -69,5 +71,16 @@ export interface seller {
     fullName: string,
     phoneNumber: string,
   };
+export interface Booking {
+    _id:string,
+    guest:User,
+    building:Product,
+    checkInDate:Date,
+    checkOutDate:Date,
+    paymentStatus:string,
+    createdAt:string,
+    updatedAt:string,
+    totalAmount:number
+}
 export const validRegex =
 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
