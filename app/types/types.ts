@@ -20,7 +20,6 @@ export interface Product {
     bedrooms: string;
     pricePerMonth: string;
     address: string;
-    bedRooms: number;
     img: string | undefined;
     title: string;
     price: number;
