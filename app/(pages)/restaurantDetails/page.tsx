@@ -51,7 +51,7 @@ const Page = () => {
           <img
             src={imageUrl}
             alt={product.title}
-            className="object-cover h-[260px] lg:h-[350px] w-full rounded-md shadow-md"
+            className="object-cover h-[260px] 800px:h-[350px] rounded-md shadow-md"
           />
           <div className="flex gap-4 my-2">
             {product.images?.map((item, index) => (
@@ -83,13 +83,13 @@ const Page = () => {
           </p>
           <div className="space-y-2">
             <p className="text-xl font-semibold text-green-600">
-              Price: Ksh{product.price}
+              Price: Ksh {product.pricePerMonth}
             </p>
             <p className="text-md text-yellow-500">
               ⭐ Rating: {product.rating}/5
             </p>
             <p className="text-md text-blue-500">
-              🏠 Capacity: {product.bedRooms} Bedroom(s)
+              🏠 Capacity: {product.bedrooms} Bedroom(s)
             </p>
           </div>
 
