@@ -1,5 +1,5 @@
 "use client"
-import { Button, Modal, Table } from 'antd'
+import { Button, Image, Modal, Table } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
@@ -64,7 +64,7 @@ useEffect(() => {
         dataIndex: "images",
         render: (images) => (
           images && images.length > 0 ? (
-            <img src={images[0]} alt="Restaurant" className='object-cover rounded-md' style={{ width: 50, height: 50 }} />
+            <Image src={images[0]} alt="Restaurant" className='object-cover rounded-md' style={{ width: 70, height: 70 }} />
           ) : "No Image"
         )
       },
