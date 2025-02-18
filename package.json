@@ -33,7 +33,8 @@
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "swiper": "^11.2.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
