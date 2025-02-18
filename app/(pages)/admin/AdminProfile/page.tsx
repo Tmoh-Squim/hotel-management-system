@@ -111,10 +111,17 @@ const AdminProfile = () => {
             type="file"
             accept="image/*"
             name="file"
+            id="file"
             onChange={handleAvatarChange}
-            className="mb-3 "
+            className="hidden"
           />
-          
+          <label
+            htmlFor="file"
+            className="px-4 mb-2 py-2 bg-blue-600 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
+          >
+            Choose image
+          </label>
+
           <div className="w-full">
             <CustomButton
               onClick={handleUploadAvatar}

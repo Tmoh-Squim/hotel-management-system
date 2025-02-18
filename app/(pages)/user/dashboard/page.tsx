@@ -19,7 +19,6 @@ import {
 import Page from "../../Login/page";
 import { logout } from "@/app/redux/user/userReducer";
 import { useRouter } from "next/navigation";
-import { getUsers } from "@/app/redux/admin/AdminUserReducer";
 import { AppDispatch, RootState } from "@/app/redux/store";
 
 import ChangePassword from "@/app/components/ChangePassword";
@@ -48,7 +47,6 @@ const UserDashboard = () => {
       setToken(storedToken);
   
       if (storedToken) {
-        dispatch(getUsers(storedToken));
         dispatch(getUserBookings(storedToken));
       }
     }
