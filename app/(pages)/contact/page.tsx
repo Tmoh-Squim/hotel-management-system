@@ -62,7 +62,7 @@ const ContactPage = () => {
       <section
         className="w-full 800px:h-[60vh] h-[40vh] flex items-center justify-center text-center bg-cover bg-center relative"
         style={{
-          backgroundImage: `url(bg.jpg)`,
+          backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>

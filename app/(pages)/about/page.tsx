@@ -33,7 +33,7 @@ const Page = () => {
       <section
         className="relative w-full 800px:h-[60vh] h-[40vh] flex items-center justify-center text-center bg-cover bg-center"
         style={{
-          backgroundImage: `url(bg.jpg)`,
+          backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -59,7 +59,7 @@ const Page = () => {
           <h2 className="team-heading text-3xl font-semibold text-center mb-6">
             Meet Our Team
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 800px:gap-6 gap-2">
             {teamMembers.map((member, index) => (
               <div
                 key={index}
