@@ -123,7 +123,7 @@ const Page = () => {
           </p>
           <div className="space-y-2">
             <p className="text-xl font-semibold text-green-600">
-              Price: Ksh {product.pricePerMonth}
+              Price: Ksh {product.pricePerMonth || product.pricePerNight}
             </p>
             <p className="text-md text-yellow-500">
               ⭐ Rating: {product.rating}/5

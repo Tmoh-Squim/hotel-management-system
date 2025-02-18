@@ -10,22 +10,14 @@ interface RestaurantState {
 
 
 
-export const getRestaurants = createAsyncThunk<RestaurantState, string | null>(
+export const getRestaurants = createAsyncThunk<RestaurantState>(
   "/restaurants",
-  async (token, { rejectWithValue }) => {
-    if (!token) {
-      return rejectWithValue("Token is required");
-    }
-
+  async () => {
     try {
-      const response = await axios.get<RestaurantState>(`/api/restaurant/restaurants`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get<RestaurantState>(`/api/restaurant/restaurants`);
       return response.data;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data || "An error occurred");
+      return (error.response?.data || "An error occurred");
     }
   }
 );

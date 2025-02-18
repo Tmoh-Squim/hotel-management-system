@@ -18,9 +18,9 @@ const Page = () => {
 
       if (token) {
         dispatch(getUser(token));
-        dispatch(getRestaurants(token));
       }
     }
+    dispatch(getRestaurants());
   }, [dispatch]);
 
   useEffect(() => {

@@ -23,7 +23,7 @@ const Page = () => {
     const matchesLocation =
       !filters.location || room.address.toLowerCase().includes(filters.location.toLowerCase());
     const matchesPrice =
-      parseInt(room.pricePerMonth) >= filters.minPrice && parseInt(room.pricePerMonth) <= filters.maxPrice; // Convert string price to number
+      parseInt(room.pricePerMonth || room.pricePerNight) >= filters.minPrice && parseInt(room.pricePerMonth || room.pricePerNight) <= filters.maxPrice; // Convert string price to number
     const matchesBedrooms =
       filters.bedrooms === 0 || Number(room.bedrooms) === filters.bedrooms; // Convert string bedrooms to number for comparison
 
@@ -117,7 +117,7 @@ const Page = () => {
                     ? item.title.slice(0, 35) + "..."
                     : item.title}
                 </h2>
-                <p className="text-foreground mt-2">Ksh {item.pricePerMonth} / month</p>
+                <p className="text-foreground mt-2">Ksh {item.pricePerMonth || item.pricePerNight} / month</p>
               </div>
               <div className="p-2 flex items-center gap-2">
                 <FaMapMarkerAlt /> <span className="text-gray-500">{item.address}</span>

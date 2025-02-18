@@ -16,6 +16,7 @@ export interface ButtonProps {
 }
 
 export interface Product {
+    pricePerNight: string;
     _id:string;
     bedrooms: string;
     pricePerMonth: string;
