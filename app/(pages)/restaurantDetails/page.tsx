@@ -91,7 +91,7 @@ const Page = () => {
           <img
             src={imageUrl}
             alt={product.title}
-            className="object-cover h-[260px] 800px:h-[350px] rounded-md shadow-md"
+            className="object-fill h-[260px] 800px:h-[350px] rounded-md shadow-md"
           />
           <div className="flex gap-4 my-2">
             {product.images?.map((item, index) => (
