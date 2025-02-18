@@ -43,7 +43,7 @@ export async function POST(req:Request){
             building:building,
             checkInDate:checkInDate,
             checkOutDate:checkOutDate,
-            totalAmount:building.pricePerMonth
+            totalAmount:building.pricePerMonth || building.pricePerNight
         }
         const booking = await Bookings.create(newBooking);
          await sendMail({

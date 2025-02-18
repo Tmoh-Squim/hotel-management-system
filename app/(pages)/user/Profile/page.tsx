@@ -8,6 +8,7 @@ import CustomTextField from "@/app/components/CustomTextInput";
 import CustomButton from "@/app/components/CustomButton";
 import { getUser } from "@/app/redux/user/userReducer";
 import { AnyAction } from "redux";
+import { Image } from "antd";
 
 const UserProfile = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -96,11 +97,13 @@ const UserProfile = () => {
         <div className="flex flex-col items-center">
           {/* Avatar Section */}
           <div className="relative w-32 h-32 mb-4">
-            <img
+            <Image
               src={
                 avatarPreview ||
                 "https://static.vecteezy.com/system/resources/previews/009/734/564/non_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg"
               }
+              width={128}
+              height={128}
               alt="Avatar"
               className="w-full h-full rounded-full object-cover border-2 border-gray-300"
             />
@@ -117,7 +120,7 @@ const UserProfile = () => {
           />
           <label
             htmlFor="file"
-            className="px-4 mb-2 py-2 bg-blue-600 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
+            className="px-4 mb-2 py-2 bg-blue-400 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-600 transition duration-300 shadow-md"
           >
             Choose image
           </label>

@@ -48,6 +48,9 @@ const Page = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("authorization_token");
+      if(!token){
+       return toast.info("Please login to complete your booking")
+      }
       const buildingId = product?._id;
       const newBooking={
         buildingId:buildingId,

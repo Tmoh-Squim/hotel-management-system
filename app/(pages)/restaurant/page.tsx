@@ -101,7 +101,7 @@ const Page = () => {
               <img
                 src={item.images?.[0]} // Use first image if `img` is undefined
                 alt={item.title}
-                className="w-full h-56 object-cover"
+                className="w-full h-56 object-fill"
               />
               <div className="flex justify-between items-center">
                 <p className="text-gray-600 mt-2 px-4">
