@@ -42,7 +42,7 @@ const Page = () => {
       </section>
 
       {/* Mission & Values */}
-      <section className="max-w-5xl mx-auto 800px:py-12 py-3 800px:px-4 px-2">
+      <section className="max-w-5xl mx-auto 800px:py-12 py-5 800px:px-4 px-2">
         <h2 className="mission-text text-3xl font-semibold text-center mb-6">
           Our Mission & Values
         </h2>
@@ -53,7 +53,7 @@ const Page = () => {
       </section>
 
       {/* Meet The Team */}
-      <section className="bg-background 800px:py-12 py-6">
+      <section className="bg-background 800px:py-12 py-8">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="team-heading text-3xl font-semibold text-center mb-6">
             Meet Our Team
