@@ -51,6 +51,7 @@ const UserDashboard = () => {
       }
     }
   }, []);
+  const handleThemeChange = ()=>{}
   
 
   const menuItems = [
@@ -62,13 +63,10 @@ const UserDashboard = () => {
       component:<UserBookings/>
     },
     { label: "Rooms", key: "Rooms", icon: <AiOutlineProduct size={20} />, component: <Page /> },
-    { label: "Add Room", key: "Add Room", icon: <AiOutlineHome size={20} />, component: <Page /> },
-    { label: "Categories", key: "Categories", icon: <AiOutlineProduct size={20} />, component: <Page /> },
     { label: "Add Category", key: "Add Category", icon: <AiOutlineFileAdd size={20} />, component: <Page /> },
-    { label: "Users", key: "Users", icon: <AiOutlineUsergroupAdd size={20} />, component: <Page /> },
     { label: "Profile", key: "Profile", icon: <AiOutlineUser size={20} />, component: <UserProfile /> },
     { label: "Change password", key: "Change password", icon: <AiOutlineLock size={20} />, component: <ChangePassword /> },
-    { label: "Switch theme", key: "Switch theme", icon: <AiOutlineSun size={20} /> },
+    { label: "Switch theme", key: "Switch theme", icon: <AiOutlineSun size={20} />,onclick:handleThemeChange },
     { label: "Logout", key: "Logout", icon: <AiOutlineLogout size={20} />, onClick: handleLogout },
   ];
 
