@@ -21,7 +21,6 @@ export const POST = async (req: Request): Promise<Response> => {
         const city = formData.get("city") as string;
         const bedrooms = formData.get("bedrooms") as string;
         const totalRooms = formData.get("totalRooms") as string;
-        const remainingRooms = formData.get("remainingRooms") as string;
         const pricePerNight = formData.get("pricePerNight") as string;
         const pricePerMonth = formData.get("pricePerMonth") as string;
         const files = formData.getAll("images") as File[];
