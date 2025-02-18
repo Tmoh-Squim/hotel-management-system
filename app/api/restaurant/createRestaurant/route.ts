@@ -4,6 +4,7 @@ import { upload } from "@/server/utils/multer";
 import { cloudinary } from "@/server/utils/cloudinary";
 import { promisify } from "util";
 import { ConnectDB } from "@/server/config/Db";
+import { isAdmin, isAuthenticated } from "@/server/middlewares/auth";
 
 // Convert Multer to Promise-based function
 const uploadMiddleware = promisify(upload.array("images"));
@@ -13,6 +14,14 @@ export const POST = async (req: Request): Promise<Response> => {
         // Handle file upload using Multer
         await uploadMiddleware(req as any, {} as any);
         await ConnectDB();
+        const user = await isAuthenticated(req);
+        if (!user) {
+            return NextResponse.json({ success: false, message: "Unauthorized access!" }, { status: 401 });
+        }
+
+        if (!isAdmin(user)) {
+            return NextResponse.json({ success: false, message: "Access denied!" }, { status: 403 });
+        }
 
         const formData = await req.formData();
         const title = formData.get("title") as string;
@@ -48,14 +57,14 @@ export const POST = async (req: Request): Promise<Response> => {
             images: imageUrls,
             bedrooms,
             totalRooms,
-            remainingRooms:totalRooms,
+            remainingRooms: totalRooms,
             pricePerNight,
             pricePerMonth,
             public_ids,
         });
 
 
-        return NextResponse.json({success:true, message: "Building created successfully.", building: newBuilding }, { status: 201 });
+        return NextResponse.json({ success: true, message: "Building created successfully.", building: newBuilding }, { status: 201 });
     } catch (error) {
         console.error("Error creating building:", error);
         return NextResponse.json({ message: "Internal server error." }, { status: 500 });

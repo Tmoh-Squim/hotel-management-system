@@ -42,7 +42,9 @@ const Page = () => {
   return (
     <div
       className="w-full bg-cover flex justify-center items-center h-screen object-center bg-center"
-      style={{ backgroundImage: `url(bg.jpg)` }}
+      style={{
+        backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
+      }}
     >
       <div className="text-center 800px:max-w-[38%] text-background">
         <h1 className="title 800px:text-4xl text-2xl font-bold">

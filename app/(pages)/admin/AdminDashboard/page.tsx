@@ -32,7 +32,7 @@ const AdminDashboardComponent = () => {
       </div>
 
       {/* Recent Bookings Table */}
-      <div className=" p-4 shadow-sm rounded-md">
+      <div className=" shadow-sm rounded-md">
         <h3 className="text-lg font-medium mb-4">Recent Bookings</h3>
         <AdminBookings />
       </div>

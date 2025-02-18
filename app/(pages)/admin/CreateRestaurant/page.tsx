@@ -58,8 +58,9 @@ const AdminCreateRoom = () => {
     });
 
     try {
+      const token = localStorage.getItem("authorization_token");
       const response = await axios.post("/api/restaurant/createRestaurant", form, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { "Content-Type": "multipart/form-data",Authorization:`Bearer ${token}` },
       });
 
     if(response.data.success){

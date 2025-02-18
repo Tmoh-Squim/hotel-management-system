@@ -32,7 +32,7 @@ const UserDashboardComponent = () => {
       </div>
 
       {/* Recent Bookings Table */}
-      <div className="bg-white p-4 shadow-sm rounded-lg">
+      <div className="bg-white shadow-sm rounded-lg">
         <h3 className="text-lg font-medium mb-4">Your Recent Bookings</h3>
         <UserBookings />
       </div>
