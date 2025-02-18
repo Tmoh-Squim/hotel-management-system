@@ -7,7 +7,7 @@ import adminBookingReducer from "./admin/AdminBookings";
 import storage from "redux-persist/lib/storage"; // Use localStorage
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
-
+import userBookingREducer from "./user/UserBookings";
 // Persist config
 const persistConfig = {
   key: "root",
@@ -19,7 +19,8 @@ const rootReducer = combineReducers({
   user: userReducer,
   users: adminUserReducer,
   restaurants: adminRestaurantReducer,
-  bookings:adminBookingReducer
+  bookings:adminBookingReducer,
+  userBookings:userBookingREducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
