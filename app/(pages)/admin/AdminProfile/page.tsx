@@ -88,8 +88,8 @@ const AdminProfile = () => {
 
   return (
     <div className="max-w-2xl mx-auto px:p-6 my-auto">
-      <h2 className="800px:text-xl font-semibold text-gray-800 mb-4">
-        Hey {user?.fullName.toUpperCase()}, Welcome to your profile
+      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+        Hey {user?.fullName.toUpperCase()}, Welcome to your profile page
       </h2>
 
       {user ? (
