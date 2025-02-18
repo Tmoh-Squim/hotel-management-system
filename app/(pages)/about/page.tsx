@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import {  Autoplay  } from "swiper/modules";
+import {  Autoplay, Pagination  } from "swiper/modules";
 import { teamMembers } from "@/app/static/static";
 
 const Page = () => {
@@ -53,7 +53,7 @@ const Page = () => {
       </section>
 
       {/* Meet The Team */}
-      <section className="bg-background 800px:py-12 py-3">
+      <section className="bg-background 800px:py-12 py-6">
         <div className="max-w-5xl mx-auto px-4">
           <h2 className="team-heading text-3xl font-semibold text-center mb-6">
             Meet Our Team
@@ -86,7 +86,8 @@ const Page = () => {
               delay: 3000,
               disableOnInteraction: true,
             }}
-            modules={[Autoplay]}
+            pagination={{ clickable: true }}
+            modules={[Autoplay,Pagination]}
             loop={true}
           >
             {teamMembers.map((member, index) => (
