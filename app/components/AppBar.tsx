@@ -91,7 +91,7 @@ const AppBar = () => {
                 href={
                   user?.role === "Administrater"
                     ? "/admin/dashboard"
-                    : "/dashboard"
+                    : "/user/dashboard"
                 }
               >
                 <div
@@ -185,7 +185,7 @@ const AppBar = () => {
               href={
                 user?.role === "Administrater"
                   ? "/admin/dashboard"
-                  : "/dashboard"
+                  : "/user/dashboard"
               }
             >
               <div className="px-4 py-2 cursor-pointer rounded-lg transition-colors duration-300 bg-foreground text-background hover:bg-background hover:text-foreground">
