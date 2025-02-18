@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import JWT from "jsonwebtoken";
 import { ConnectDB } from "@/server/config/Db";
-import Users from "@/server/models/studentModel";
+import Users from "@/server/models/userModel";
 import { ComparePassword, HashPassword } from "@/server/helpers/PasswordEncryption";
 
 

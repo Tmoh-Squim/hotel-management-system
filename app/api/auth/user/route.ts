@@ -3,6 +3,9 @@ import JWT from "jsonwebtoken"
 import { isAuthenticated } from "@/server/middlewares/auth";
 export async function GET(req: Request) {
     const user = await isAuthenticated(req);
+    if (!user) {
+      return NextResponse.json({ success: false, message: "Unauthorized access!" }, { status: 401 });
+  }
   
     if (user instanceof Response) {
       return user;

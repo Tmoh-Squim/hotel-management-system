@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import JWT from "jsonwebtoken";
 import { ConnectDB } from "@/server/config/Db";
 import { ComparePassword } from "@/server/helpers/PasswordEncryption";
-import Users from "@/server/models/studentModel";
+import Users from "@/server/models/userModel";
 import { LoginRequestBody } from "@/app/types/types";
 
 export async function POST(req: Request) {

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import JWT from "jsonwebtoken";
 import { ConnectDB } from "@/server/config/Db";
-import Users from "@/server/models/studentModel";
+import Users from "@/server/models/userModel";
 import Buildings from "@/server/models/buildings";
 import Bookings from "@/server/models/bookings";
 import sendMail from "@/server/utils/sendMail";

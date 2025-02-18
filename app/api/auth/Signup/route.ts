@@ -1,7 +1,7 @@
 import { SignUpRequestBody, validRegex } from "@/app/types/types";
 import { ConnectDB } from "@/server/config/Db";
 import { HashPassword } from "@/server/helpers/PasswordEncryption";
-import Users from "@/server/models/studentModel";
+import Users from "@/server/models/userModel";
 import { createActivationToken } from "@/server/utils/activationToken";
 import { sendMail } from "@/server/utils/sendMail";
 import { NextResponse } from "next/server";

@@ -1,4 +1,4 @@
-import Users from "@/server/models/studentModel";
+import Users from "@/server/models/userModel";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
