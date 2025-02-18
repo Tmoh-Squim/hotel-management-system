@@ -62,6 +62,7 @@ export interface User {
     role:string;
     createdAt: Date;
     updatedAt: Date;
+    avatar: string;
   }
 
 export interface seller {

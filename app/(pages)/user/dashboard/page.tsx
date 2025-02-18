@@ -3,7 +3,7 @@ import { Layout, Menu } from "antd";
 import { Content } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   AiOutlineDashboard,
   AiOutlineFileAdd,
@@ -20,7 +20,7 @@ import Page from "../../Login/page";
 import { logout } from "@/app/redux/user/userReducer";
 import { useRouter } from "next/navigation";
 import { getUsers } from "@/app/redux/admin/AdminUserReducer";
-import { AppDispatch } from "@/app/redux/store";
+import { AppDispatch, RootState } from "@/app/redux/store";
 
 import ChangePassword from "@/app/components/ChangePassword";
 import UserDashboardComponent from "../UserDashboardComponent/page";
@@ -32,6 +32,7 @@ const UserDashboard = () => {
   const [active, setActive] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
   const [token, setToken] = useState<string | null>(null);
+  const { user } = useSelector((state: RootState) => state.user);
   const router = useRouter();
 
   const handleLogout = () => {
@@ -39,6 +40,9 @@ const UserDashboard = () => {
     router.push("/")
   };
   useEffect(() => {
+    if(user?.role !== "user" ||user == null){
+      router.push("/Login")
+    }
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("authorization_token");
       setToken(storedToken);
