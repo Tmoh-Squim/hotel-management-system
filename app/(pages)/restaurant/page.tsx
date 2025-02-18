@@ -52,7 +52,6 @@ const Page = () => {
             type="number"
             placeholder="Min Price"
             className="px-4 py-2 border border-gray-300 rounded-md w-full"
-            value={filters.minPrice}
             onChange={(e) =>
               setFilters({ ...filters, minPrice: Number(e.target.value) })
             }

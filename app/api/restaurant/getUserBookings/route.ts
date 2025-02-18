@@ -26,8 +26,8 @@ export async function GET(req:Request){
         if (!user) {
             return NextResponse.json({success:false, message: 'User not found!' }, { status: 404 });
         }
-        const bookings = await Bookings.find({"guest._id":user._id})
-        return NextResponse.json({ success: true, bookings }, { status: 200 });
+        const userBookings = await Bookings.find({"guest._id":user._id}).sort({createdAt:-1})
+        return NextResponse.json({ success: true, userBookings }, { status: 200 });
     } catch (error) {
         return NextResponse.json({success:false, message: 'something went wrong!' }, { status: 500 });
     }

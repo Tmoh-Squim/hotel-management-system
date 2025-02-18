@@ -23,9 +23,10 @@ import { getUsers } from "@/app/redux/admin/AdminUserReducer";
 import { AppDispatch } from "@/app/redux/store";
 
 import ChangePassword from "@/app/components/ChangePassword";
-import { getBookings } from "@/app/redux/admin/AdminBookings";
 import UserDashboardComponent from "../UserDashboardComponent/page";
-import AdminBookings from "../../admin/AdminBookings/page";
+import { getUserBookings } from "@/app/redux/user/UserBookings";
+import UserBookings from "../UserBookings/page";
+import UserProfile from "../Profile/page";
 
 const UserDashboard = () => {
   const [active, setActive] = useState(0);
@@ -44,7 +45,7 @@ const UserDashboard = () => {
   
       if (storedToken) {
         dispatch(getUsers(storedToken));
-        dispatch(getBookings(storedToken));
+        dispatch(getUserBookings(storedToken));
       }
     }
   }, []);
@@ -56,14 +57,14 @@ const UserDashboard = () => {
       label: "Bookings",
       key: "Bookings",
       icon: <AiOutlineOrderedList size={20} />, 
-      component:<AdminBookings/>
+      component:<UserBookings/>
     },
     { label: "Rooms", key: "Rooms", icon: <AiOutlineProduct size={20} />, component: <Page /> },
     { label: "Add Room", key: "Add Room", icon: <AiOutlineHome size={20} />, component: <Page /> },
     { label: "Categories", key: "Categories", icon: <AiOutlineProduct size={20} />, component: <Page /> },
     { label: "Add Category", key: "Add Category", icon: <AiOutlineFileAdd size={20} />, component: <Page /> },
     { label: "Users", key: "Users", icon: <AiOutlineUsergroupAdd size={20} />, component: <Page /> },
-    { label: "Profile", key: "Profile", icon: <AiOutlineUser size={20} />, component: <Page /> },
+    { label: "Profile", key: "Profile", icon: <AiOutlineUser size={20} />, component: <UserProfile /> },
     { label: "Change password", key: "Change password", icon: <AiOutlineLock size={20} />, component: <ChangePassword /> },
     { label: "Switch theme", key: "Switch theme", icon: <AiOutlineSun size={20} /> },
     { label: "Logout", key: "Logout", icon: <AiOutlineLogout size={20} />, onClick: handleLogout },
