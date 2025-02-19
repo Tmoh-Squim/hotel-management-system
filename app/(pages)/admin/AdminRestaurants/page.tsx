@@ -16,6 +16,8 @@ const AdminRestaurants = () => {
   const [token, setToken] = useState<string | null>(null);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form] = Form.useForm();
   const dispatch = useDispatch<AppDispatch>();
@@ -38,41 +40,45 @@ const AdminRestaurants = () => {
   }, []);
 
   const handleDeleteProduct = async (id: string) => {
+    setIsDeleting(true); // Show loader
     try {
-      const response = await axios.delete(`/api/auth/delete-user/${id}`, {
-        headers: { 'Authorization':`Bearer ${token}` }
-      });
+        const response = await axios.delete(`/api/restaurant/delete/${id}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
 
-      if (response.data.success) {
-        dispatch(getRestaurants());
-        toast.success(response.data.message);
-      } else {
-        toast.error(response.data.message);
-      }
-      setOpenDelete(false);
+        if (response.data.success) {
+            dispatch(getRestaurants());
+            toast.success(response.data.message);
+        } else {
+            toast.error(response.data.message);
+        }
     } catch (error) {
-      toast.error('Something went wrong!');
+        toast.error('Something went wrong!');
     }
-  };
+    setIsDeleting(false); // Hide loader
+    setOpenDelete(false);
+};
 
-  const handleUpdateProduct = async (values: Partial<Product>) => {
-    if (!selectedProduct) return;
-    try {
+const handleUpdateProduct = async (values: Partial<Product>) => {
+  if (!selectedProduct) return;
+  setIsUpdating(true); // Show loader
+  try {
       const response = await axios.put(`/api/restaurant/update/${selectedProduct._id}`, values, {
-        headers: { 'Authorization': `Bearer ${token}` }
+          headers: { 'Authorization': `Bearer ${token}` }
       });
 
       if (response.data.success) {
-        dispatch(getRestaurants());
-        toast.success(response.data.message);
+          dispatch(getRestaurants());
+          toast.success(response.data.message);
       } else {
-        toast.error(response.data.message);
+          toast.error(response.data.message);
       }
-      setOpenUpdate(false);
-    } catch (error) {
+  } catch (error) {
       toast.error('Something went wrong!');
-    }
-  };
+  }
+  setIsUpdating(false); // Hide loader
+  setOpenUpdate(false);
+};
 
   return (
     <Content>
@@ -153,6 +159,7 @@ const AdminRestaurants = () => {
         title="Update Product"
         onCancel={() => setOpenUpdate(false)}
         onOk={() => form.submit()}
+        confirmLoading={isUpdating}
       >
         <Form form={form} layout="vertical" onFinish={handleUpdateProduct}>
           <Form.Item label="Name" name="title" rules={[{ required: true, message: 'Please enter the name' }]}>
@@ -180,9 +187,9 @@ const AdminRestaurants = () => {
         onOk={() => handleDeleteProduct(selectedProduct?._id || '')}
         title="Confirm Delete"
         okText="Delete"
-        okButtonProps={{ danger: true }}
+        okButtonProps={{ danger: true,loading:isDeleting }}
       >
-        Are you sure you want to delete this product?
+        Are you sure you want to delete this restaurant?
       </Modal>
     </Content>
   );

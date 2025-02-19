@@ -1,8 +1,12 @@
 "use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
+import { getRestaurants } from "@/app/redux/admin/AdminRestaurantReducer";
+import { AppDispatch } from "@/app/redux/store";
+import { Image } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const AdminCreateRoom = () => {
@@ -20,6 +24,7 @@ const AdminCreateRoom = () => {
     description: "",
   });
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch<AppDispatch>()
 
   // Handle input change
   const handleInputChange = (
@@ -86,6 +91,7 @@ const AdminCreateRoom = () => {
         });
         setBedrooms("");
         setSelectedImages([]);
+        dispatch(getRestaurants());
         return toast.success(response.data.message);
       }
       return toast.error(response.data.message);
@@ -206,8 +212,10 @@ const AdminCreateRoom = () => {
       {selectedImages.length > 0 && (
         <div className="flex gap-6 my-4">
           {selectedImages.map((image, index) => (
-            <img
+            <Image
               key={index}
+              width={80}
+              height={80}
               src={URL.createObjectURL(image)}
               alt="Uploaded"
               className="w-24 h-24 object-cover rounded-lg"
