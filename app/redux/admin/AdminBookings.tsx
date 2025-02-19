@@ -18,7 +18,7 @@ export const getBookings = createAsyncThunk<BookingsState, string | null>(
     }
 
     try {
-      const response = await axios.get<BookingsState>(`/api/restaurant/bookings`, {
+      const response = await axios.get<BookingsState>(`/api/admin/bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

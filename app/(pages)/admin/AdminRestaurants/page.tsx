@@ -42,7 +42,7 @@ const AdminRestaurants = () => {
   const handleDeleteProduct = async (id: string) => {
     setIsDeleting(true); // Show loader
     try {
-        const response = await axios.delete(`/api/restaurant/delete/${id}`, {
+        const response = await axios.delete(`/api/admin/delete/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -63,7 +63,7 @@ const handleUpdateProduct = async (values: Partial<Product>) => {
   if (!selectedProduct) return;
   setIsUpdating(true); // Show loader
   try {
-      const response = await axios.put(`/api/restaurant/update/${selectedProduct._id}`, values, {
+      const response = await axios.put(`/api/admin/update/${selectedProduct._id}`, values, {
           headers: { 'Authorization': `Bearer ${token}` }
       });
 

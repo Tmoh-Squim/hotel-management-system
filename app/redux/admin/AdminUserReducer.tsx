@@ -21,7 +21,7 @@ export const getUsers = createAsyncThunk<UserResponse, string | null>(
     }
 
     try {
-      const response = await axios.get<UserResponse>(`/api/users/allUsers`, {
+      const response = await axios.get<UserResponse>(`/api/admin/allUsers`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

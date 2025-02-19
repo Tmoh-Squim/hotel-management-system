@@ -67,7 +67,7 @@ const AdminCreateRoom = () => {
     try {
       const token = localStorage.getItem("authorization_token");
       const response = await axios.post(
-        "/api/restaurant/createRestaurant",
+        "/api/admin/createRestaurant",
         form,
         {
           headers: {
