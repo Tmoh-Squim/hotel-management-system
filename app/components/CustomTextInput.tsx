@@ -8,7 +8,8 @@ const CustomTextField = ({
   icon,
   required,
   name,
-  value
+  value,
+  disabled
 }: TextInputProps) => {
   return (
     <div className="relative w-full">
@@ -19,6 +20,7 @@ const CustomTextField = ({
         onChange={onchange}
         required={required}
         name={name}
+        disabled = {disabled}
         value={value}
         className={`w-full p-3 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-blue-400`}
       />

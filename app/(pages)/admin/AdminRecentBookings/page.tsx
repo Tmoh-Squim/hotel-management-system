@@ -1,25 +1,25 @@
 "use client"
-import { Button, Image, Modal, Table } from 'antd'
+import { Button, Modal, Table } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import {toast} from "react-toastify"
 import axios from "axios"
-import { Product } from '@/app/types/types'
+import { Booking } from '@/app/types/types'
 import { RootState } from '@/app/redux/store'
-const AdminRestaurants = () => {
-  const { restaurants } = useSelector((state: RootState) => state.restaurants);
+const AdminRecentBookings = () => {
+  const { bookings } = useSelector((state: RootState) => state.bookings);
   const [data,setData] = useState<any[]>([]);
   const [token, setToken] = useState<string | null>(null);
   const [open,setOpen] = useState(false);
   const [id,setDeleteUser] = useState('');
   const getData = (): any[] => {
-    if (!restaurants) return []; // Handle null case
-    return restaurants.map((product: Product) => product); // Map safely
+    if (!bookings) return []; // Handle null case
+    return bookings.slice(0,3).map((product: Booking) => product); // Map safely
   }
 useEffect(() => {
   setData(getData()); 
-}, [restaurants]);
+}, [bookings]);
 
 useEffect(() => {
     if (typeof window !== "undefined") {
@@ -52,46 +52,65 @@ useEffect(() => {
     dataSource={data}
     scroll={{ x: true }}
     columns={[
-     /*  {
-        title:"Id",
-        key:"_id",
-        dataIndex:"_id",
-        render: (text) => text.slice(0, 7)+ '...'
-      }, */
-      {
-        title: "Image",
-        key: "image",
-        dataIndex: "images",
-        render: (images) => (
-          images && images.length > 0 ? (
-            <Image src={images[0]} alt="Restaurant" className='object-cover rounded-md' style={{ width: 70, height: 70 }} />
-          ) : "No Image"
-        )
-      },
-      
-      {
+       {
         title:"Name",
-        key:"title",
-        dataIndex:"title",
-        render: (text) => text.slice(0, 15)+ '...'
+        key:"guest.fullName",
+        dataIndex:"guest",
+        render: (guest) => guest?.fullName || "N/A",
       },
       {
-        title:"Address",
-        key:"address",
-        dataIndex:'address',
-        render: (text) => text.slice(0, 10)+ '...'
+        title: "Email",
+        key: "guest.email",
+        dataIndex: "guest",
+        render: (guest) => guest?.email || "N/A",
       },
       {
-        title:"Total rooms",
-        key:"totalRooms",
-        dataIndex:'totalRooms'
+        title: "Room",
+        key: "building.title",
+        dataIndex: "building",
+        render: (building) => (building?.title ? building.title.slice(0, 15) + "..." : "N/A"),
       },
       {
-        title:"Created",
-        key:"CreatedAt",
-        dataIndex:`createdAt`,
+        title:"Check-in",
+        key:"checkInDate",
+        dataIndex:'checkInDate',
         render: (text) => text.slice(0, 10)
       },
+      {
+        title:"Check-out",
+        key:"checkOutDate",
+        dataIndex:'checkOutDate',
+        render: (text) => text.slice(0, 10)
+      },
+      {
+        title:"Total Amount",
+        key:"totalAmount",
+        dataIndex:`totalAmount`,
+        render: (text) => `Ksh ${text}`
+      },
+      {
+        title: "Status",
+        key: "paymentStatus",
+        dataIndex: "paymentStatus",
+        render: (status) => {
+          let color = "";
+          switch (status) {
+            case "paid":
+              color = "text-green-500";
+              break;
+            case "pending":
+              color = "text-black";
+              break;
+            case "failed":
+              color = "text-red-500";
+              break;
+            default:
+              color = "text-gray-500";
+          }
+      
+          return <span className={` ${color}`}>{status}</span>;
+        }
+      },      
       {
         title:"Action",
         key:"Action",
@@ -106,13 +125,6 @@ useEffect(() => {
             }}>
               Update
             </Button>
-             <Button type='primary' className='w-full 800px:w-max mt-1 800px:mt-0' danger 
-             onClick={()=>{
-               setOpen(true);
-               setDeleteUser(id)
-             }}>
-               Delete
-             </Button>
             </div>
         )
       }
@@ -123,11 +135,11 @@ useEffect(() => {
     open={open}
     onCancel={()=>setOpen(false)}
     onOk={()=>handleDeleteUser(id)}
-    title="Update product"
+    title="Do you want to delete the user?"
      />
 
    </Content>
   )
 }
 
-export default AdminRestaurants
+export default AdminRecentBookings

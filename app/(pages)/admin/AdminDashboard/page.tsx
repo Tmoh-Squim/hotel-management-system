@@ -2,7 +2,7 @@
 import { RootState } from "@/app/redux/store";
 import React from "react";
 import { useSelector } from "react-redux";
-import AdminBookings from "../AdminBookings/page";
+import AdminRecentBookings from "../AdminRecentBookings/page";
 
 const AdminDashboardComponent = () => {
   const { restaurants } = useSelector((state: RootState) => state.restaurants);
@@ -34,7 +34,7 @@ const AdminDashboardComponent = () => {
       {/* Recent Bookings Table */}
       <div className=" shadow-sm rounded-md">
         <h3 className="text-lg mx-4 font-medium mb-4">Recent Bookings</h3>
-        <AdminBookings />
+        <AdminRecentBookings />
       </div>
     </div>
   );

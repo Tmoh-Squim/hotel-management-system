@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import CustomButton from "@/app/components/CustomButton";
 import CustomTextField from "@/app/components/CustomTextInput";
 import axios from "axios";
@@ -22,7 +22,9 @@ const AdminCreateRoom = () => {
   const [loading, setLoading] = useState(false);
 
   // Handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -36,7 +38,7 @@ const AdminCreateRoom = () => {
   // Submit function
   const handleSubmit = async () => {
     if (!formData.title || !formData.city || !formData.address) {
-    toast.info("Please fill all required fields!")
+      toast.info("Please fill all required fields!");
       return;
     }
 
@@ -59,31 +61,36 @@ const AdminCreateRoom = () => {
 
     try {
       const token = localStorage.getItem("authorization_token");
-      const response = await axios.post("/api/restaurant/createRestaurant", form, {
-        headers: { "Content-Type": "multipart/form-data",Authorization:`Bearer ${token}` },
-      });
+      const response = await axios.post(
+        "/api/restaurant/createRestaurant",
+        form,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    if(response.data.success){
-      setFormData({
-        title: "",
-        pricePerNight: "",
-        size: "",
-        city: "",
-        address: "",
-        totalRooms: "",
-        pricePerMonth: "",
-        restaurantDistance: "",
-        description: "",
-      });
-      setBedrooms("");
-      setSelectedImages([]);
-      return toast.success(response.data.message)
-    }
-    return toast.error(response.data.message)
-
+      if (response.data.success) {
+        setFormData({
+          title: "",
+          pricePerNight: "",
+          size: "",
+          city: "",
+          address: "",
+          totalRooms: "",
+          pricePerMonth: "",
+          restaurantDistance: "",
+          description: "",
+        });
+        setBedrooms("");
+        setSelectedImages([]);
+        return toast.success(response.data.message);
+      }
+      return toast.error(response.data.message);
     } catch (error) {
-      toast.error("Failed to create room. Try again!")
-      
+      toast.error("Failed to create room. Try again!");
     } finally {
       setLoading(false);
     }
@@ -97,14 +104,54 @@ const AdminCreateRoom = () => {
 
       {/* Grid Layout for Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 800px:gap-4 gap-2">
-        <CustomTextField name="title" placeholder="Enter Apartment/building name" type="text" onchange={handleInputChange} />
-        <CustomTextField name="pricePerNight" type="number" placeholder="Enter price per night" onchange={handleInputChange} />
-        <CustomTextField name="size" type="number" placeholder="Enter size in sqft" onchange={handleInputChange} />
-        <CustomTextField name="city" placeholder="Enter city" type="text" onchange={handleInputChange} />
-        <CustomTextField name="address" placeholder="Enter address" type="text" onchange={handleInputChange} />
-        <CustomTextField name="totalRooms" placeholder="Total number of rooms" type="text" onchange={handleInputChange} />
-        <CustomTextField name="pricePerMonth" placeholder="Enter price per month" type="text" onchange={handleInputChange} />
-        <CustomTextField name="restaurantDistance" placeholder="Enter restaurant distance" type="text" onchange={handleInputChange} />
+        <CustomTextField
+          name="title"
+          placeholder="Enter Apartment/building name"
+          type="text"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="pricePerNight"
+          type="number"
+          placeholder="Enter price per night"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="size"
+          type="number"
+          placeholder="Enter size in sqft"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="city"
+          placeholder="Enter city"
+          type="text"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="address"
+          placeholder="Enter address"
+          type="text"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="totalRooms"
+          placeholder="Total number of rooms"
+          type="text"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="pricePerMonth"
+          placeholder="Enter price per month"
+          type="text"
+          onchange={handleInputChange}
+        />
+        <CustomTextField
+          name="restaurantDistance"
+          placeholder="Enter restaurant distance"
+          type="text"
+          onchange={handleInputChange}
+        />
       </div>
 
       <textarea
@@ -139,20 +186,42 @@ const AdminCreateRoom = () => {
       {/* Image Upload Section */}
       <div className="my-3">
         <h3 className="text-lg font-medium mb-2">Upload Images</h3>
-        <input type="file" multiple accept="image/*" onChange={handleImageUpload} className="border p-2 rounded w-full" />
+        <input
+          type="file"
+          id="file"
+          multiple
+          accept="image/*"
+          onChange={handleImageUpload}
+          className="border p-2 hidden rounded w-full"
+        />
+        <label
+          htmlFor="file"
+          className="px-4 mb-2 py-2 bg-blue-400 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
+        >
+          Choose image
+        </label>
       </div>
 
       {/* Preview Uploaded Images */}
       {selectedImages.length > 0 && (
         <div className="flex gap-6 my-4">
           {selectedImages.map((image, index) => (
-            <img key={index} src={URL.createObjectURL(image)} alt="Uploaded" className="w-24 h-24 object-cover rounded-lg" />
+            <img
+              key={index}
+              src={URL.createObjectURL(image)}
+              alt="Uploaded"
+              className="w-24 h-24 object-cover rounded-lg"
+            />
           ))}
         </div>
       )}
 
       {/* Create Room Button */}
-      <CustomButton title="Create Room" onClick={handleSubmit} loading={loading} />
+      <CustomButton
+        title="Create Room"
+        onClick={handleSubmit}
+        loading={loading}
+      />
     </div>
   );
 };

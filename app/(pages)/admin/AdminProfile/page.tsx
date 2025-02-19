@@ -89,8 +89,8 @@ const AdminProfile = () => {
 
   return (
     <div className="max-w-2xl mx-auto px:p-6 my-auto">
-      <h2 className="800px:text-xl font-semibold text-gray-800 mb-4">
-        Hey {user?.fullName.toUpperCase()}, Welcome to your profile
+      <h2 className="text-xl text-center font-semibold text-gray-800 mb-4">
+        Welcome to your profile page
       </h2>
 
       {user ? (
@@ -120,7 +120,7 @@ const AdminProfile = () => {
           />
           <label
             htmlFor="file"
-            className="px-4 mb-2 py-2 bg-blue-600 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
+            className="px-4 mb-2 py-2 bg-blue-400 text-white font-medium rounded-lg cursor-pointer hover:bg-blue-700 transition duration-300 shadow-md"
           >
             Choose image
           </label>
@@ -134,6 +134,16 @@ const AdminProfile = () => {
           </div>
 
           {/* Profile Fields */}
+          <div className="mt-4 w-full">
+            <label className="text-gray-600 text-sm">Name</label>
+            <CustomTextField
+              type="text"
+              value={user?.fullName.toUpperCase()}
+              disabled = {true}
+              onchange={(e) => {}}
+              placeholder="Name"
+            />
+          </div>
           <div className="mt-4 w-full">
             <label className="text-gray-600 text-sm">Email</label>
             <CustomTextField

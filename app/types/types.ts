@@ -7,7 +7,8 @@ export interface TextInputProps {
     icon?:ReactNode,
     required?:boolean,
     name?:string,
-    value?:string
+    value?:string,
+    disabled?:boolean
 }
 export interface ButtonProps {
     title:string,
