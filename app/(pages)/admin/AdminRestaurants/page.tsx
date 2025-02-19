@@ -2,12 +2,13 @@
 import { Button, Image, Modal, Table, Input, Form } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from "react-toastify"
 import axios from "axios"
 import { Product } from '@/app/types/types'
-import { RootState } from '@/app/redux/store'
+import { AppDispatch, RootState } from '@/app/redux/store'
 import TextArea from 'antd/es/input/TextArea'
+import { getRestaurants } from '@/app/redux/admin/AdminRestaurantReducer'
 
 const AdminRestaurants = () => {
   const { restaurants } = useSelector((state: RootState) => state.restaurants);
@@ -17,6 +18,8 @@ const AdminRestaurants = () => {
   const [openDelete, setOpenDelete] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [form] = Form.useForm();
+  const dispatch = useDispatch<AppDispatch>();
+
 
   const getData = (): any[] => {
     if (!restaurants) return [];
@@ -34,13 +37,14 @@ const AdminRestaurants = () => {
     }
   }, []);
 
-  const handleDeleteUser = async (id: string) => {
+  const handleDeleteProduct = async (id: string) => {
     try {
       const response = await axios.delete(`/api/auth/delete-user/${id}`, {
-        headers: { 'Authorization': token }
+        headers: { 'Authorization':`Bearer ${token}` }
       });
 
       if (response.data.success) {
+        dispatch(getRestaurants());
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -54,11 +58,12 @@ const AdminRestaurants = () => {
   const handleUpdateProduct = async (values: Partial<Product>) => {
     if (!selectedProduct) return;
     try {
-      const response = await axios.put(`/api/products/update/${selectedProduct._id}`, values, {
-        headers: { 'Authorization': token }
+      const response = await axios.put(`/api/restaurant/update/${selectedProduct._id}`, values, {
+        headers: { 'Authorization': `Bearer ${token}` }
       });
 
       if (response.data.success) {
+        dispatch(getRestaurants());
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -156,13 +161,13 @@ const AdminRestaurants = () => {
           <Form.Item label="Address" name="address" rules={[{ required: true, message: 'Please enter the address' }]}>
             <Input />
           </Form.Item>
-          <Form.Item label="Description" name="description" rules={[{ required: true, message: 'Please enter the address' }]}>
+          <Form.Item label="Description" name="description" rules={[{ required: true, message: 'Please enter the restaurant description' }]}>
             <TextArea rows={5} />
           </Form.Item>
           <Form.Item label="Total Rooms" name="totalRooms" rules={[{ required: true, message: 'Please enter total rooms' }]}>
             <Input type="number" />
           </Form.Item>
-          <Form.Item label="Price" name="pricePerMonth" rules={[{ required: true, message: 'Please enter total rooms' }]}>
+          <Form.Item label="Price" name="pricePerMonth" rules={[{ required: true, message: 'Please enter restaurant price' }]}>
             <Input type="number" />
           </Form.Item>
         </Form>
@@ -172,7 +177,7 @@ const AdminRestaurants = () => {
       <Modal
         open={openDelete}
         onCancel={() => setOpenDelete(false)}
-        onOk={() => handleDeleteUser(selectedProduct?._id || '')}
+        onOk={() => handleDeleteProduct(selectedProduct?._id || '')}
         title="Confirm Delete"
         okText="Delete"
         okButtonProps={{ danger: true }}
