@@ -17,17 +17,17 @@ const AdminDashboardComponent = () => {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 800px:gap-4 gap-2">
-        <div className=" p-4 shadow-sm rounded-md">
+        <div className=" p-4 shadow-sm flex justify-between lg:block rounded-md">
           <h3 className="text-lg font-medium">Total Rooms</h3>
-          <p className="text-2xl font-bold">{restaurants?.length}</p>
+          <p className="text-xl font-bold">{restaurants?.length}</p>
         </div>
-        <div className=" p-4 shadow-sm rounded-md">
+        <div className=" p-4 shadow-sm flex justify-between lg:block rounded-md">
           <h3 className="text-lg font-medium">Total Bookings</h3>
-          <p className="text-2xl font-bold">{bookings?.length}</p>
+          <p className="text-xl font-bold">{bookings?.length}</p>
         </div>
-        <div className=" p-4 shadow-sm rounded-md">
+        <div className=" p-4 shadow-sm flex justify-between lg:block rounded-md">
           <h3 className="text-lg font-medium">Total Revenue</h3>
-          <p className="text-2xl font-bold">Ksh {totalIncome}</p>
+          <p className="text-xl font-bold">Ksh {totalIncome}</p>
         </div>
       </div>
 
