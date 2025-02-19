@@ -35,7 +35,6 @@ const AdminUsers = () => {
   const handleUpdateUserRole = async (user:User)=>{
     try {
       setLoading(true);
-      const token = localStorage.getItem("authorization_token");
       const role = user?.role === "Administrater" ? "user" : "Administrater";
       const response = await axios.put(`/api/admin/updateUserRole/${user?._id}`,{role:role},{
         headers:{
@@ -56,21 +55,24 @@ const AdminUsers = () => {
   }
   const handleDeleteUser = async (id: string) => {
     try {
-      const response = await axios.delete(`/api/auth/delete-user/${id}`, {
+      setLoading(true);
+      const response = await axios.delete(`/api/admin/deleteUser/${id}`, {
         headers: {
-          Authorization: token,
+          Authorization:`Bearer ${token}`,
         },
       });
 
       if (response.data.success) {
-        toast.success(response.data.message);
+        setOpen(false);
+        dispatch(getUsers(token));
+       return toast.success(response.data.message);
       } else {
-        toast.error(response.data.message);
+       toast.error(response.data.message);
       }
-      // dispatch(deleteProducti(id,dispatch));
-      setOpen(false);
     } catch (error) {
-      toast.error("Something went wrong!");
+     return toast.error("Something went wrong!");
+    }finally{
+      setLoading(false);
     }
   };
   return (
@@ -79,14 +81,7 @@ const AdminUsers = () => {
         dataSource={data}
         scroll={{ x: true }}
         columns={[
-          /* {
-        title:"Id",
-        key:"_id",
-        dataIndex:"_id",
-        render: (text) => text.slice(0, 10)+ '...'
-      }, */
-
-          {
+         {
             title: "Email",
             key: "email",
             dataIndex: "email",
@@ -166,6 +161,7 @@ const AdminUsers = () => {
         open={open}
         onCancel={() => setOpen(false)}
         onOk={() => handleDeleteUser(id)}
+        confirmLoading={loading}
         title="Do you want to delete the user?"
       />
     </Content>

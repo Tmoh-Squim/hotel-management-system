@@ -24,7 +24,14 @@ export async function PUT(req: Request, { params }: { params: { userId: string }
         if (!userId) {
             return NextResponse.json({ success: false, message: "User ID is required!" }, { status: 400 });
         }
-        const updatedUser = await Users.findByIdAndUpdate(
+        const existingUser = await Users.findById(userId);
+        if(!existingUser){
+            return NextResponse.json({
+                success:false,
+                message:"User not found"
+            })
+        }
+        await Users.findByIdAndUpdate(
             userId,
             { role: role },
             { new: true, runValidators: true }
