@@ -225,11 +225,13 @@ const AdminCreateRoom = () => {
       )}
 
       {/* Create Room Button */}
-      <CustomButton
-        title="Create Room"
+    <div className="max-w-xl mx-auto">
+    <CustomButton
+        title="Create Restaurant"
         onClick={handleSubmit}
         loading={loading}
       />
+    </div>
     </div>
   );
 };

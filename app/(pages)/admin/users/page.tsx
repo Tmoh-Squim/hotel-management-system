@@ -95,6 +95,11 @@ const AdminUsers = () => {
             title: "Role",
             key: "Role",
             dataIndex: "role",
+            filters: [
+              { text: "Admins", value: "Administrater" },
+              { text: "Users", value: "user" },
+            ],
+            onFilter: (value, record) => record.role === value,
           },
           {
             title: "Joined on",

@@ -27,14 +27,15 @@ import AdminDashboardComponent from "../AdminDashboard/page";
 import AdminRestaurants from "../AdminRestaurants/page";
 import ChangePassword from "@/app/components/ChangePassword";
 import { getBookings } from "@/app/redux/admin/AdminBookings";
-import AdminBookings from "../AdminBookings/page";
 import AdminProfile from "../AdminProfile/page";
+import AdminBookings from "../AdminBookings/page";
 
 const AdminDashboard = () => {
   const [active, setActive] = useState(0);
   const dispatch = useDispatch<AppDispatch>();
   const [token, setToken] = useState<string | null>(null);
   const { user } = useSelector((state: RootState) => state.user);
+  
   const router = useRouter();
 
   const handleLogout = () => {
@@ -63,11 +64,7 @@ const AdminDashboard = () => {
       label: "Bookings",
       key: "Bookings",
       icon: <AiOutlineOrderedList size={20} />, 
-      children: [
-        { label: "Pending Orders", key: "Pending Orders", component: <AdminBookings /> },
-        { label: "Completed Orders", key: "Completed Orders", component: <Page /> },
-        { label: "Refunded Orders", key: "Refunded Orders", component: <Page /> },
-      ],
+      component:<AdminBookings />
     },
     { label: "Restaurants", key: "Restaurants", icon: <AiOutlineProduct size={20} />, component: <AdminRestaurants /> },
     { label: "Add Restaurant", key: "Add Restaurant", icon: <AiOutlineHome size={20} />, component: <AdminCreateRoom /> },
@@ -91,9 +88,8 @@ const AdminDashboard = () => {
             if (index !== -1 && !menuItems[index].onClick) setActive(index);
             if (menuItems[index]?.onClick) menuItems[index].onClick();
           }}
-          items={menuItems.map(({ children, onClick, ...item }) => ({
+          items={menuItems.map(({ onClick, ...item }) => ({
             ...item,
-            children: children?.map(({ label, key }) => ({ label, key })),
           }))}
           className="text-black"
         />
