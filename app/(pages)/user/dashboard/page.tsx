@@ -6,17 +6,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AiOutlineDashboard,
-  AiOutlineFileAdd,
-  AiOutlineHome,
   AiOutlineLock,
   AiOutlineLogout,
   AiOutlineOrderedList,
-  AiOutlineProduct,
   AiOutlineSun,
   AiOutlineUser,
-  AiOutlineUsergroupAdd,
 } from "react-icons/ai";
-import Page from "../../Login/page";
 import { logout } from "@/app/redux/user/userReducer";
 import { useRouter } from "next/navigation";
 import { AppDispatch, RootState } from "@/app/redux/store";

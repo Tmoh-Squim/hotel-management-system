@@ -143,11 +143,11 @@ const ContactPage = () => {
           </div>
           <div className="contact-info">
             <h3 className="text-xl font-semibold">Phone</h3>
-            <p className="text-gray-600">+254 748143442</p>
+            <a href="tel:254748143442" className="text-gray-600">+254 748143442</a>
           </div>
           <div className="contact-info">
-            <h3 className="text-xl font-semibold">Email</h3>
-            <p className="text-gray-600">squimstech@gmail.com</p>
+            <h3  className="text-xl font-semibold">Email</h3>
+            <a href="mailto:squimstech@gmail.com" className="text-gray-600">squimstech@gmail.com</a>
           </div>
         </div>
       </section>
