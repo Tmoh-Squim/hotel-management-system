@@ -33,7 +33,7 @@ const AdminDashboardComponent = () => {
 
       {/* Recent Bookings Table */}
       <div className=" shadow-sm rounded-md">
-        <h3 className="text-lg mx-4 font-medium mb-4">Recent Bookings</h3>
+        <h3 className="text-xl text-center 800px:text-start font-medium mb-4">Recent Bookings</h3>
         <AdminRecentBookings />
       </div>
     </div>

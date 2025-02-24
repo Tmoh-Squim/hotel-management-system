@@ -82,7 +82,8 @@ export interface Booking {
     paymentStatus:string,
     createdAt:string,
     updatedAt:string,
-    totalAmount:number
+    totalAmount:number,
+    status:string
 }
 export const validRegex =
 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")){3,}@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

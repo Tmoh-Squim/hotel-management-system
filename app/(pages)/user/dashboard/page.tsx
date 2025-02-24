@@ -26,6 +26,8 @@ import UserDashboardComponent from "../UserDashboardComponent/page";
 import { getUserBookings } from "@/app/redux/user/UserBookings";
 import UserBookings from "../UserBookings/page";
 import UserProfile from "../Profile/page";
+import { MdOutlineTrackChanges } from "react-icons/md";
+import TrackOrderStatus from "../TrackOrderStatus/page";
 
 const UserDashboard = () => {
   const [active, setActive] = useState(0);
@@ -62,8 +64,7 @@ const UserDashboard = () => {
       icon: <AiOutlineOrderedList size={20} />, 
       component:<UserBookings/>
     },
-    { label: "Rooms", key: "Rooms", icon: <AiOutlineProduct size={20} />, component: <Page /> },
-    { label: "Add Category", key: "Add Category", icon: <AiOutlineFileAdd size={20} />, component: <Page /> },
+    { label: "Track Order", key: "Track Order", icon: <MdOutlineTrackChanges size={20} />, component: <TrackOrderStatus /> },
     { label: "Profile", key: "Profile", icon: <AiOutlineUser size={20} />, component: <UserProfile /> },
     { label: "Change password", key: "Change password", icon: <AiOutlineLock size={20} />, component: <ChangePassword /> },
     { label: "Switch theme", key: "Switch theme", icon: <AiOutlineSun size={20} />,onclick:handleThemeChange },

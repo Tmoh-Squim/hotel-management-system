@@ -4,24 +4,29 @@ import React, { useEffect } from "react";
 import CustomButton from "./components/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./redux/store";
 import { getUser } from "./redux/user/userReducer";
 import { getRestaurants } from "./redux/admin/AdminRestaurantReducer";
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const {user} = useSelector((state:RootState) => state.user);
+  const {restaurants} = useSelector((state:RootState) => state.restaurants);
+
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("authorization_token");
 
-      if (token) {
+      if (token && user == null) {
         dispatch(getUser(token));
       }
     }
-    dispatch(getRestaurants());
-  }, [dispatch]);
+    if (restaurants == null) {
+      dispatch(getRestaurants());
+    }
+  }, [dispatch,user,restaurants]);
 
   useEffect(() => {
     const tl = gsap.timeline();
