@@ -12,6 +12,7 @@ import Hero from "./components/hero/Hero";
 import Details from "./components/deatils/Details";
 import Facilities from "./components/facilities/Facilities";
 import Bed from "./components/Clean/Bed";
+import Reviews from "./components/Reviews/Reviews";
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -34,15 +35,16 @@ const Page = () => {
 
   return (
     <div
-      className="w-full bg-cover min-h-screen object-center bg-center"
-      style={{
-        backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
-      }}
+     className="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed flex flex-col"
+  style={{
+    backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
+  }}
     >
     <Hero />
     <Details />
     <Facilities />
     <Bed />
+    <Reviews />
     </div>
   );
 };
