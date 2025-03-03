@@ -10,6 +10,8 @@ import { getUser } from "./redux/user/userReducer";
 import { getRestaurants } from "./redux/admin/AdminRestaurantReducer";
 import Hero from "./components/hero/Hero";
 import Details from "./components/deatils/Details";
+import Facilities from "./components/facilities/Facilities";
+import Bed from "./components/Clean/Bed";
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,6 +41,8 @@ const Page = () => {
     >
     <Hero />
     <Details />
+    <Facilities />
+    <Bed />
     </div>
   );
 };
