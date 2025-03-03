@@ -7,22 +7,68 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const reviews = [
-  { name: "Alice Johnson", text: "Amazing experience! The staff was super friendly, and the rooms were spotless. Highly recommend!" },
-  { name: "James Smith", text: "Great hospitality! The breakfast was delicious, and the Wi-Fi speed was excellent." },
-  { name: "Maria Gonzales", text: "Loved the ambiance! Perfect place for a weekend getaway. Will definitely come back." },
-  { name: "David Brown", text: "Excellent service and very comfortable rooms. The pool was a great addition!" },
-  { name: "Sophia Wilson", text: "Highly professional staff, very accommodating. Enjoyed my stay!" },
-  { name: "Michael Scott", text: "A peaceful and relaxing environment. Perfect for business travelers!" },
-  { name: "Emma Davis", text: "The restaurant was top-notch, and the gym was well-equipped. Had a great time!" },
-  { name: "Olivia Martinez", text: "Affordable luxury at its best. Everything was just perfect!" },
-  { name: "William Taylor", text: "The concierge service was very helpful. Highly recommended!" },
-  { name: "Isabella Moore", text: "Best hotel experience ever. Will bring my family next time!" },
-  { name: "Ethan Anderson", text: "Beautiful interiors and great attention to detail. 10/10!" },
-  { name: "Charlotte White", text: "Super clean, cozy, and friendly staff. Loved the complimentary drinks!" },
-  { name: "Benjamin Harris", text: "Perfect place to unwind. The spa services were amazing!" },
-  { name: "Mia Thompson", text: "Highly recommended for couples. Such a romantic place!" },
-  { name: "Lucas Walker", text: "The location is perfect, close to everything. Amazing stay!" },
-];
+    { 
+      name: "Alice Johnson", 
+      text: "From the moment I stepped in, I felt welcomed. The staff went above and beyond to make sure I was comfortable. The rooms were spotless, and the ambiance was so relaxing. Definitely coming back!" 
+    },
+    { 
+      name: "James Smith", 
+      text: "The breakfast was beyond amazing, and the service was top-notch. I really appreciated the fast and reliable Wi-Fi, which made it easy for me to get work done. Highly recommend!" 
+    },
+    { 
+      name: "Maria Gonzales", 
+      text: "The decor is stunning, and the atmosphere is so peaceful. It’s the perfect spot for a weekend getaway. Everything from the bed to the food was perfect. Will definitely visit again!" 
+    },
+    { 
+      name: "David Brown", 
+      text: "What an incredible experience! The service was professional, and the pool area was well-maintained. It truly felt like a luxury stay at an affordable price. Five stars!" 
+    },
+    { 
+      name: "Sophia Wilson", 
+      text: "The staff was friendly, and the check-in process was smooth. I loved how quiet and cozy the rooms were. If you're looking for a peaceful retreat, this is the place!" 
+    },
+    { 
+      name: "Michael Scott", 
+      text: "A perfect spot for business travelers. The environment is calm, the Wi-Fi is strong, and the food is excellent. I stayed for three nights and had a wonderful time. Highly recommended!" 
+    },
+    { 
+      name: "Emma Davis", 
+      text: "The restaurant served some of the best food I’ve ever had in a hotel! The gym was also well-equipped, which was a pleasant surprise. I really enjoyed my stay." 
+    },
+    { 
+      name: "Olivia Martinez", 
+      text: "I was blown away by how clean and comfortable everything was. The staff made me feel like a VIP guest. I can’t wait to return for another stay." 
+    },
+    { 
+      name: "William Taylor", 
+      text: "The concierge service was excellent—they helped me plan my entire trip, from sightseeing to restaurant recommendations. Truly a wonderful experience!" 
+    },
+    { 
+      name: "Isabella Moore", 
+      text: "I travel a lot, but this was by far one of the best hotel experiences I've had. The hospitality was unmatched, and the little details made a big difference. I’ll be back with my family!" 
+    },
+    { 
+      name: "Ethan Anderson", 
+      text: "This place is a hidden gem! Everything from the service to the amenities was top-tier. The attention to detail really stood out. Highly recommend!" 
+    },
+    { 
+      name: "Charlotte White", 
+      text: "The hotel had such a warm and inviting atmosphere. I especially loved the complimentary drinks upon arrival—such a nice touch!" 
+    },
+    { 
+      name: "Benjamin Harris", 
+      text: "I booked this place for a relaxing weekend, and it exceeded my expectations. The spa services were fantastic, and I felt completely rejuvenated after my stay." 
+    },
+    { 
+      name: "Mia Thompson", 
+      text: "If you’re looking for a romantic getaway, this is the place! The ambiance was magical, and the candlelit dinner we had was unforgettable. I’ll definitely be back!" 
+    },
+    { 
+      name: "Lucas Walker", 
+      text: "The location is perfect! It’s close to everything, yet still feels like a private retreat. I had such a peaceful and enjoyable stay." 
+    }
+  ];
+  
 
 const Reviews = () => {
   return (
@@ -32,26 +78,38 @@ const Reviews = () => {
         WHAT OUR CUSTOMERS SAY ABOUT US
       </p>
 
-      <Swiper
+     <div className="px-10 flex justify-center my-10 items-center">
+     <Swiper
         modules={[Pagination, Autoplay]}
         spaceBetween={20}
-        slidesPerView={3}
-        loop={true} // ❌ Turn off loop to prevent duplicate pagination
+        slidesPerView={1} 
+        loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
-        pagination={{ clickable: true }} // ✅ Only one set of indicators
+        pagination={{ clickable: true }}
         className="mt-8"
       >
-        {reviews.map((review, index) => (
-          <SwiperSlide key={index} className="flex justify-center">
-            <div className="bg-white shadow-md rounded-xl p-6 w-80 h-56 flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300">
-              <p className="text-lg italic text-gray-700">"{review.text}"</p>
-              <h3 className="mt-4 text-xl font-semibold text-blue-600">
-                - {review.name}
-              </h3>
-            </div>
-          </SwiperSlide>
-        ))}
+        {Array.from({ length: Math.ceil(reviews.length / 3) }, (_, i) => (
+  <SwiperSlide key={i} className="flex justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {reviews.slice(i * 3, i * 3 + 3).map((review, index) => (
+        <div 
+          key={index} 
+          className="bg-white shadow-md rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
+        >
+          <p className="text-lg italic text-gray-700 flex-grow">
+            "{review.text}"
+          </p>
+          <h3 className="mt-4 text-xl font-semibold text-blue-600">
+            - {review.name}
+          </h3>
+        </div>
+      ))}
+    </div>
+  </SwiperSlide>
+))}
+
       </Swiper>
+     </div>
     </div>
   );
 };

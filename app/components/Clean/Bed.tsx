@@ -3,7 +3,8 @@ import React from "react";
 
 const Bed = () => {
   return (
-    <div className="bg-transparent w-full h-screen flex items-center px-10 text-foreground">
+    <div className="bg-transparent relative w-full h-screen flex items-center px-10 text-foreground">
+    <div className="absolute h-screen inset-0 bg-black/40"></div>
       <div>
         <h1 className="text-8xl text-foreground font-serif leading-none">
           <span className="whitespace-nowrap">Bed &</span><br />
