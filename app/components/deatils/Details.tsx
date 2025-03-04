@@ -3,8 +3,8 @@ import React from 'react'
 
 const Details = () => {
   return (
-    <div className='w-full min-h-screen '>
-      <div className='800px:flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-10 py-8'>
+    <div className='w-full '>
+      <div className='800px:flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-[60px] py-8'>
         <div className='flex-1 flex flex-col items-center'>
           <h1 className='text-3xl font-bold'>8.1<span className='text-sm font-semibold'>/10</span></h1>
           <p className='800px:text-4xl text-2xl text-blue-950 font-bold'>Booking.com</p>
@@ -20,7 +20,7 @@ const Details = () => {
       </div>
       <div className='800px:flex'>
         <div className='800px:w-1/2 w-full h-full'>
-        <img src="/booking.jpg" alt="" />
+        <img src="https://png.pngtree.com/background/20230425/original/pngtree-two-beds-are-in-a-hotel-room-picture-image_2471633.jpg" alt="" />
         </div>
         <div className='flex-1 px-4 bg-background mx-auto flex justify-between items-center'>
         <div>
