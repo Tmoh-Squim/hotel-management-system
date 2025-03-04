@@ -72,7 +72,9 @@ const reviews = [
 const Reviews = () => {
   return (
     <div className="w-full min-h-screen bg-background  px-10 pt-10 text-foreground">
-      <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">Guests Say</h1>
+      <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">
+        Guests Say
+      </h1>
       <p className="text-gray-500 text-xl tracking-wide text-center my-4 font-semibold">
         WHAT OUR CUSTOMERS SAY ABOUT US
       </p>
@@ -81,31 +83,44 @@ const Reviews = () => {
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
-          slidesPerView={1}
           loop={true}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
+          breakpoints={{
+            1024: { slidesPerView: 1 }, // Group 3 reviews per slide on large screens
+          }}
           className="mt-8"
         >
-          {Array.from({ length: Math.ceil(reviews.length / 3) }, (_, i) => (
-            <SwiperSlide key={i} className="flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {reviews.slice(i * 3, i * 3 + 3).map((review, index) => (
-                  <div
-                    key={index}
-                    className="bg-bacground text-foreground shadow-lg rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
-                  >
-                    <p className="text-lg italic flex-grow">
-                      "{review.text}"
-                    </p>
-                    <h3 className="mt-4 text-xl font-semibold text-blue-600">
-                      - {review.name}
-                    </h3>
-                  </div>
-                ))}
-              </div>
-            </SwiperSlide>
-          ))}
+          {Array.from(
+            {
+              length:
+                window.innerWidth >= 1024
+                  ? Math.ceil(reviews.length / 3)
+                  : reviews.length,
+            },
+            (_, i) => (
+              <SwiperSlide key={i} className="flex justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {(window.innerWidth >= 1024
+                    ? reviews.slice(i * 3, i * 3 + 3)
+                    : [reviews[i]]
+                  ).map((review, index) => (
+                    <div
+                      key={index}
+                      className="bg-background text-foreground shadow-lg rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
+                    >
+                      <p className="text-lg italic flex-grow">
+                        "{review.text}"
+                      </p>
+                      <h3 className="mt-4 text-xl font-semibold text-blue-600">
+                        - {review.name}
+                      </h3>
+                    </div>
+                  ))}
+                </div>
+              </SwiperSlide>
+            )
+          )}
         </Swiper>
       </div>
     </div>
