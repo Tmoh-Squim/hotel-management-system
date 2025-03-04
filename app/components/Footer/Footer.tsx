@@ -23,7 +23,7 @@ const Footer = () => {
             Zindabazar, Sylhet, Sylhet, Bangladesh{" "}
           </p>
           <p className="flex flex-wrap items-center text-foreground gap-2 800px:justify-center mt-2 font-medium">
-            <AiOutlinePhone size={25} /> +254748143442{" "}
+            <AiOutlinePhone size={28} /> +254748143442{" "}
             <span className="flex items-center gap-2">
               <AiOutlineMail size={25} /> squimstech@gmail.com
             </span>

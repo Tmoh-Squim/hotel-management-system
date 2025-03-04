@@ -2,18 +2,18 @@ import React from 'react'
 import { FaConciergeBell, FaDumbbell, FaParking, FaSwimmingPool, FaUtensils, FaWifi, FaSpa, FaBriefcase, FaShuttleVan, FaCocktail, FaPaw, FaTshirt } from 'react-icons/fa';
 
 const amenities = [
-  { name: "Free Wi-Fi", icon: <FaWifi className="text-blue-500 text-3xl" /> },
-  { name: "Swimming Pool", icon: <FaSwimmingPool className="text-cyan-500 text-3xl" /> },
-  { name: "Restaurant", icon: <FaUtensils className="text-yellow-500 text-3xl" /> },
-  { name: "Gym & Fitness", icon: <FaDumbbell className="text-red-500 text-3xl" /> },
-  { name: "Free Parking", icon: <FaParking className="text-green-500 text-3xl" /> },
-  { name: "24/7 Concierge", icon: <FaConciergeBell className="text-purple-500 text-3xl" /> },
-  { name: "Spa & Wellness", icon: <FaSpa className="text-pink-500 text-3xl" /> },
-  { name: "Business Center", icon: <FaBriefcase className="text-gray-700 text-3xl" /> },
-  { name: "Airport Shuttle", icon: <FaShuttleVan className="text-orange-500 text-3xl" /> },
-  { name: "Bar & Lounge", icon: <FaCocktail className="text-indigo-500 text-3xl" /> },
-  { name: "Pet-Friendly", icon: <FaPaw className="text-gray-500 text-3xl" /> },
-  { name: "Laundry Service", icon: <FaTshirt className="text-teal-500 text-3xl" /> },
+  { name: "Free Wi-Fi", icon: <FaWifi size={30} className="text-blue-500 text-3xl" /> },
+  { name: "Swimming Pool", icon: <FaSwimmingPool size={30} className="text-cyan-500 text-3xl" /> },
+  { name: "Restaurant", icon: <FaUtensils size={30} className="text-yellow-500 text-3xl" /> },
+  { name: "Gym & Fitness", icon: <FaDumbbell size={30} className="text-red-500 text-3xl" /> },
+  { name: "Free Parking", icon: <FaParking size={30} className="text-green-500 text-3xl" /> },
+  { name: "24/7 Concierge", icon: <FaConciergeBell size={30} className="text-purple-500 text-3xl" /> },
+  { name: "Spa & Wellness", icon: <FaSpa size={30} className="text-pink-500 text-3xl" /> },
+  { name: "Business Center", icon: <FaBriefcase size={30} className="text-gray-700 text-3xl" /> },
+  { name: "Airport Shuttle", icon: <FaShuttleVan size={30} className="text-orange-500 text-3xl" /> },
+  { name: "Bar & Lounge", icon: <FaCocktail size={30} className="text-indigo-500 text-3xl" /> },
+  { name: "Pet-Friendly", icon: <FaPaw size={30} className="text-gray-500 text-3xl" /> },
+  { name: "Laundry Service", icon: <FaTshirt size={30} className="text-teal-500 text-3xl" /> },
 ];
 
 const Facilities = () => {
