@@ -15,7 +15,7 @@ const Footer = () => {
             </div>
             <div className=''>
                 <p className=' text-foreground flex items-center gap-2 font-semibold'><FaMapMarkerAlt /> 2nd Floor, New Shamoli Shopping Centre, Zindabazar, Sylhet, Sylhet, Bangladesh </p>
-                <p className='flex items-center text-foreground gap-2 justify-center mt-2 font-semibold'><AiFillPhone /> +254748143442 <span className='flex items-center gap-2'><AiOutlineMail /> squimstech@gmail.com</span></p>
+                <p className='flex flex-wrap items-center text-foreground gap-2 justify-center mt-2 font-semibold'><AiFillPhone /> +254748143442 <span className='flex items-center gap-2'><AiOutlineMail /> squimstech@gmail.com</span></p>
                 <p className='text-center text-foreground my-4 font-bold'>
                     SquimHotel &copy; 2025 All Rights Reserved
                 </p>

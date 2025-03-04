@@ -19,7 +19,7 @@ const Details = () => {
         </div>
       </div>
       <div className='800px:flex'>
-        <div className='800px:w-1/2 h-full'>
+        <div className='800px:w-1/2 w-full h-full'>
         <img src="/booking.jpg" alt="" />
         </div>
         <div className='flex-1 px-4 bg-background mx-auto flex justify-between items-center'>

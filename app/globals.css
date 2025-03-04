@@ -17,3 +17,6 @@ body {
   --background: #111827;
   --foreground: #ffffff;
 }
+::-webkit-scrollbar{
+  display: none;
+}
