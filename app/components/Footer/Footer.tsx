@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className='w-full p-10 bg-background'>
+    <footer className='w-full 800px:p-10 px-4 py-6 bg-background'>
         <div className='800px:flex justify-between items-center my-2 '>
             <div>
             <h1

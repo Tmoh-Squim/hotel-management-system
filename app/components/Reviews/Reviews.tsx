@@ -89,7 +89,7 @@ const Reviews = () => {
           breakpoints={{
             1024: { slidesPerView: 1 }, // Group 3 reviews per slide on large screens
           }}
-          className="mt-10"
+          className="mt-[60px]"
         >
           {Array.from(
             {

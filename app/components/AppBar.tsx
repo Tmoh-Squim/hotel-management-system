@@ -124,7 +124,7 @@ const AppBar = () => {
 
       {/* Mobile Navbar */}
       <div
-        className="800px:hidden cursor-pointer bg-background text-foreground p-2 flex justify-between items-center"
+        className="800px:hidden cursor-pointer bg-background text-foreground px-2 py-4 flex justify-between items-center"
         onClick={() => setOpen(true)}
       >
         <AiOutlineMenu size={30} />
