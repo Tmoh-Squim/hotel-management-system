@@ -1,9 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import CustomButton from "./components/CustomButton";
-import Link from "next/link";
-import gsap from "gsap";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./redux/store";
 import { getUser } from "./redux/user/userReducer";
@@ -13,7 +10,7 @@ import Details from "./components/deatils/Details";
 import Facilities from "./components/facilities/Facilities";
 import Bed from "./components/Clean/Bed";
 import Reviews from "./components/Reviews/Reviews";
-import { FaArrowUp } from "react-icons/fa"; // Scroll icon
+import { FaArrowUp } from "react-icons/fa"; 
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
