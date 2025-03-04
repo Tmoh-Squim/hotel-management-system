@@ -10,7 +10,7 @@ import Details from "./components/deatils/Details";
 import Facilities from "./components/facilities/Facilities";
 import Bed from "./components/Clean/Bed";
 import Reviews from "./components/Reviews/Reviews";
-import { FaArrowUp } from "react-icons/fa"; 
+import { FaArrowUp } from "react-icons/fa";
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,9 +33,11 @@ const Page = () => {
     // Scroll event listener
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight;
-      const scrollPosition = window.innerHeight + window.scrollY;
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
 
-      if (scrollPosition >= scrollHeight - 50) {
+      // Show the button when the user has scrolled past half of the document
+      if (scrollPosition > scrollHeight / 2 - windowHeight / 2) {
         setShowScrollTop(true);
       } else {
         setShowScrollTop(false);

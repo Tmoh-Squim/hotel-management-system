@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="w-full 800px:p-10 px-4 py-6 bg-background">
       <div className="800px:flex justify-between items-center my-2 ">
         <div>
-          <h1 className="text-2xl text-foreground text-center font-bold cursor-pointer hover:text-foreground transition-colors duration-300">
+          <h1 className="text-3xl text-foreground text-center font-bold cursor-pointer hover:text-foreground transition-colors duration-300">
             Squim&apos;s Hotel
           </h1>
         </div>
