@@ -71,7 +71,7 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <div className="w-full min-h-screen bg-background  px-10 pt-10 text-foreground">
+    <div className="w-full min-h-screen bg-background  800px:px-10 px-4 pt-10 text-foreground">
       <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">
         Guests Say
       </h1>
@@ -100,14 +100,14 @@ const Reviews = () => {
             },
             (_, i) => (
               <SwiperSlide key={i} className="flex justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 800px:gap-6 gap-2">
+                <div className="grid w-full grid-cols-1 md:grid-cols-3 800px:gap-6 gap-2">
                   {(window.innerWidth >= 1024
                     ? reviews.slice(i * 3, i * 3 + 3)
                     : [reviews[i]]
                   ).map((review, index) => (
                     <div
                       key={index}
-                      className="bg-background text-foreground shadow-lg rounded-xl p-6 w-full flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
+                      className="bg-background text-foreground shadow-lg rounded-xl px-2 py-4 w-full flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
                     >
                       <p className="text-lg italic flex-grow text-justify">
                         "{review.text}"
