@@ -25,11 +25,11 @@ const Details = () => {
         <div className='flex-1 px-4 bg-background mx-auto flex justify-between items-center'>
         <div>
           <h1 className='text-4xl text-center text-foreground font-semibold my-4'>Your Home Away From Home!</h1>
-          <p className='text-center'>
+          <p className='text-center text-foreground'>
           Experience the essence of Sylhet at our welcoming hostel, where travelers find comfort and community beneath the tea-covered hills and by the Surma River.
           </p>
           <div className='flex justify-center items-center mt-6'>
-          <Link href={"/restaurant"}>
+          <Link href={"/about"}>
           <div className="my-4 py-4 px-8 text-white rounded-md cursor-pointer font-semibold bg-amber-950 btn w-max ">
             More About Us!
           </div>
