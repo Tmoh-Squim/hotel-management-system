@@ -25,9 +25,9 @@ const Facilities = () => {
         </div>
         <div className="w-full flex-1 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 800px:gap-8 gap-2 pb-4">
           {amenities.map((amenity, index) => (
-            <div key={index} className="bg-white shadow-md rounded-2xl p-6 flex items-center space-x-4 hover:shadow-lg transition-all duration-300">
+            <div key={index} className="bg-background text-foreground shadow-md rounded-lg p-6 flex items-center space-x-4 hover:shadow-lg transition-all duration-300">
               {amenity.icon}
-              <span className="text-lg font-medium text-gray-700">{amenity.name}</span>
+              <span className="text-lg font-medium">{amenity.name}</span>
             </div>
           ))}
         </div>

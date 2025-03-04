@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  AiFillPhone,
+  AiOutlinePhone,
   AiOutlineFacebook,
   AiOutlineMail,
   AiOutlineTwitter,
@@ -22,8 +22,8 @@ const Footer = () => {
             <FaMapMarkerAlt size={25} /> 2nd Floor, New Shamoli Shopping Centre,
             Zindabazar, Sylhet, Sylhet, Bangladesh{" "}
           </p>
-          <p className="flex flex-wrap items-center text-foreground gap-2 justify-center mt-2 font-semibold">
-            <AiFillPhone size={25} /> +254748143442{" "}
+          <p className="flex flex-wrap items-center text-foreground gap-2 800px:justify-center mt-2 font-medium">
+            <AiOutlinePhone size={25} /> +254748143442{" "}
             <span className="flex items-center gap-2">
               <AiOutlineMail size={25} /> squimstech@gmail.com
             </span>
