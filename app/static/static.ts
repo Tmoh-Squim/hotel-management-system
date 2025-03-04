@@ -8,10 +8,6 @@ export const appBarLinks = [
     path:"/restaurant"
 },
 {
-    title:"Amenities",
-    path:"/amenities"
-},
-{
     title:"Best deals",
     path:"/deals"
 },

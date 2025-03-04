@@ -71,8 +71,8 @@ const reviews = [
 
 const Reviews = () => {
   return (
-    <div className="w-full min-h-screen bg-blue-50 px-10 pt-10 text-foreground">
-      <h1 className="text-5xl text-foreground text-center font-bold">Guests Say</h1>
+    <div className="w-full min-h-screen bg-background  px-10 pt-10 text-foreground">
+      <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">Guests Say</h1>
       <p className="text-gray-500 text-xl tracking-wide text-center my-4 font-semibold">
         WHAT OUR CUSTOMERS SAY ABOUT US
       </p>
@@ -93,9 +93,9 @@ const Reviews = () => {
                 {reviews.slice(i * 3, i * 3 + 3).map((review, index) => (
                   <div
                     key={index}
-                    className="bg-white shadow-md rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
+                    className="bg-bacground text-foreground shadow-lg rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
                   >
-                    <p className="text-lg italic text-gray-700 flex-grow">
+                    <p className="text-lg italic flex-grow">
                       "{review.text}"
                     </p>
                     <h3 className="mt-4 text-xl font-semibold text-blue-600">

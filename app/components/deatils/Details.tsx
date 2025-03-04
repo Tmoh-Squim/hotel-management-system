@@ -4,27 +4,27 @@ import React from 'react'
 const Details = () => {
   return (
     <div className='w-full min-h-screen '>
-      <div className='flex justify-center w-full bg-blue-50 items-center py-10'>
+      <div className='flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-10 py-8'>
         <div className='flex-1 flex flex-col items-center'>
           <h1 className='text-3xl font-bold'>8.1<span className='text-sm font-semibold'>/10</span></h1>
-          <p className='text-4xl text-blue-950 font-bold'>Booking.com</p>
+          <p className='800px:text-4xl text-2xl text-blue-950 font-bold'>Booking.com</p>
         </div>
         <div className='flex-1 flex flex-col items-center'>
           <h1 className='text-3xl font-bold'>4.5<span className='text-sm font-semibold'>/5</span></h1>
-          <p className='text-4xl text-blue-500 font-bold'>Facebook</p>
+          <p className='800px:text-4xl text-2xl text-blue-500 font-bold'>Facebook</p>
         </div>
         <div className='flex-1 flex flex-col items-center'>
           <h1 className='text-3xl font-bold'>4.4<span className='text-sm font-semibold'>/5</span></h1>
-          <p className='text-4xl text-blue-950 font-bold'>Google</p>
+          <p className='800px:text-4xl text-2xl text-blue-950 font-bold'>Google</p>
         </div>
       </div>
-      <div className='flex'>
-        <div className='w-1/2 h-full'>
+      <div className='800px:flex'>
+        <div className='800px:w-1/2 h-full'>
         <img src="/booking.jpg" alt="" />
         </div>
         <div className='flex-1 px-4 bg-background mx-auto flex justify-between items-center'>
         <div>
-          <h1 className='text-4xl text-center text-foreground font-semibold my-4'>Your Home Away From Home!</h1>
+          <h1 className='800px:text-4xl text-3xl text-center text-foreground font-semibold my-4'>Your Home Away From Home!</h1>
           <p className='text-center text-foreground'>
           Experience the essence of Sylhet at our welcoming hostel, where travelers find comfort and community beneath the tea-covered hills and by the Surma River.
           </p>

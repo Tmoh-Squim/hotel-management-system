@@ -27,10 +27,10 @@ const Hero = () => {
   }, []);
   return (
     <div
-      className="h-[75vh] w-full bg-white bg-center object-center bg-cover px-10 flex items-center"
+      className="800px:h-[75vh] h-[70vh] w-full bg-white bg-center object-center bg-cover px-10 flex items-center"
       style={{ backgroundImage: `url(/bg1.jpeg)` }}
     >
-      <div className="absolute h-[86vh] inset-0 bg-black/40"></div>
+      <div className="absolute 800px:h-[86vh] h-[77vh] inset-0 bg-black/40"></div>
       <div className="text-start flex flex-col justify-start 800px:max-w-[38%] ">
         <h1 className="title 800px:text-5xl text-2xl text-white font-bold">
           EXPERIENCE HOSPITALITY AT IT&apos;S FINEST

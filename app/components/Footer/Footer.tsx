@@ -4,37 +4,37 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 
 const Footer = () => {
   return (
-    <footer className='w-full px-10 py-8 bg-background'>
-        <div className='flex justify-between my-2 '>
+    <footer className='w-full p-10 bg-background'>
+        <div className='800px:flex justify-between items-center my-2 '>
             <div>
             <h1
-            className="text-2xl font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
+            className="text-2xl text-foreground text-center font-bold cursor-pointer hover:text-foreground transition-colors duration-300"
           >
             Squim&apos;s Hotel
           </h1>
             </div>
             <div className=''>
                 <p className=' text-foreground flex items-center gap-2 font-semibold'><FaMapMarkerAlt /> 2nd Floor, New Shamoli Shopping Centre, Zindabazar, Sylhet, Sylhet, Bangladesh </p>
-                <p className='flex items-center gap-2 justify-center mt-2'><AiFillPhone /> +254748143442 <span className='flex items-center gap-2'><AiOutlineMail /> squimstech@gmail.com</span></p>
-                <p className='text-center my-4 font-bold'>
-                    SquimHotel 2025 All Rights Reserved
+                <p className='flex items-center text-foreground gap-2 justify-center mt-2 font-semibold'><AiFillPhone /> +254748143442 <span className='flex items-center gap-2'><AiOutlineMail /> squimstech@gmail.com</span></p>
+                <p className='text-center text-foreground my-4 font-bold'>
+                    SquimHotel &copy; 2025 All Rights Reserved
                 </p>
 
             </div>
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center justify-center gap-4'>
                 <div className='w-[50px] h-[50px] rounded-full cursor-pointer bg-foreground text-background flex justify-center items-center'>
-                    <AiOutlineFacebook />
+                    <AiOutlineFacebook size={28} />
                 </div>
                 <div className='w-[50px] h-[50px] rounded-full cursor-pointer bg-foreground text-background flex justify-center items-center'>
-                    <AiOutlineTwitter />
+                    <AiOutlineTwitter size={28} />
                 </div>
                 <div className='w-[50px] h-[50px] rounded-full cursor-pointer bg-foreground text-background flex justify-center items-center'>
-                    <AiOutlineYoutube />
+                    <AiOutlineYoutube size={28} />
                 </div>
             </div>
         </div>
         <div>
-            <p className='text-center text-sm text-foreground'>Created by Timothy. Developer at webwizardsmedia.com</p>
+            <p className='text-center text-sm my-2 text-foreground'>Created by Timothy. Developer at webwizardsmedia.com</p>
         </div>
     </footer>
   )

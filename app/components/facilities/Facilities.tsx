@@ -12,7 +12,7 @@ const amenities = [
   { name: "Business Center", icon: <FaBriefcase className="text-gray-700 text-3xl" /> },
   { name: "Airport Shuttle", icon: <FaShuttleVan className="text-orange-500 text-3xl" /> },
   { name: "Bar & Lounge", icon: <FaCocktail className="text-indigo-500 text-3xl" /> },
-  { name: "Pet-Friendly", icon: <FaPaw className="text-brown-500 text-3xl" /> },
+  { name: "Pet-Friendly", icon: <FaPaw className="text-gray-500 text-3xl" /> },
   { name: "Laundry Service", icon: <FaTshirt className="text-teal-500 text-3xl" /> },
 ];
 
@@ -20,7 +20,7 @@ const Facilities = () => {
   return (
     <div className='w-full flex flex-col min-h-screen bg-background text-foreground px-10 py-10'>
         <div className='flex flex-col justify-center items-center'>
-            <h1 className='text-5xl font-bold'>Facilities/Amenities</h1>
+            <h1 className='800px:text-5xl text-3xl font-bold'>Facilities/Amenities</h1>
             <p className='tracking-wider text-gray-500'>WHAT WE OFFER FOR FREE</p>
         </div>
         <div className="w-full flex-1 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-4">

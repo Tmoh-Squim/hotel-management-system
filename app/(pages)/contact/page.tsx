@@ -130,27 +130,6 @@ const ContactPage = () => {
           </form>
         </div>
       </section>
-
-      {/* Contact Information Section */}
-      <section className="max-w-4xl mx-auto py-12 px-4 text-center">
-        <h2 className="text-2xl font-semibold text-foreground mb-6">
-          Or Reach Us At
-        </h2>
-        <div className="flex flex-wrap justify-center gap-12">
-          <div className="contact-info">
-            <h3 className="text-xl font-semibold">Address</h3>
-            <p className="text-gray-600">123 Hotel Street, Kutus, Kirinyaga</p>
-          </div>
-          <div className="contact-info">
-            <h3 className="text-xl font-semibold">Phone</h3>
-            <a href="tel:254748143442" className="text-gray-600">+254 748143442</a>
-          </div>
-          <div className="contact-info">
-            <h3  className="text-xl font-semibold">Email</h3>
-            <a href="mailto:squimstech@gmail.com" className="text-gray-600">squimstech@gmail.com</a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
