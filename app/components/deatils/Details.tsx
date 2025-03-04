@@ -4,12 +4,12 @@ import React from 'react'
 const Details = () => {
   return (
     <div className='w-full min-h-screen '>
-      <div className='flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-10 py-8'>
+      <div className='800px:flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-10 py-8'>
         <div className='flex-1 flex flex-col items-center'>
           <h1 className='text-3xl font-bold'>8.1<span className='text-sm font-semibold'>/10</span></h1>
           <p className='800px:text-4xl text-2xl text-blue-950 font-bold'>Booking.com</p>
         </div>
-        <div className='flex-1 flex flex-col items-center'>
+        <div className='flex-1 flex my-4 800px:my-0 flex-col items-center'>
           <h1 className='text-3xl font-bold'>4.5<span className='text-sm font-semibold'>/5</span></h1>
           <p className='800px:text-4xl text-2xl text-blue-500 font-bold'>Facebook</p>
         </div>

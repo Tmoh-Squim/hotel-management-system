@@ -18,12 +18,12 @@ const amenities = [
 
 const Facilities = () => {
   return (
-    <div className='w-full flex flex-col min-h-screen bg-background text-foreground px-10 py-10'>
+    <div className='w-full flex flex-col min-h-screen bg-background text-foreground 800px:px-10 px-2 py-10'>
         <div className='flex flex-col justify-center items-center'>
             <h1 className='800px:text-5xl text-3xl font-bold'>Facilities/Amenities</h1>
             <p className='tracking-wider text-gray-500'>WHAT WE OFFER FOR FREE</p>
         </div>
-        <div className="w-full flex-1 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-4">
+        <div className="w-full flex-1 mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 800px:gap-8 gap-2 pb-4">
           {amenities.map((amenity, index) => (
             <div key={index} className="bg-white shadow-md rounded-2xl p-6 flex items-center space-x-4 hover:shadow-lg transition-all duration-300">
               {amenity.icon}
