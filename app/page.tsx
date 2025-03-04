@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CustomButton from "./components/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
@@ -13,12 +13,13 @@ import Details from "./components/deatils/Details";
 import Facilities from "./components/facilities/Facilities";
 import Bed from "./components/Clean/Bed";
 import Reviews from "./components/Reviews/Reviews";
+import { FaArrowUp } from "react-icons/fa"; // Scroll icon
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {user} = useSelector((state:RootState) => state.user);
-  const {restaurants} = useSelector((state:RootState) => state.restaurants);
-
+  const { user } = useSelector((state: RootState) => state.user);
+  const { restaurants } = useSelector((state: RootState) => state.restaurants);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -31,20 +32,48 @@ const Page = () => {
     if (restaurants == null) {
       dispatch(getRestaurants());
     }
-  }, [dispatch,user,restaurants]);
+
+    // Scroll event listener
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollPosition = window.innerHeight + window.scrollY;
+
+      if (scrollPosition >= scrollHeight - 50) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dispatch, user, restaurants]);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div
-     className="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed flex flex-col"
-  style={{
-    backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
-  }}
+      className="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-fixed flex flex-col"
+      style={{
+        backgroundImage: `url(https://res.cloudinary.com/dvsmxvdtr/image/upload/v1739901412/roee3w3j2bq2vjoa9vtm.jpg)`,
+      }}
     >
-    <Hero />
-    <Details />
-    <Facilities />
-    <Bed />
-    <Reviews />
+      <Hero />
+      <Details />
+      <Facilities />
+      <Bed />
+      <Reviews />
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-20 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
+        >
+          <FaArrowUp size={20} />
+        </button>
+      )}
     </div>
   );
 };
