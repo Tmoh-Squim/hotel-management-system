@@ -27,7 +27,7 @@ const Hero = () => {
   }, []);
   return (
     <div
-      className="800px:h-[75vh] h-[70vh] w-full bg-white bg-center object-center bg-cover px-10 flex items-center"
+      className="800px:h-[75vh] h-[70vh] w-full bg-white bg-center object-center bg-cover 800px:px-10 px-4 flex items-center"
       style={{ backgroundImage: `url(/bg1.jpeg)` }}
     >
       <div className="absolute hidden 800px:block 800px:h-[86vh] h-[78vh] inset-0 bg-black/40"></div>

@@ -79,7 +79,7 @@ const Reviews = () => {
         WHAT OUR CUSTOMERS SAY ABOUT US
       </p>
 
-      <div className="px-10 flex justify-center my-10 items-center">
+      <div className="800px:px-10 px-2 flex justify-center 800px:my-10 my-4 items-center">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={20}
@@ -89,7 +89,7 @@ const Reviews = () => {
           breakpoints={{
             1024: { slidesPerView: 1 }, // Group 3 reviews per slide on large screens
           }}
-          className="mt-8"
+          className="mt-10"
         >
           {Array.from(
             {
@@ -100,16 +100,16 @@ const Reviews = () => {
             },
             (_, i) => (
               <SwiperSlide key={i} className="flex justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 800px:gap-6 gap-2">
                   {(window.innerWidth >= 1024
                     ? reviews.slice(i * 3, i * 3 + 3)
                     : [reviews[i]]
                   ).map((review, index) => (
                     <div
                       key={index}
-                      className="bg-background text-foreground shadow-lg rounded-xl p-6 w-[350px] flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
+                      className="bg-background text-foreground shadow-lg rounded-xl p-6 w-full flex flex-col justify-between text-center hover:shadow-lg transition-all duration-300"
                     >
-                      <p className="text-lg italic flex-grow">
+                      <p className="text-lg italic flex-grow text-justify">
                         "{review.text}"
                       </p>
                       <h3 className="mt-4 text-xl font-semibold text-blue-600">
