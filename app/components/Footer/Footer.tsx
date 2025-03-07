@@ -1,8 +1,8 @@
 import React from "react";
 import {
-  AiOutlinePhone,
+  AiFillPhone,
   AiOutlineFacebook,
-  AiOutlineMail,
+  AiFillMail,
   AiOutlineTwitter,
   AiOutlineYoutube,
 } from "react-icons/ai";
@@ -13,19 +13,19 @@ const Footer = () => {
     <footer className="w-full 800px:p-10 px-4 py-6 bg-background">
       <div className="800px:flex justify-between items-center my-2 ">
         <div>
-          <h1 className="text-3xl text-foreground text-center font-bold cursor-pointer hover:text-foreground transition-colors duration-300">
+          <h1 className="text-3xl text-foreground 800px:text-center font-bold cursor-pointer hover:text-foreground transition-colors duration-300">
             Squim&apos;s Hotel
           </h1>
         </div>
         <div className="my-2 800px:my-0">
-          <p className=" text-foreground flex items-center gap-2 font-semibold">
+          <p className=" text-foreground flex 800px:items-center gap-2 font-semibold">
             <FaMapMarkerAlt size={25} /> 2nd Floor, New Shamoli Shopping Centre,
             Kutus, Kirinyaga, Kenya
           </p>
           <p className="flex flex-wrap items-center text-foreground gap-2 800px:justify-center mt-2 font-medium">
-            <AiOutlinePhone size={28} /> +254748143442{" "}
+            <AiFillPhone size={28} /> +254748143442{" "}
             <span className="flex items-center gap-2">
-              <AiOutlineMail size={25} /> squimstech@gmail.com
+              <AiFillMail size={25} /> squimstech@gmail.com
             </span>
           </p>
           <p className="text-center text-foreground my-4 font-bold">
