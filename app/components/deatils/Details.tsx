@@ -9,28 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Details = () => {
   const textRef = useRef<HTMLDivElement | null>(null);
-  const imageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current.children,
-        { opacity: 0.5,scale:1.1,y:20 },
-        {
-          opacity: 1,
-          duration: 1.5,
-          scale:1,
-          y:0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: imageRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
     if (textRef.current) {
       gsap.fromTo(
         textRef.current.children,
@@ -83,7 +63,7 @@ const Details = () => {
       </div>
 
       <div className="800px:flex">
-        <div className="800px:w-1/2 w-full h-full" ref={imageRef}>
+        <div className="800px:w-1/2 w-full h-full">
           <img
             src="https://png.pngtree.com/background/20230425/original/pngtree-two-beds-are-in-a-hotel-room-picture-image_2471633.jpg"
             alt="Hotel Room"
