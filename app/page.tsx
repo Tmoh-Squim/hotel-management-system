@@ -11,6 +11,7 @@ import Facilities from "./components/facilities/Facilities";
 import Bed from "./components/Clean/Bed";
 import Reviews from "./components/Reviews/Reviews";
 import { FaArrowUp } from "react-icons/fa";
+import Footer from "./components/Footer/Footer";
 
 const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -73,6 +74,7 @@ const Page = () => {
           <FaArrowUp size={20} />
         </button>
       )}
+      <Footer />
     </div>
   );
 };

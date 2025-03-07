@@ -5,7 +5,6 @@ import AppBar from "./components/AppBar";
 import ThemeProvider from "./themeProvider";
 import ClientProvider from "./ClientProvider";
 import { ToastContainer } from "react-toastify";
-import Footer from "./components/Footer/Footer";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -35,7 +34,6 @@ export default function RootLayout({
           <ToastContainer autoClose={2000} />
           <AppBar />
           {children}
-          <Footer />
         </ClientProvider>
       </ThemeProvider>
     </body>

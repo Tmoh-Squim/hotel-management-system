@@ -4,6 +4,7 @@ import gsap from "gsap";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import Loader from "@/app/components/Loader";
+import Footer from "@/app/components/Footer/Footer";
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     user_name: "",
@@ -34,12 +35,17 @@ const ContactPage = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true); // Ensure loading is set before the async operation starts
-  
+
     emailjs
-      .send("service_qzxl6jp", "template_w9kvgrw", formData, "KWleLqdJwS4tz9FRZ")
+      .send(
+        "service_qzxl6jp",
+        "template_w9kvgrw",
+        formData,
+        "KWleLqdJwS4tz9FRZ"
+      )
       .then((response) => {
-        toast.success("Message sent successfully")
-  
+        toast.success("Message sent successfully");
+
         setFormData({
           user_name: "",
           user_email: "",
@@ -48,13 +54,12 @@ const ContactPage = () => {
         });
       })
       .catch((err) => {
-        toast.error("Something went wrong. Please try again later")
+        toast.error("Something went wrong. Please try again later");
       })
       .finally(() => {
         setLoading(false); // Now it will run only after success or failure
       });
   };
-  
 
   return (
     <div className="w-full bg-background text-foreground ">
@@ -122,7 +127,7 @@ const ContactPage = () => {
               className="w-full py-3 flex justify-center items-center bg-blue-300 text-white rounded-md font-semibold hover:bg-blue-500 transition duration-300"
             >
               {loading ? (
-               <Loader h="h-8" w="w-8" />
+                <Loader h="h-8" w="w-8" />
               ) : (
                 <h1 className="font-semibold text-center">Send Message</h1>
               )}
@@ -130,6 +135,25 @@ const ContactPage = () => {
           </form>
         </div>
       </section>
+      {/* Google Map Section */}
+      <section className="w-full bg-gray-100 pt-8">
+        <h2 className="text-2xl font-semibold text-center mb-4">
+          Our Location
+        </h2>
+        <div className="w-full h-[400px] mx-auto">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15958.47641252265!2d37.31622207996476!3d-0.5725669907492298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1826284c2a9fdaab%3A0x3d014b1ac6c09320!2sKutus!5e0!3m2!1sen!2ske!4v1741360146762!5m2!1sen!2ske"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 };

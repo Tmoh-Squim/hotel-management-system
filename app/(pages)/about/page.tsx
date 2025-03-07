@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import {  Autoplay, Pagination  } from "swiper/modules";
 import { teamMembers } from "@/app/static/static";
+import Footer from "@/app/components/Footer/Footer";
 
 const Page = () => {
   useEffect(() => {
@@ -107,6 +108,7 @@ const Page = () => {
          </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

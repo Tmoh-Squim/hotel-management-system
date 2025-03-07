@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="my-2 800px:my-0">
           <p className=" text-foreground flex items-center gap-2 font-semibold">
             <FaMapMarkerAlt size={25} /> 2nd Floor, New Shamoli Shopping Centre,
-            Zindabazar, Sylhet, Sylhet, Bangladesh{" "}
+            Kutus, Kirinyaga, Kenya
           </p>
           <p className="flex flex-wrap items-center text-foreground gap-2 800px:justify-center mt-2 font-medium">
             <AiOutlinePhone size={28} /> +254748143442{" "}

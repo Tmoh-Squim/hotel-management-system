@@ -13,11 +13,10 @@ const Bed = () => {
     if (textRef.current) {
       gsap.fromTo(
         textRef.current.children,
-        { opacity: 0, x: -100 },
+        { x: -100 },
         {
-          opacity: 1,
           x: 0,
-          duration: 2.0,
+          duration: 0.8,
           stagger: 0.2,
           ease: "power2.out",
           scrollTrigger: {

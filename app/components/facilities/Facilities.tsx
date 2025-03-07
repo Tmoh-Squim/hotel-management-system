@@ -22,8 +22,6 @@ gsap.registerPlugin(ScrollTrigger);
 const Facilities = () => {
   const titleRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
-
-
   useEffect(() => {
 
     if (titleRef.current) {
@@ -51,7 +49,7 @@ const Facilities = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.6,
+          duration: 0.8,
           ease: "power2.out",
           scrollTrigger: {
             trigger: containerRef.current,
