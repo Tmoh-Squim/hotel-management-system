@@ -95,7 +95,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-background  800px:px-10 px-4 pt-10 text-foreground">
+    <div className="w-full  bg-background  800px:px-10 px-4 pb-20 pt-10 text-foreground">
      <div ref={titleRef}>
      <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">
         Guests Say
@@ -105,7 +105,7 @@ const Reviews = () => {
       </p>
      </div>
 
-      <div className="800px:px-10 px-2 flex justify-center 800px:my-10 my-4 items-center">
+      <div className="800px:px-10 px-2 flex justify-center 800px:my-10 py-6 items-center">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={20}

@@ -34,7 +34,7 @@ const Details = () => {
   return (
     <div className="w-full">
       <div
-        className="800px:flex justify-center w-full bg-background shadow-lg text-foreground px-4 items-center 800px:py-[60px] py-8"
+        className="800px:flex justify-center w-full bg-foreground shadow-lg text-background px-4 items-center 800px:py-[60px] py-8"
       >
         <div className="flex-1 flex flex-col items-center">
           <h1 className="text-3xl font-bold">
