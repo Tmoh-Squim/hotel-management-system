@@ -1,11 +1,11 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 const reviews = [
   {
     name: "Alice Johnson",
@@ -67,17 +67,43 @@ const reviews = [
     name: "Lucas Walker",
     text: "The location is perfect! It’s close to everything, yet still feels like a private retreat. I had such a peaceful and enjoyable stay.",
   },
-];
+]
 
+gsap.registerPlugin(ScrollTrigger);
 const Reviews = () => {
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current.children,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.6,
+          stagger: 0.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-background  800px:px-10 px-4 pt-10 text-foreground">
-      <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">
+     <div ref={titleRef}>
+     <h1 className="800px:text-5xl text-4xl text-foreground text-center font-bold">
         Guests Say
       </h1>
       <p className="text-gray-500 text-xl tracking-wide text-center my-4 font-semibold">
         WHAT OUR CUSTOMERS SAY ABOUT US
       </p>
+     </div>
 
       <div className="800px:px-10 px-2 flex justify-center 800px:my-10 my-4 items-center">
         <Swiper
