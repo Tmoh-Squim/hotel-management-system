@@ -32,6 +32,7 @@ const Page = () => {
       router.replace("/")
     }
   },[user])
+  //handle login functionality
   const handleLogin = async () => {
     try {
       setLoading(true);
