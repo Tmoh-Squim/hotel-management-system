@@ -18,7 +18,7 @@ const Details = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: 2.0,
           stagger: 0.5,
           ease: "power2.out",
           scrollTrigger: {
